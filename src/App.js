@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Member from './Member';
+import Timeline from './Timeline';
 
 class App extends Component {
   state = {
@@ -17,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Member 
+        {/* <Member 
           name={this.state.name} 
           birth={this.state.birth}
           death={this.state.death}
@@ -26,7 +27,9 @@ class App extends Component {
           parents={this.state.parents}
           offspring={this.state.children}
           spouse={this.state.spouse}
-        />
+        /> */}
+        <Timeline year={1995}>some event happened</Timeline>
+        <Timeline year={2012}>Alex graduates high school</Timeline>
       </div>
     );
   }
