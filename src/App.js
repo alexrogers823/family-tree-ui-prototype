@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Member from './Member';
 import Timeline from './Timeline';
+import Main from './Main';
 
 class App extends Component {
   state = {
@@ -28,8 +29,9 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        <Timeline year={1995}>some event happened</Timeline>
-        <Timeline year={2012}>Alex graduates high school</Timeline>
+        {/* <Timeline year={1995}>some event happened</Timeline>
+        <Timeline year={2012}>Alex graduates high school</Timeline> */}
+        <Main />
       </div>
     );
   }
