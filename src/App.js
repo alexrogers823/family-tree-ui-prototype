@@ -13,7 +13,37 @@ class App extends Component {
     residence: "Gary, IN",
     parents: ["Mark Rogers", "Gene Rogers"],
     children: ["Patricia Rogers", "Rogercarole Rogers", "Oscar Barry Rogers"],
-    spouse: "Helen French Rogers"
+    spouse: "Helen French Rogers",
+    timelineEvents: [
+      {
+        id: 1,
+        year: 1995,
+        event: "Some event happened"
+      },
+      {
+        id: 2,
+        year: 2012,
+        event: "Alex graduates high school"
+      },
+      {
+        id: 3,
+        year: 2017,
+        event: "Simone and Chris marry"
+      },
+      {
+        id: 4,
+        year: 2020,
+        event: "Helen F. Rogers turns 100 years old"
+      }
+    ]
+  }
+
+  renderTimelineEvents = () => {
+    return this.state.timelineEvents.map(ev => {
+      return (
+        <Timeline year={ev.year} event={ev.event} key={ev.id} />
+      )
+    })
   }
 
   render() {
@@ -29,9 +59,8 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        {/* <Timeline year={1995}>some event happened</Timeline>
-        <Timeline year={2012}>Alex graduates high school</Timeline> */}
-        <Main />
+        {this.renderTimelineEvents()}
+        {/* <Main /> */}
       </div>
     );
   }

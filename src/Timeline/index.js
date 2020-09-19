@@ -4,7 +4,7 @@ const Timeline = props => {
   return (
     <div>
       <p>{props.year}</p>
-      <p>{props.children}</p>
+      <p>{props.event}</p>
     </div>
   );
 };
