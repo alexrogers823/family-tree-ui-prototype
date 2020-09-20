@@ -3,6 +3,8 @@ import './App.css';
 import Member from './Member';
 import Timeline from './Timeline';
 import Main from './Main';
+import Login from './Login';
+import Signup from './Signup';
 
 class App extends Component {
   state = {
@@ -27,7 +29,7 @@ class App extends Component {
       },
       {
         id: 3,
-        year: 2017,
+        year: 2018,
         event: "Simone and Chris marry"
       },
       {
@@ -59,8 +61,10 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        {this.renderTimelineEvents()}
+        {/* {this.renderTimelineEvents()} */}
         {/* <Main /> */}
+        <Login />
+        <Signup />
       </div>
     );
   }
