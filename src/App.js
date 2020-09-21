@@ -5,6 +5,7 @@ import Timeline from './Timeline';
 import Main from './Main';
 import Login from './Login';
 import Signup from './Signup';
+import AddMemberModal from './AddMemberModal';
 
 class App extends Component {
   state = {
@@ -63,8 +64,9 @@ class App extends Component {
         /> */}
         {/* {this.renderTimelineEvents()} */}
         {/* <Main /> */}
-        <Login />
-        <Signup />
+        {/* <Login /> */}
+        {/* <Signup /> */}
+        <AddMemberModal />
       </div>
     );
   }
