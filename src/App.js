@@ -6,6 +6,8 @@ import Main from './Main';
 import Login from './Login';
 import Signup from './Signup';
 import AddMemberModal from './AddMemberModal';
+import AddEventModal from './AddEventModal';
+import EditMemberPageModal from './EditMemberPageModal';
 
 class App extends Component {
   state = {
@@ -66,7 +68,9 @@ class App extends Component {
         {/* <Main /> */}
         {/* <Login /> */}
         {/* <Signup /> */}
-        <AddMemberModal />
+        {/* <AddMemberModal /> */}
+        {/* <EditMemberPageModal /> */}
+        <AddEventModal />
       </div>
     );
   }
