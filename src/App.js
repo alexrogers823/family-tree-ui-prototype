@@ -8,6 +8,7 @@ import Signup from './Signup';
 import AddMemberModal from './AddMemberModal';
 import AddEventModal from './AddEventModal';
 import EditMemberPageModal from './EditMemberPageModal';
+import FrequentlyAskedQuestions from './FrequentlyAskedQuestions';
 
 class App extends Component {
   state = {
@@ -19,6 +20,18 @@ class App extends Component {
     parents: ["Mark Rogers", "Gene Rogers"],
     children: ["Patricia Rogers", "Rogercarole Rogers", "Oscar Barry Rogers"],
     spouse: "Helen French Rogers",
+    questions: [
+      {
+        id: 1,
+        question: "I noticed a piece of information is incorrect about a family member. How can I correct it?",
+        answer: "Once you are logged in, you can edit most information on a family member. If there's information that you can't edit yourself, email the administrator."
+      },
+      {
+        id: 2,
+        question: "I need to delete a timeline event. How can I do this?",
+        answer: "This requires admin approval. Send an email and list the reason for deletion."
+      }
+    ],
     timelineEvents: [
       {
         id: 1,
@@ -70,7 +83,8 @@ class App extends Component {
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal /> */}
-        <AddEventModal />
+        {/* <AddEventModal /> */}
+        <FrequentlyAskedQuestions questions={this.state.questions} />
       </div>
     );
   }
