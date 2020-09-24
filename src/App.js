@@ -9,6 +9,8 @@ import AddMemberModal from './AddMemberModal';
 import AddEventModal from './AddEventModal';
 import EditMemberPageModal from './EditMemberPageModal';
 import FrequentlyAskedQuestions from './FrequentlyAskedQuestions';
+import Header from './Header';
+import Footer from './Footer';
 
 class App extends Component {
   state = {
@@ -84,7 +86,9 @@ class App extends Component {
         {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal /> */}
         {/* <AddEventModal /> */}
-        <FrequentlyAskedQuestions questions={this.state.questions} />
+        {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
+        <Header />
+        <Footer />
       </div>
     );
   }
