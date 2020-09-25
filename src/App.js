@@ -11,6 +11,7 @@ import EditMemberPageModal from './EditMemberPageModal';
 import FrequentlyAskedQuestions from './FrequentlyAskedQuestions';
 import Header from './Header';
 import Footer from './Footer';
+import Gallery from './Gallery';
 
 class App extends Component {
   state = {
@@ -22,6 +23,7 @@ class App extends Component {
     parents: ["Mark Rogers", "Gene Rogers"],
     children: ["Patricia Rogers", "Rogercarole Rogers", "Oscar Barry Rogers"],
     spouse: "Helen French Rogers",
+    photos: ["photo 1", "photo 2", "photo 3"],
     questions: [
       {
         id: 1,
@@ -87,8 +89,9 @@ class App extends Component {
         {/* <EditMemberPageModal /> */}
         {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
-        <Header />
-        <Footer />
+        {/* <Header /> */}
+        {/* <Footer /> */}
+        <Gallery photos={this.state.photos} />
       </div>
     );
   }
