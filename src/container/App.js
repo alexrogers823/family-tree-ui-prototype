@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import Member from '../components/Member';
-import Timeline from '../components/TimelineEvents/Timeline';
-import Main from '../components/Main';
+import Member from '../modules/FrequentlyAskedQuestions/Member';
+import Timeline from '../modules/TimelineEvents/Timeline';
+import Main from '../modules/Main';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import AddMemberModal from '../components/AddMemberModal';
 import AddEventModal from '../components/AddEventModal';
 import EditMemberPageModal from '../components/EditMemberPageModal';
-import FrequentlyAskedQuestions from '../components/FrequentlyAskedQuestions';
+import FrequentlyAskedQuestions from '../modules/FrequentlyAskedQuestions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Gallery from '../components/Gallery';
-import TimelineEvents from '../components/TimelineEvents';
+import Gallery from '../modules/Gallery';
+import TimelineEvents from '../modules/TimelineEvents';
 
 class App extends Component {
   state = {
