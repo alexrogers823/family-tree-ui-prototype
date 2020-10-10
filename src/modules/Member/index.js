@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Member = props => {
 
@@ -31,5 +32,14 @@ const Member = props => {
     </div>
     );
 };
+
+Member.propTypes = {
+  name: PropTypes.string.isRequired,
+  birth: PropTypes.string,
+  death: PropTypes.string,
+  residence: PropTypes.string,
+  parents: PropTypes.array,
+  offspring: PropTypes.array,
+}
 
 export default Member;
