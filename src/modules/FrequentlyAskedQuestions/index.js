@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FrequentlyAskedQuestions = props => {
   const Question = (question, answer) => {
@@ -23,5 +24,9 @@ const FrequentlyAskedQuestions = props => {
     </div>
   );
 };
+
+FrequentlyAskedQuestions.propTypes = {
+  questions: PropTypes.arrayOf(PropTypes.object).isRequired
+}
 
 export default FrequentlyAskedQuestions;
