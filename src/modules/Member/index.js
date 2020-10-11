@@ -25,8 +25,8 @@ const Member = props => {
       <p>Spouse: {props.spouse}</p>
       <p>Children: </p>
       <ul>
-        {props.offspring.map(child => {
-          return <li>{child}</li>
+        {props.offspring.map((child, i) => {
+          return <li key={i}>{child}</li>
         })}
       </ul>
     </div>

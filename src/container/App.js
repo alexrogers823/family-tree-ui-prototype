@@ -41,17 +41,17 @@ class App extends Component {
       {
         id: 1,
         year: 1995,
-        event: "Some event happened"
+        timelineEvent: "Some event happened"
       },
       {
         id: 2,
         year: 2012,
-        event: "Alex graduates high school"
+        timelineEvent: "Alex graduates high school"
       },
       {
         id: 3,
         year: 2018,
-        event: "Simone and Chris marry"
+        timelineEvent: "Simone and Chris marry"
       },
       {
         id: 4,
