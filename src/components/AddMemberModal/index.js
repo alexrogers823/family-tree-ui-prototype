@@ -1,8 +1,9 @@
 import React from 'react';
+import Modal from '../common/Modal';
 
 const AddMemberModal = props => {
   return (
-    <div>
+    <Modal>
       <h1>Add Family Member</h1>
       <p>First Name</p>
       <p>Middle Name</p>
@@ -16,7 +17,7 @@ const AddMemberModal = props => {
       <p>Photo</p>
       <p>Place of Birth</p>
       <p>Place of Residence (if alive)</p>
-    </div>
+    </Modal>
   )
 }
 

@@ -1,8 +1,9 @@
 import React from 'react';
+import Modal from '../common/Modal';
 
 const EditMemberPageModal = props => {
   return (
-    <div>
+    <Modal>
       <p>(Photo here)</p>
       <p>Birth (DOB)</p>
       <p>Death</p>
@@ -17,7 +18,7 @@ const EditMemberPageModal = props => {
       <p>Parents (if blank)</p>
       <p>Suffix</p>
       <p>Children (if applicable)</p>
-    </div>
+    </Modal>
   );
 };
 

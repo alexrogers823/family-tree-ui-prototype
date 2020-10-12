@@ -1,13 +1,14 @@
 import React from 'react';
+import Modal from '../common/Modal';
 
 const AddEventModal = props => {
   return (
-    <div>
+    <Modal>
       <h1>Add an event</h1>
       <p>Date (MM/DD/YYYY)</p>
       <p>Event</p>
       <button>POST IT!</button>
-    </div>
+    </Modal>
   );
 };
 
