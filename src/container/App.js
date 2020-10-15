@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Member from '../modules/FrequentlyAskedQuestions/Member';
+import Member from '../modules/Member';
 import Timeline from '../modules/TimelineEvents/Timeline';
 import Main from '../modules/Main';
 import Login from '../components/Login';
@@ -74,17 +74,17 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        {<TimelineEvents timelineEvents={this.state.timelineEvents} />}
+        {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
         {/* <Login /> */}
-        {/* <Signup /> */}
+        <Signup />
         {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal /> */}
         {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
         {/* <Footer /> */}
-        <Gallery photos={this.state.photos} />
+        {/* <Gallery photos={this.state.photos} /> */}
       </div>
     );
   }

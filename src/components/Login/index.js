@@ -3,8 +3,9 @@ import React from 'react';
 const Login = props => {
   return (
     <div>
-      <p>Username (Email)</p>
-      <p>Password</p>
+      <h1>Login</h1>
+      <input type="text" placeholder="Username (Email)" />
+      <input type="text" placeholder="Password" />
     </div>
   );
 };
