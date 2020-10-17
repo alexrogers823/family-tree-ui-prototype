@@ -79,8 +79,8 @@ class App extends Component {
         {/* <Login /> */}
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}
-        <EditMemberPageModal />
-        {/* <AddEventModal /> */}
+        {/* <EditMemberPageModal /> */}
+        <AddEventModal />
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
         {/* <Footer /> */}

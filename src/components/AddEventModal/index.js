@@ -5,8 +5,8 @@ const AddEventModal = props => {
   return (
     <Modal>
       <h1>Add an event</h1>
-      <p>Date (MM/DD/YYYY)</p>
-      <p>Event</p>
+      <input type="text" placeholder="Date (MM/DD/YYYY)" />
+      <textarea placeholder="Event" />
       <button>POST IT!</button>
     </Modal>
   );
