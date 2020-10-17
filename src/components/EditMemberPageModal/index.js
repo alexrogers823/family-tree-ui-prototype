@@ -4,20 +4,20 @@ import Modal from '../common/Modal';
 const EditMemberPageModal = props => {
   return (
     <Modal>
-      <p>(Photo here)</p>
-      <p>Birth (DOB)</p>
-      <p>Death</p>
-      <p>Place of Birth</p>
-      <p>Place of Residence</p>
-      <p>Bio</p>
-      <p>Spouse</p>
-      <p>First Name</p>
-      <p>Middle Name</p>
-      <p>Last Name</p>
-      <p>Preferred Name</p>
-      <p>Parents (if blank)</p>
-      <p>Suffix</p>
-      <p>Children (if applicable)</p>
+      <input type="text" placeholder="(Photo here)" />
+      <input type="text" placeholder="Birth (DOB)" />
+      <input type="text" placeholder="Death" />
+      <input type="text" placeholder="Place of Birth" />
+      <input type="text" placeholder="Place of Residence" />
+      <input type="text" placeholder="Bio" />
+      <input type="text" placeholder="Spouse" />
+      <input type="text" placeholder="First Name" />
+      <input type="text" placeholder="Middle Name" />
+      <input type="text" placeholder="Last Name" />
+      <input type="text" placeholder="Preferred Name" />
+      <input type="text" placeholder="Parents (if blank)" />
+      <input type="text" placeholder="Suffix" />
+      <input type="text" placeholder="Children (if applicable)" />
     </Modal>
   );
 };

@@ -77,9 +77,9 @@ class App extends Component {
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
         {/* <Login /> */}
-        <Signup />
+        {/* <Signup /> */}
         {/* <AddMemberModal /> */}
-        {/* <EditMemberPageModal /> */}
+        <EditMemberPageModal />
         {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
