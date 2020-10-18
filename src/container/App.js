@@ -74,9 +74,9 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        {<TimelineEvents timelineEvents={this.state.timelineEvents} />}
+        {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
-        {/* <Login /> */}
+        <Login />
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal /> */}
