@@ -56,7 +56,7 @@ class App extends Component {
       {
         id: 4,
         year: 2020,
-        event: "Helen F. Rogers turns 100 years old"
+        timelineEvent: "Helen F. Rogers turns 100 years old"
       }
     ]
   }
@@ -74,13 +74,13 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
+        {<TimelineEvents timelineEvents={this.state.timelineEvents} />}
         {/* <Main /> */}
         {/* <Login /> */}
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal /> */}
-        <AddEventModal />
+        {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
         {/* <Footer /> */}

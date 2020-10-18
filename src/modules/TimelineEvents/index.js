@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Timeline from './Timeline';
 
 const TimelineEvents = props => {
-  return props.timelineEvents.map(ev => {
-    return (
-      <Timeline year={ev.year} event={ev.timelineEvent} key={ev.id} />
-    )
-  })
+  return (
+    <Fragment>
+      <h1>Timeline of Family Events</h1>
+      {props.timelineEvents.map(ev => {
+        return (
+          <Timeline 
+            year={ev.year} 
+            timelineEvent={ev.timelineEvent} 
+            key={`event_${ev.id}`} 
+          />
+          )
+        })}
+    </Fragment>
+  )
 };
 
 TimelineEvents.propTypes = {
