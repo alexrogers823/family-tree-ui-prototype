@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal } from '../common';
+import { Date, Button, Modal } from '../common';
 import Form, { TextArea } from '../common/Form';
 
 const AddEventModal = props => {
@@ -14,7 +14,7 @@ const AddEventModal = props => {
       title="Add an event"
       button="POST IT!"
     >
-      <input type="text" placeholder="Date (MM/DD/YYYY)" />
+      <Date />
       <TextArea 
         label="Event" 
         placeholder='Say in present tense. Ex "Bob graduates college..."'
