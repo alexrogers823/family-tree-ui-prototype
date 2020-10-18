@@ -7,30 +7,37 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+export const TextArea = (props) => (
+  <TextField
+    autoFocus
+    margin="dense"
+    id="name"
+    label={props.label}
+    placeholder={props.placeholder || ""}
+    multiline
+    variant="filled"
+    type="email"
+    fullWidth
+  />
+);
+
 const Form = props => {
   // const [open, setOpen] = useState(true);
+  console.log(props.children);
 
   return (
     <div>
       <Dialog open={true} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Test</DialogTitle>
+        <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Testing the text here
-          </DialogContentText>
-          <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-              />
+          {props.children}
         </DialogContent>
         <DialogActions>
-          <Button color="primary">
-            Test Button
-          </Button>
+          {props.button &&
+            <Button color="primary">
+              {props.button}
+            </Button>
+          }
         </DialogActions>
       </Dialog>
     </div>
