@@ -1,5 +1,6 @@
 import 'date-fns';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import MomentUtils from '@date-io/moment';
 import {
   MuiPickersUtilsProvider,
@@ -7,7 +8,7 @@ import {
 } from '@material-ui/pickers';
 
 
-const EventDate = props => {
+const ChosenDate = props => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleDateChange = date => {
@@ -22,7 +23,7 @@ const EventDate = props => {
         format="MM/DD/YYYY"
         margin="normal"
         id="date-picker-inline"
-        label="Event Date"
+        label={props.label || ""}
         value={selectedDate}
         onChange={handleDateChange}
         KeyboardButtonProps={{
@@ -33,4 +34,8 @@ const EventDate = props => {
   );
 };
 
-export default EventDate;
+ChosenDate.propTypes = {
+  label: PropTypes.string.isRequired
+}
+
+export default ChosenDate;

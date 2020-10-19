@@ -1,4 +1,5 @@
 import React from 'react';
+import { Date } from '../common';
 import Form, { TextArea } from '../common/Form';
 
 const Signup = props => {
@@ -22,7 +23,7 @@ const Signup = props => {
       maxWidth="xl"
       fullWidth
     >
-      <TextArea placeholder="Email" />
+      <TextArea placeholder="Email" type="email" />
       <TextArea placeholder="First Name" />
       <TextArea placeholder="Middle Name" />
       <TextArea placeholder="Last Name" />
@@ -31,8 +32,11 @@ const Signup = props => {
       <TextArea placeholder="Family Member 1" />
       <TextArea placeholder="Family Member 2" />
       <TextArea placeholder="Spouse" />
-      <TextArea placeholder="Date of Birth" size="small" />
+      {/* <TextArea placeholder="Date of Birth" /> */}
+      <Date label="Date of Birth" />
       <TextArea placeholder="Photo" />
+      <TextArea placeholder="Password" type="password" />
+      <TextArea placeholder="Repeat Password" type="password" />
     </Form>
   );
 };

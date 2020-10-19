@@ -14,7 +14,7 @@ const AddEventModal = props => {
       title="Add an event"
       button="POST IT!"
     >
-      <Date />
+      <Date label="Event Date" />
       <TextArea 
         label="Event" 
         placeholder='Say in present tense. Ex "Bob graduates college..."'

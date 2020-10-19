@@ -7,23 +7,23 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Input from '@material-ui/core/Input';
 
 export const TextArea = (props) => (
   <TextField
     autoFocus
     margin="dense"
     id="name"
-    label={props.label}
+    label={props.label || ""}
     placeholder={props.placeholder || ""}
     variant="filled"
-    type="email"
+    type={props.type || "text"}
     {...props}
   />
 );
 
 const Form = props => {
   // const [open, setOpen] = useState(true);
-  console.log(props.children);
 
   return (
       <Dialog 
@@ -47,6 +47,7 @@ const Form = props => {
 };
 
 TextArea.propTypes = {
+  label: PropTypes.string,
   placeholder: PropTypes.string,
 }
 
