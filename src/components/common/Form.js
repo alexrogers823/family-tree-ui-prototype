@@ -15,10 +15,9 @@ export const TextArea = (props) => (
     id="name"
     label={props.label}
     placeholder={props.placeholder || ""}
-    multiline={props.multiline || true}
     variant="filled"
     type="email"
-    fullWidth
+    {...props}
   />
 );
 
@@ -27,8 +26,11 @@ const Form = props => {
   console.log(props.children);
 
   return (
-    <div>
-      <Dialog open={true} aria-labelledby="form-dialog-title">
+      <Dialog 
+        open={true} 
+        aria-labelledby="form-dialog-title"
+        {...props}
+        >
         <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
         <DialogContent>
           {props.children}
@@ -41,15 +43,16 @@ const Form = props => {
           }
         </DialogActions>
       </Dialog>
-    </div>
   )
 };
+
+TextArea.propTypes = {
+  placeholder: PropTypes.string,
+}
 
 Form.propTypes = {
   title: PropTypes.string.isRequired,
   button: PropTypes.string,
-  placeholder: PropTypes.string,
-  multiline: PropTypes.bool
 }
 
 export default Form;

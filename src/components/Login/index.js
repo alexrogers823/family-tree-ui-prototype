@@ -9,8 +9,8 @@ const Login = props => {
     //   <input type="text" placeholder="Password" />
     // </div>
     <Form title="Login">
-      <TextArea placeholder="Username (Email)" />
-      <TextArea placeholder="Password" />
+      <TextArea placeholder="Username (Email)" fullWidth />
+      <TextArea placeholder="Password" fullWidth />
     </Form>
   );
 };

@@ -76,8 +76,8 @@ class App extends Component {
         /> */}
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
-        <Login />
-        {/* <Signup /> */}
+        {/* <Login /> */}
+        <Signup />
         {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal /> */}
         {/* <AddEventModal /> */}

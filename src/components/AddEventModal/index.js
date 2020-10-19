@@ -18,6 +18,7 @@ const AddEventModal = props => {
       <TextArea 
         label="Event" 
         placeholder='Say in present tense. Ex "Bob graduates college..."'
+        multiline
       />
     </Form>
   );
