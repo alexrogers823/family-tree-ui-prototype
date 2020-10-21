@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Paper } from '@material-ui/core';
 
 const Member = props => {
 
   return (
-    <div>
+    <Paper elevation={3}>
       <h1>{props.name}</h1>
       <h3>b. {props.birth}, d. {props.death}</h3>
       <h3>Place of Birth: {props.birthplace}</h3>
@@ -29,7 +30,7 @@ const Member = props => {
           return <li key={i}>{child}</li>
         })}
       </ul>
-    </div>
+    </Paper >
     );
 };
 

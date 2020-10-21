@@ -64,7 +64,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Member 
+        <Member 
           name={this.state.name} 
           birth={this.state.birth}
           death={this.state.death}
@@ -73,13 +73,13 @@ class App extends Component {
           parents={this.state.parents}
           offspring={this.state.children}
           spouse={this.state.spouse}
-        /> */}
+        />
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
         {/* <Login /> */}
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}
-        <EditMemberPageModal firstName="Ronnie" />
+        {/* <EditMemberPageModal firstName="Oscar" /> */}
         {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
