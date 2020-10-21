@@ -1,23 +1,26 @@
 import React from 'react';
-import Modal from '../common/Modal';
+import { Date } from '../common';
+import Form, { TextArea } from '../common/Form';
 
 const AddMemberModal = props => {
   return (
-    <Modal>
-      <h1>Add Family Member</h1>
-      <input type="text" placeholder="First Name" />
-      <input type="text" placeholder="Middle Name" />
-      <input type="text" placeholder="Last Name" />
-      <input type="text" placeholder="Suffix" />
-      <input type="text" placeholder="Preferred Name" />
-      <input type="text" placeholder="Related Family Member" />
-      <input type="text" placeholder="Relation" />
-      <input type="text" placeholder="DOB" />
-      <input type="text" placeholder="Spouse (if applicable)" />
-      <input type="text" placeholder="Photo" />
-      <input type="text" placeholder="Place of Birth" />
-      <input type="text" placeholder="Place of Residence (if alive)" />
-    </Modal>
+    <Form 
+      title="Add Family Member"
+      button="Add Member"
+    >
+      <TextArea placeholder="First Name" />
+      <TextArea placeholder="Middle Name" />
+      <TextArea placeholder="Last Name" />
+      <TextArea placeholder="Suffix" />
+      <TextArea placeholder="Preferred Name" />
+      <TextArea placeholder="Related Family Member" />
+      <TextArea placeholder="Relation" />
+      <Date label="DOB" />
+      <TextArea placeholder="Spouse (if applicable)" />
+      <TextArea placeholder="Photo" />
+      <TextArea placeholder="Place of Birth" />
+      <TextArea placeholder="Place of Residence (if alive)" />
+    </Form>
   )
 }
 

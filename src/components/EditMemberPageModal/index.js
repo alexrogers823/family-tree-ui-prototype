@@ -1,24 +1,28 @@
 import React from 'react';
-import Modal from '../common/Modal';
+import { Date } from '../common';
+import Form, { TextArea } from '../common/Form';
 
 const EditMemberPageModal = props => {
   return (
-    <Modal>
-      <input type="text" placeholder="(Photo here)" />
-      <input type="text" placeholder="Birth (DOB)" />
-      <input type="text" placeholder="Death" />
-      <input type="text" placeholder="Place of Birth" />
-      <input type="text" placeholder="Place of Residence" />
-      <input type="text" placeholder="Bio" />
-      <input type="text" placeholder="Spouse" />
-      <input type="text" placeholder="First Name" />
-      <input type="text" placeholder="Middle Name" />
-      <input type="text" placeholder="Last Name" />
-      <input type="text" placeholder="Preferred Name" />
-      <input type="text" placeholder="Parents (if blank)" />
-      <input type="text" placeholder="Suffix" />
-      <input type="text" placeholder="Children (if applicable)" />
-    </Modal>
+    <Form 
+      title={`Edit ${props.firstName}'s page`}
+      button="Save"
+    >
+      <TextArea placeholder="(Photo here)" />
+      <Date label="Birth (DOB)" />
+      <Date label="Death" />
+      <TextArea placeholder="Place of Birth" />
+      <TextArea placeholder="Place of Residence" />
+      <TextArea placeholder="Bio" />
+      <TextArea placeholder="Spouse" />
+      <TextArea placeholder="First Name" />
+      <TextArea placeholder="Middle Name" />
+      <TextArea placeholder="Last Name" />
+      <TextArea placeholder="Preferred Name" />
+      <TextArea placeholder="Parents (if blank)" />
+      <TextArea placeholder="Suffix" />
+      <TextArea placeholder="Children (if applicable)" />
+    </Form>
   );
 };
 
