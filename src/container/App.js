@@ -13,6 +13,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Gallery from '../modules/Gallery';
 import TimelineEvents from '../modules/TimelineEvents';
+import { Page404, Page500 } from '../components/ErrorPages';
 
 class App extends Component {
   state = {
@@ -82,9 +83,11 @@ class App extends Component {
         {/* <EditMemberPageModal firstName="Oscar" /> */}
         {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
-        <Header />
+        {/* <Header /> */}
         {/* <Footer /> */}
         {/* <Gallery photos={this.state.photos} /> */}
+        {/* <Page404 /> */}
+        <Page500 />
       </div>
     );
   }
