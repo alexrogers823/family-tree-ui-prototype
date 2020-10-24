@@ -76,7 +76,7 @@ class App extends Component {
           spouse={this.state.spouse}
         /> */}
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
-        {/* <Main /> */}
+        <Main />
         {/* <Login /> */}
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}
@@ -86,8 +86,8 @@ class App extends Component {
         {/* <Header /> */}
         {/* <Footer /> */}
         {/* <Gallery photos={this.state.photos} /> */}
-        {/* <Page404 /> */}
-        <Page500 />
+        <Page404 />
+        {/* <Page500 /> */}
       </div>
     );
   }
