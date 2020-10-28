@@ -1,20 +1,29 @@
 import React from 'react';
 import { AppBar, Toolbar, Link } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  link: {
+    margin: theme.spacing(2),
+  },
+}));
 
 const Header = props => {
+  const classes = useStyles();
+  
   return (
     <AppBar position="static">
       <Toolbar>
-        <Link color="textPrimary" href="#">
+        <Link className={classes.link} color="textPrimary" href="#">
           Tree
         </Link>
-        <Link color="inherit" href="#">
+        <Link className={classes.link} color="inherit" href="#">
           Timeline
         </Link>
-        <Link color="inherit" href="#">
+        <Link className={classes.link} color="inherit" href="#">
           Gallery
         </Link>
-        <Link color="inherit" href="#">
+        <Link className={classes.link} color="inherit" href="#">
           FAQ
         </Link>
       </Toolbar>
