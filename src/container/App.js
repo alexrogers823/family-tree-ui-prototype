@@ -85,11 +85,11 @@ class App extends Component {
         {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
-        {/* <Footer /> */}
+        <Footer />
         {/* <Gallery photos={this.state.photos} /> */}
         {/* <Page404 /> */}
         {/* <Page500 /> */}
-        <ComingSoon />
+        {/* <ComingSoon /> */}
       </div>
     );
   }
