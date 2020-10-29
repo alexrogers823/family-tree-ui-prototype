@@ -76,14 +76,14 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        {<TimelineEvents timelineEvents={this.state.timelineEvents} />}
+        {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
         {/* <Login /> */}
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal firstName="Oscar" /> */}
         {/* <AddEventModal /> */}
-        {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
+        <FrequentlyAskedQuestions questions={this.state.questions} />
         {/* <Header /> */}
         {/* <Footer /> */}
         {/* <Gallery photos={this.state.photos} /> */}
