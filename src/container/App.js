@@ -80,10 +80,10 @@ class App extends Component {
         {/* <Main /> */}
         {/* <Login /> */}
         {/* <Signup /> */}
-        {/* <AddMemberModal /> */}
+        <AddMemberModal />
         {/* <EditMemberPageModal firstName="Oscar" /> */}
         {/* <AddEventModal /> */}
-        <FrequentlyAskedQuestions questions={this.state.questions} />
+        {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
         {/* <Footer /> */}
         {/* <Gallery photos={this.state.photos} /> */}

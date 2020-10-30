@@ -1,25 +1,38 @@
 import React from 'react';
 import { Date } from '../common';
 import Form, { TextArea } from '../common/Form';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  title: {
+    textDecoration: 'italic',
+    color: 'green',
+  },
+  inputs: {
+    margin: theme.spacing(2),
+  },
+}));
 
 const AddMemberModal = props => {
+  const classes = useStyles();
+
   return (
     <Form 
       title="Add Family Member"
       button="Add Member"
     >
-      <TextArea placeholder="First Name" />
-      <TextArea placeholder="Middle Name" />
-      <TextArea placeholder="Last Name" />
-      <TextArea placeholder="Suffix" />
-      <TextArea placeholder="Preferred Name" />
-      <TextArea placeholder="Related Family Member" />
-      <TextArea placeholder="Relation" />
-      <Date label="DOB" />
-      <TextArea placeholder="Spouse (if applicable)" />
-      <TextArea placeholder="Photo" />
-      <TextArea placeholder="Place of Birth" />
-      <TextArea placeholder="Place of Residence (if alive)" />
+      <TextArea className={classes.inputs} placeholder="First Name" />
+      <TextArea className={classes.inputs} placeholder="Middle Name" />
+      <TextArea className={classes.inputs} placeholder="Last Name" />
+      <TextArea className={classes.inputs} placeholder="Suffix" />
+      <TextArea className={classes.inputs} placeholder="Preferred Name" />
+      <TextArea className={classes.inputs} placeholder="Related Family Member" />
+      <TextArea className={classes.inputs} placeholder="Relation" />
+      <Date className={classes.inputs} label="DOB" />
+      <TextArea className={classes.inputs} placeholder="Spouse (if applicable)" />
+      <TextArea className={classes.inputs} placeholder="Photo" />
+      <TextArea className={classes.inputs} placeholder="Place of Birth" />
+      <TextArea className={classes.inputs} placeholder="Place of Residence (if alive)" />
     </Form>
   )
 }
