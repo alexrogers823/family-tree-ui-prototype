@@ -77,10 +77,10 @@ class App extends Component {
           spouse={this.state.spouse}
         /> */}
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
-        {/* <Main /> */}
+        <Main />
         {/* <Login /> */}
         {/* <Signup /> */}
-        <AddMemberModal />
+        {/* <AddMemberModal /> */}
         {/* <EditMemberPageModal firstName="Oscar" /> */}
         {/* <AddEventModal /> */}
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}

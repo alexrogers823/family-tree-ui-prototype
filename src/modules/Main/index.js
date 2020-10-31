@@ -1,14 +1,30 @@
 import React from 'react';
 import { Link, Paper } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3),
+  },
+  text: {
+    fontStyle: 'italic',
+  },
+  link: {
+    marginLeft: theme.spacing(0.5),
+  },
+}));
 
 const Main = () => {
-  return (
-    <Paper elevation={3}>
-      <p>Welcome to the family website!</p>
+  const classes = useStyles();
 
-      <p>
+  return (
+    <Paper className={classes.root} elevation={3}>
+      <p className={classes.text}>Welcome to the family website!</p>
+
+      <p className={classes.text}>
         Explore our roots by seeing the new  
         <Link
+          className={classes.link}
           href="#"
           onClick={(e) => e.preventDefault()}
         >
@@ -16,6 +32,7 @@ const Main = () => {
         </Link>
         , checking out  
         <Link
+          className={classes.link}
           href="#"
           onClick={(e) => e.preventDefault()}
         >
@@ -24,9 +41,10 @@ const Main = () => {
         , or finding out more about a specific person.
       </p>
 
-      <p>
+      <p className={classes.text}>
         You can also contribute to our family  
         <Link
+          className={classes.link}
           href="#"
           onClick={(e) => e.preventDefault()}
         >
@@ -35,9 +53,10 @@ const Main = () => {
         .
       </p>
 
-      <p>
+      <p className={classes.text}>
         If you're having issues or need help, 
-        <Link 
+        <Link
+          className={classes.link} 
           href="#" 
           onClick={(e) => e.preventDefault()}
         >
@@ -46,7 +65,7 @@ const Main = () => {
         .
       </p>
 
-      <p>Enjoy our history!</p>
+      <p className={classes.text}>Enjoy our history!</p>
     </Paper>
   );
 };
