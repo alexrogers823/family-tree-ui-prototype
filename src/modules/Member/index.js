@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Paper } from '@material-ui/core';
+import { Container, Paper, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%'
+    padding: 20
+  },
+  memberStats: {
+    border: '1px solid black'
   },
   memberName: {
     fontWeight: 600,
@@ -23,9 +26,17 @@ const useStyles = makeStyles(theme => ({
   },
   bio: {
     fontStyle: 'italic',
+    textAlign: 'justify',
   },
   lineage: {
-    border: '1px solid black'
+    border: '1px solid black',
+    textAlign: 'left'
+  },
+  children: {
+    listStyleType: 'none',
+  },
+  link: {
+    margin: `0 ${theme.spacing(0.5)}px`
   }
 }));
 
@@ -34,11 +45,14 @@ const Member = props => {
 
   return (
     <Container>
-      <Paper elevation={3}>
-        <h1 className={classes.memberName}>{props.name}</h1>
-        <h3 className={classes.lifeRange}>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
-        <h3 className={classes.birthplace}>Place of Birth: {props.birthplace}</h3>
-        <h3 className={classes.residence}>Place of Residence: {props.residence}</h3>
+      <Paper className={classes.root} elevation={3}>
+        <div className={classes.memberStats}>
+          <h1 className={classes.memberName}>{props.name}</h1>
+          <h3 className={classes.lifeRange}>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
+          <h3 className={classes.birthplace}>Place of Birth: {props.birthplace}</h3>
+          <h3 className={classes.residence}>Place of Residence: {props.residence}</h3>
+        </div>
+        <img src="#" alt={`Photo of ${props.name}`} />
         <p className={classes.bio}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque dignissim enim. Et leo duis ut diam quam nulla porttitor massa id. Sed risus pretium quam vulputate dignissim suspendisse in est. Scelerisque purus semper eget duis at. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Purus in mollis nunc sed id semper risus in. Nulla facilisi etiam dignissim diam. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Elementum curabitur vitae nunc sed velit dignissim sodales. Enim diam vulputate ut pharetra. Odio ut sem nulla pharetra diam sit amet nisl. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Tellus pellentesque eu tincidunt tortor aliquam nulla. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.
         </p>
@@ -52,7 +66,13 @@ const Member = props => {
         </p>
 
         <div className={classes.lineage}>
-          <p>Parents: {props.parents[0]} &amp; {props.parents[1]}</p>
+          <span>Parents: </span>
+          {props.parents 
+          ? props.parents.map((parent, i) => {
+            return (i > 0) ? <span>&amp;<Link className={classes.link}>{parent}</Link></span> : <Link className={classes.link}>{parent}</Link>
+          })
+          : <span>Unknown</span>
+          }
           {
             props.spouse && 
             <p>Spouse: {props.spouse}</p>
@@ -62,7 +82,7 @@ const Member = props => {
             props.offspring && 
             <ul>
             {props.offspring.map((child, i) => {
-              return <li key={i}>{child}</li>
+              return <Link key={i} className={classes.children}>{child}</Link>
               })}
             </ul>
           }
