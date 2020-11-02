@@ -18,14 +18,14 @@ import ComingSoon from '../components/ComingSoon';
 
 class App extends Component {
   state = {
-    name: "Oscar Rogers",
-    birth: "January 1, 1910",
-    death: "April 5, 1994",
-    birthplace: "Iuka, MS",
-    residence: "Gary, IN",
-    parents: ["Mark Rogers", "Gene Rogers"],
-    children: ["Patricia Rogers", "Rogercarole Rogers", "Oscar Barry Rogers"],
-    spouse: "Helen French Rogers",
+    name: "O. Barry Rogers",
+    birth: "June 11, 1952",
+    death: null,
+    birthplace: "Gary, IN",
+    residence: "Robbinsdale, MN",
+    parents: ["Oscar Rogers", "Helen F. Rogers"],
+    children: ["B. Alex Rogers"],
+    spouse: null,
     photos: ["photo 1", "photo 2", "photo 3"],
     questions: [
       {
@@ -66,7 +66,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Member 
+        <Member 
           name={this.state.name} 
           birth={this.state.birth}
           death={this.state.death}
@@ -75,9 +75,9 @@ class App extends Component {
           parents={this.state.parents}
           offspring={this.state.children}
           spouse={this.state.spouse}
-        /> */}
+        />
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
-        <Main />
+        {/* <Main /> */}
         {/* <Login /> */}
         {/* <Signup /> */}
         {/* <AddMemberModal /> */}

@@ -8,7 +8,7 @@ const Member = props => {
     <Container maxWidth="sm">
       <Paper elevation={3}>
         <h1>{props.name}</h1>
-        <h3>b. {props.birth}, d. {props.death}</h3>
+        <h3>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
         <h3>Place of Birth: {props.birthplace}</h3>
         <h3>Place of Residence: {props.residence}</h3>
         <p>
@@ -24,7 +24,10 @@ const Member = props => {
         </p>
 
         <p>Parents: {props.parents[0]} &amp; {props.parents[1]}</p>
-        <p>Spouse: {props.spouse}</p>
+        {
+          props.spouse && 
+          <p>Spouse: {props.spouse}</p>
+        }
         <p>Children: </p>
         <ul>
           {props.offspring.map((child, i) => {
