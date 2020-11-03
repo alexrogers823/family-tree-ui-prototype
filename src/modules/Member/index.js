@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Container, Paper, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import alexSample from '../../assets/Alex_sample.jpg';
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 20,
@@ -69,7 +71,7 @@ const Member = props => {
         </div>
 
         <div className={classes.body}>
-          <img src="#" alt={`Photo of ${props.name}`} className={classes.image} />
+          <img src={alexSample} alt={`Photo of ${props.name}`} className={classes.image} />
           <p className={classes.bio}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque dignissim enim. Et leo duis ut diam quam nulla porttitor massa id. Sed risus pretium quam vulputate dignissim suspendisse in est. Scelerisque purus semper eget duis at. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Purus in mollis nunc sed id semper risus in. Nulla facilisi etiam dignissim diam. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Elementum curabitur vitae nunc sed velit dignissim sodales. Enim diam vulputate ut pharetra. Odio ut sem nulla pharetra diam sit amet nisl. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Tellus pellentesque eu tincidunt tortor aliquam nulla. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.
           </p>

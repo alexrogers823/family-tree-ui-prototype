@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
   text: {
     fontStyle: 'italic',
+    textAlign: 'justify',
   },
   link: {
     marginLeft: theme.spacing(0.5),
