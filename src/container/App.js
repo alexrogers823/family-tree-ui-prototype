@@ -87,8 +87,8 @@ class App extends Component {
         {/* <Header /> */}
         {/* <Footer /> */}
         {/* <Gallery photos={this.state.photos} /> */}
-        <Page404 />
-        {/* <Page500 /> */}
+        {/* <Page404 /> */}
+        <Page500 />
         {/* <ComingSoon /> */}
       </div>
     );
