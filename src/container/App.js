@@ -26,7 +26,8 @@ class App extends Component {
     parents: ["Oscar Rogers", "Helen F. Rogers"],
     children: ["B. Alex Rogers"],
     spouse: null,
-    photos: ["photo 1", "photo 2", "photo 3"],
+    // photos: ["photo 1", "photo 2", "photo 3"],
+    photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
     questions: [
       {
         id: 1,
