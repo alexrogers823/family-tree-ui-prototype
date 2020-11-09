@@ -86,9 +86,9 @@ class App extends Component {
         {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
         {/* <Header /> */}
         {/* <Footer /> */}
-        {/* <Gallery photos={this.state.photos} /> */}
+        <Gallery photos={this.state.photos} />
         {/* <Page404 /> */}
-        <Page500 />
+        {/* <Page500 /> */}
         {/* <ComingSoon /> */}
       </div>
     );
