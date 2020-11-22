@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Paper, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,51 +8,71 @@ import alexSample from '../../assets/Alex_sample.jpg';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 20,
-    // backgroundColor: '#3351b5'
+    backgroundColor: 'rgba(47, 115, 169, 0.3)'
   },
   bio: {
     fontStyle: 'italic',
-    textAlign: 'justify',
+    // textAlign: 'justify',
+    // flex: '1 1 auto',
+    // margin: 5
   },
   birthplace: {
     display: 'inline',
     margin: theme.spacing(1),
-    textDecoration: 'underline',
+    textShadow: '1px 1px white'
   },
   body: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    textAlign: 'justify'
+    // flexWrap: 'wrap',
   },
   children: {
     listStyleType: 'none',
   },
+  deceased: {
+    filter: 'grayscale(100%)'
+  },
   image: {
-    minWidth: 300,
-    minHeight: 300,
-    border: '1px solid red',
+    maxWidth: '25%',
+    height: 'auto',
+    border: '1px solid #ddd',
+    padding: 5,
+    // boxShadow: '2px 2px black',
+    objectFit: 'contain',
+    alignSelf: 'center',
   },
   lifeRange: {
     fontStyle: 'italic',
   },
   lineage: {
-    border: '1px solid black',
+    // border: '1px solid black',
     textAlign: 'left'
   },
   link: {
     margin: `0 ${theme.spacing(0.5)}px`,
-    // color: 'white',
   },
   memberName: {
     fontWeight: 600,
-    color: 'blue',
+    color: 'black',
+    textShadow: '2px 2px white'
   },
   memberStats: {
-    border: '1px solid black'
+    // border: '1px solid black',
+    display: 'flex',
+    justifyContent: 'space-between',
+    // margin: '2%'
+    // flexDirection: 'column'
+  },
+  memberStatText: {
+    // alignSelf: 'baseline'
+    // textAlign: 'right'
   },
   residence: {
     display: 'inline',
     margin: theme.spacing(1),
-    textDecoration: 'underline',
+    textShadow: '1px 1px white',
     color: 'green',
   }
 }));
@@ -64,14 +84,16 @@ const Member = props => {
     <Container>
       <Paper className={classes.root} elevation={3}>
         <div className={classes.memberStats}>
-          <h1 className={classes.memberName}>{props.name}</h1>
-          <h3 className={classes.lifeRange}>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
-          <h3 className={classes.birthplace}>Place of Birth: {props.birthplace}</h3>
-          <h3 className={classes.residence}>Place of Residence: {props.residence}</h3>
+          <img src={alexSample} alt={`Photo of ${props.name}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
+          <div className={classes.memberStatText}>
+            <h1 className={classes.memberName}>{props.name}</h1>
+            <h3 className={classes.lifeRange}>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
+            <h3 className={classes.birthplace}>Birthplace: {props.birthplace}</h3>
+            <h3 className={classes.residence}>Residence: {props.residence}</h3>
+          </div>
         </div>
 
         <div className={classes.body}>
-          <img src={alexSample} alt={`Photo of ${props.name}`} className={classes.image} />
           <p className={classes.bio}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque dignissim enim. Et leo duis ut diam quam nulla porttitor massa id. Sed risus pretium quam vulputate dignissim suspendisse in est. Scelerisque purus semper eget duis at. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Purus in mollis nunc sed id semper risus in. Nulla facilisi etiam dignissim diam. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Elementum curabitur vitae nunc sed velit dignissim sodales. Enim diam vulputate ut pharetra. Odio ut sem nulla pharetra diam sit amet nisl. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Tellus pellentesque eu tincidunt tortor aliquam nulla. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.
           </p>
@@ -84,7 +106,7 @@ const Member = props => {
             Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Nisl rhoncus mattis rhoncus urna neque viverra. Tincidunt id aliquet risus feugiat in ante metus. Mattis pellentesque id nibh tortor id aliquet lectus. Donec ac odio tempor orci dapibus ultrices in iaculis. Donec enim diam vulputate ut pharetra sit amet. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Facilisi nullam vehicula ipsum a arcu. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. Dui nunc mattis enim ut tellus. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin. Enim tortor at auctor urna nunc id cursus metus aliquam. Dui nunc mattis enim ut tellus elementum sagittis. Feugiat nisl pretium fusce id velit.
           </p>
         </div>
-
+        <hr />
         <div className={classes.lineage}>
           <span>Parents: </span>
           {props.parents 
@@ -95,16 +117,18 @@ const Member = props => {
           }
           {
             props.spouse && 
-            <p>Spouse: {props.spouse}</p>
+            <p>Spouse: <Link className={classes.link}>{props.spouse}</Link></p>
           }
-          <p>Children: </p>
           {
             props.offspring && 
-            <ul>
-            {props.offspring.map((child, i) => {
-              return <Link key={i} className={`${classes.children} ${classes.link}`}>{child}</Link>
-              })}
-            </ul>
+            <Fragment>
+              <p>Children: </p>
+              <ul>
+                {props.offspring.map((child, i) => {
+                  return <Link key={i} className={`${classes.children} ${classes.link}`}>{child}</Link>
+                })}
+              </ul>
+            </Fragment>
           }
         </div>
       </Paper>

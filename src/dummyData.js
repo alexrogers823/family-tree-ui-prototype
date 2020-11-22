@@ -22,14 +22,14 @@ const timelineData = [
 ];
 
 const memberData = {
-  name: "O. Barry Rogers",
-  birth: "June 11, 1952",
+  name: "Simone F. Banks",
+  birth: "November 23, 1987",
   death: null,
-  birthplace: "Gary, IN",
-  residence: "Robbinsdale, MN",
-  parents: ["Oscar Rogers", "Helen F. Rogers"],
-  children: ["B. Alex Rogers"],
-  spouse: null,
+  birthplace: "Chicago, IL",
+  residence: "Charlotte, NC",
+  parents: ["Robert Hall", "Rogercarole Rogers"],
+  children: null,
+  spouse: "Christopher Banks",
 };
 
 const faqData = [
