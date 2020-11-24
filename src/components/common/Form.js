@@ -23,11 +23,11 @@ export const TextArea = (props) => (
 );
 
 const Form = props => {
-  // const [open, setOpen] = useState(true);
+  // const [open, setOpen] = useState(false);
 
   return (
       <Dialog 
-        open={true} 
+        open={props.isOpen || false} 
         aria-labelledby="form-dialog-title"
         {...props}
         >

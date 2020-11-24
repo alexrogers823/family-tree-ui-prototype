@@ -1,9 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Paper, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import alexSample from '../../assets/Alex_sample.jpg';
+
+import Button from '../../components/common/Button';
+import EditMemberPageModal from '../../components/EditMemberPageModal';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -79,6 +82,7 @@ const useStyles = makeStyles(theme => ({
 
 const Member = props => {
   const classes = useStyles();
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <Container>
@@ -131,6 +135,12 @@ const Member = props => {
             </Fragment>
           }
         </div>
+        <Button
+          onClick={() => setOpenModal(true)}
+        >
+          Edit Member Info
+        </Button>
+        <EditMemberPageModal firstName="Oscar" isOpen={openModal} />
       </Paper>
     </Container>
     );

@@ -7,6 +7,7 @@ const EditMemberPageModal = props => {
     <Form 
       title={`Edit ${props.firstName}'s page`}
       button="Save"
+      isOpen={props.isOpen}
     >
       <TextArea placeholder="(Photo here)" />
       <Date label="Birth (DOB)" />

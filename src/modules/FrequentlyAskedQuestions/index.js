@@ -8,13 +8,16 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    backgroundColor: 'rgba(47, 115, 169, 0.3)'
+  },
   question: {
     fontSize: 18,
     fontWeight: 'bold',
   },
   answer: {
     fontSize: 12,
-    color: 'green',
+    // color: 'green',
   },
 }));
 
@@ -24,7 +27,7 @@ const FrequentlyAskedQuestions = props => {
   const ListOfQuestions = () => {
     return props.questions.map((q, i) => {
       return (
-        <Accordion key={`Question ${i}`}>
+        <Accordion key={`Question ${i}`} className={classes.root}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="faq-content"
@@ -41,7 +44,7 @@ const FrequentlyAskedQuestions = props => {
   };
 
   return (
-    <div>
+    <div className={classes.root}>
       <h1>Frequently Asked Questions</h1>
       {ListOfQuestions()}
     </div>
