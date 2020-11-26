@@ -27,7 +27,10 @@ const timelineData = [
 ];
 
 const memberData = {
-  name: "Simone F. Banks",
+  firstName: "Simone",
+  middleName: "French",
+  lastName: "Banks",
+  preferredName: null,
   birth: "November 23, 1987",
   death: null,
   birthplace: "Chicago, IL",

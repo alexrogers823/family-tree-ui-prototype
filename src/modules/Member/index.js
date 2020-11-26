@@ -84,13 +84,27 @@ const Member = props => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
 
+  let name = '';
+  name += props.firstName;
+  if (props.middleName) {
+    name += ` ${props.middleName.charAt(0)}.`;
+  }
+
+  if (props.lastName) {
+    name += ` ${props.lastName}`;
+  }
+
+  if (props.preferredName) {
+    name += ` (${props.preferredName})`;
+  }
+
   return (
     <Container>
       <Paper className={classes.root} elevation={3}>
         <div className={classes.memberStats}>
-          <img src={alexSample} alt={`Photo of ${props.name}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
+          <img src={alexSample} alt={`Photo of ${name}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
           <div className={classes.memberStatText}>
-            <h1 className={classes.memberName}>{props.name}</h1>
+            <h1 className={classes.memberName}>{name}</h1>
             <h3 className={classes.lifeRange}>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
             <h3 className={classes.birthplace}>Birthplace: {props.birthplace}</h3>
             <h3 className={classes.residence}>Residence: {props.residence}</h3>
@@ -147,7 +161,10 @@ const Member = props => {
 };
 
 Member.propTypes = {
-  name: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  middleName: PropTypes.string,
+  lastName: PropTypes.string,
+  preferredName: PropTypes.string,
   birth: PropTypes.string,
   death: PropTypes.string,
   residence: PropTypes.string,

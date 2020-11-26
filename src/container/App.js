@@ -30,7 +30,10 @@ class App extends Component {
     return (
       <div className="App">
         <Member 
-          name={this.state.name} 
+          firstName={this.state.firstName} 
+          middleName={this.state.middleName} 
+          lastName={this.state.lastName} 
+          preferredName={this.state.preferredName} 
           birth={this.state.birth}
           death={this.state.death}
           birthplace={this.state.birthplace}
