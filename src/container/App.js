@@ -15,6 +15,7 @@ import Gallery from '../modules/Gallery';
 import TimelineEvents from '../modules/TimelineEvents';
 import { Page404, Page500 } from '../components/ErrorPages';
 import ComingSoon from '../components/ComingSoon';
+import Lineage from '../modules/Lineage';
 import { memberData, timelineData, faqData } from '../dummyData';
 
 class App extends Component {
@@ -29,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Member 
+        {/* <Member 
           firstName={this.state.firstName} 
           middleName={this.state.middleName} 
           lastName={this.state.lastName} 
@@ -41,7 +42,8 @@ class App extends Component {
           parents={this.state.parents}
           offspring={this.state.children}
           spouse={this.state.spouse}
-        />
+        /> */}
+        <Lineage />
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
         {/* <Login /> */}
