@@ -27,17 +27,17 @@ const timelineData = [
 ];
 
 const memberData = {
-  firstName: "Simone",
+  firstName: "John",
   middleName: "French",
-  lastName: "Banks",
+  lastName: "Doe",
   preferredName: null,
-  birth: "November 23, 1987",
-  death: null,
+  birth: "April 23, 1934",
+  death: "October 9, 1982",
   birthplace: "Chicago, IL",
   residence: "Charlotte, NC",
-  parents: ["Robert Hall", "Rogercarole Rogers"],
+  parents: ["Vladimir Doe", "Genevieve Doe"],
   children: null,
-  spouse: "Christopher Banks",
+  spouse: "Jane Doe",
 };
 
 const faqData = [

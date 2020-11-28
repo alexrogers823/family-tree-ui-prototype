@@ -14,9 +14,17 @@ import alexSample from '../../assets/Alex_sample.jpg';
 
 // This card will be what is shown on the actual tree page 
 
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+});
+
 const MemberCard = props => {
+  const classes = useStyles();
+
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardActionArea>
         <CardMedia 
           component="img"
