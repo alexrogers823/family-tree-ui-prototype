@@ -43,7 +43,7 @@ class App extends Component {
           offspring={this.state.children}
           spouse={this.state.spouse}
         /> */}
-        <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} />
+        {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
         {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
         {/* <Main /> */}
         {/* <Login /> */}
@@ -57,7 +57,7 @@ class App extends Component {
         {/* <Gallery photos={this.state.photos} /> */}
         {/* <Page404 /> */}
         {/* <Page500 /> */}
-        {/* <ComingSoon /> */}
+        <ComingSoon />
       </div>
     );
   }
