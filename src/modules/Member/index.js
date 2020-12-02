@@ -103,7 +103,6 @@ const Member = props => {
 
   return (
     <Container>
-      <Header />
       <Paper className={classes.root} elevation={3}>
         <div className={classes.memberStats}>
           <img src={alexSample} alt={`Photo of ${name}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
@@ -160,7 +159,6 @@ const Member = props => {
         </Button>
         <EditMemberPageModal firstName="Oscar" isOpen={openModal} />
       </Paper>
-      <Footer />
     </Container>
     );
 };

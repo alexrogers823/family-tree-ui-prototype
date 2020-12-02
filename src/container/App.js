@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Base from '../hoc/Base';
 import Member from '../modules/Member';
 import Timeline from '../modules/TimelineEvents/Timeline';
 import Main from '../modules/Main';
@@ -30,34 +31,36 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Member 
-          firstName={this.state.firstName} 
-          middleName={this.state.middleName} 
-          lastName={this.state.lastName} 
-          preferredName={this.state.preferredName} 
-          birth={this.state.birth}
-          death={this.state.death}
-          birthplace={this.state.birthplace}
-          residence={this.state.residence}
-          parents={this.state.parents}
-          offspring={this.state.children}
-          spouse={this.state.spouse}
-        /> */}
-        {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
-        {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
-        {/* <Main /> */}
-        {/* <Login /> */}
-        {/* <Signup /> */}
-        {/* <AddMemberModal /> */}
-        {/* <EditMemberPageModal firstName="Oscar" /> */}
-        {/* <AddEventModal /> */}
-        {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
-        {/* <Header /> */}
-        {/* <Footer /> */}
-        {/* <Gallery photos={this.state.photos} /> */}
-        {/* <Page404 /> */}
-        {/* <Page500 /> */}
-        <ComingSoon />
+        <Base>
+          <Member 
+            firstName={this.state.firstName} 
+            middleName={this.state.middleName} 
+            lastName={this.state.lastName} 
+            preferredName={this.state.preferredName} 
+            birth={this.state.birth}
+            death={this.state.death}
+            birthplace={this.state.birthplace}
+            residence={this.state.residence}
+            parents={this.state.parents}
+            offspring={this.state.children}
+            spouse={this.state.spouse}
+          />
+          {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
+          {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
+          {/* <Main /> */}
+          {/* <Login /> */}
+          {/* <Signup /> */}
+          {/* <AddMemberModal /> */}
+          {/* <EditMemberPageModal firstName="Oscar" /> */}
+          {/* <AddEventModal /> */}
+          {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
+          {/* <Header /> */}
+          {/* <Footer /> */}
+          {/* <Gallery photos={this.state.photos} /> */}
+          {/* <Page404 /> */}
+          {/* <Page500 /> */}
+          {/* <ComingSoon /> */}
+        </Base>
       </div>
     );
   }
