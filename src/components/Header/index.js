@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppBar, Toolbar, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import AddMemberModal from '../AddMemberModal';
 
 const useStyles = makeStyles(theme => ({
   link: {
@@ -9,6 +10,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Header = props => {
+  const [openMemberModal, setOpenMemberModal] = useState(false);
   const classes = useStyles();
   
   return (
@@ -26,6 +28,10 @@ const Header = props => {
         <Link className={classes.link} color="inherit" href="#">
           FAQ
         </Link>
+        <Link className={classes.link} color="inherit" href="#">
+          Add Member
+        </Link>
+        <AddMemberModal />
       </Toolbar>
     </AppBar>
     

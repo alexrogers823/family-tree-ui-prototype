@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
   question: {
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'left'
   },
   answer: {
     fontSize: 12,
