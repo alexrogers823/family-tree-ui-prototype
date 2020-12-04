@@ -157,7 +157,7 @@ const Member = props => {
         >
           Edit Member Info
         </Button>
-        <EditMemberPageModal firstName="Oscar" isOpen={openModal} />
+        <EditMemberPageModal firstName="Oscar" isOpen={openModal} closeModal={() => setOpenModal(false)} />
       </Paper>
     </Container>
     );

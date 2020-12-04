@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <Base>
-          {/* <Member 
+          <Member 
             firstName={this.state.firstName} 
             middleName={this.state.middleName} 
             lastName={this.state.lastName} 
@@ -44,7 +44,7 @@ class App extends Component {
             parents={this.state.parents}
             offspring={this.state.children}
             spouse={this.state.spouse}
-          /> */}
+          />
           {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
           {/* {<TimelineEvents timelineEvents={this.state.timelineEvents} />} */}
           {/* <Main /> */}

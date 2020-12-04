@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Input from '@material-ui/core/Input';
+import {
+  Button,
+  Input,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField
+} from '@material-ui/core';
 
 export const TextArea = (props) => (
   <TextField
@@ -23,11 +25,16 @@ export const TextArea = (props) => (
 );
 
 const Form = props => {
-  // const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(props.isOpen)
+  }, [props.isOpen]);
 
   return (
       <Dialog 
-        open={props.isOpen || false} 
+        open={open || false} 
+        onClose={props.closeModal}
         aria-labelledby="form-dialog-title"
         {...props}
         >
@@ -37,7 +44,10 @@ const Form = props => {
         </DialogContent>
         <DialogActions>
           {props.button &&
-            <Button color="primary">
+            <Button 
+              color="primary"
+              onClick={props.closeModal}
+            >
               {props.button}
             </Button>
           }
