@@ -10,8 +10,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Header = props => {
-  const [openMemberModal, setOpenMemberModal] = useState(false);
   const classes = useStyles();
+  const [openMemberModal, setOpenMemberModal] = useState(false);
+
+  const closeModal = () => {
+    setOpenMemberModal(false);
+  }
   
   return (
     <AppBar position="static">
@@ -28,10 +32,15 @@ const Header = props => {
         <Link className={classes.link} color="inherit" href="#">
           FAQ
         </Link>
-        <Link className={classes.link} color="inherit" href="#">
+        <Link 
+          className={classes.link} 
+          color="inherit" 
+          onClick={() => setOpenMemberModal(true)} 
+          href="#"
+        >
           Add Member
         </Link>
-        <AddMemberModal />
+        <AddMemberModal isOpen={openMemberModal} closeModal={closeModal} />
       </Toolbar>
     </AppBar>
     

@@ -20,6 +20,8 @@ const AddMemberModal = props => {
     <Form 
       title="Add Family Member"
       button="Add Member"
+      isOpen={props.isOpen}
+      closeModal={props.closeModal}
     >
       <TextArea className={classes.inputs} placeholder="First Name" />
       <TextArea className={classes.inputs} placeholder="Middle Name" />
