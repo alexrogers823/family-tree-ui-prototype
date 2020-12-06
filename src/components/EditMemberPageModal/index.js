@@ -1,8 +1,17 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { Date } from '../common';
 import Form, { TextArea } from '../common/Form';
 
+const useStyles = makeStyles(theme => ({
+  inputs: {
+    margin: theme.spacing(2)
+  }
+}));
+
 const EditMemberPageModal = props => {
+  const classes = useStyles();
+
   return (
     <Form 
       title={`Edit ${props.firstName}'s page`}
@@ -10,20 +19,20 @@ const EditMemberPageModal = props => {
       isOpen={props.isOpen}
       closeModal={props.closeModal}
     >
-      <TextArea placeholder="(Photo here)" />
-      <Date label="Birth (DOB)" />
-      <Date label="Death" />
-      <TextArea placeholder="Place of Birth" />
-      <TextArea placeholder="Place of Residence" />
-      <TextArea placeholder="Bio" />
-      <TextArea placeholder="Spouse" />
-      <TextArea placeholder="First Name" />
-      <TextArea placeholder="Middle Name" />
-      <TextArea placeholder="Last Name" />
-      <TextArea placeholder="Preferred Name" />
-      <TextArea placeholder="Parents (if blank)" />
-      <TextArea placeholder="Suffix" />
-      <TextArea placeholder="Children (if applicable)" />
+      <TextArea className={classes.inputs} placeholder="(Photo here)" />
+      <Date className={classes.inputs} label="Birth (DOB)" />
+      <Date className={classes.inputs} label="Death" />
+      <TextArea className={classes.inputs} placeholder="Place of Birth" />
+      <TextArea className={classes.inputs} placeholder="Place of Residence" />
+      <TextArea className={classes.inputs} placeholder="Bio" />
+      <TextArea className={classes.inputs} placeholder="Spouse" />
+      <TextArea className={classes.inputs} placeholder="First Name" />
+      <TextArea className={classes.inputs} placeholder="Middle Name" />
+      <TextArea className={classes.inputs} placeholder="Last Name" />
+      <TextArea className={classes.inputs} placeholder="Preferred Name" />
+      <TextArea className={classes.inputs} placeholder="Parents (if blank)" />
+      <TextArea className={classes.inputs} placeholder="Suffix" />
+      <TextArea className={classes.inputs} placeholder="Children (if applicable)" />
     </Form>
   );
 };
