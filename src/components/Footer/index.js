@@ -15,7 +15,7 @@ const Footer = props => {
     <div>
       <span className={classes.footerItem}>CFPG Family Tree</span>
       <span className={classes.footerItem}>&copy; 2020</span>
-      <Link className={classes.footerItem} href="#">Source Code</Link>
+      <Link className={classes.footerItem} target="new" href="https://github.com/alexrogers823/family-tree-ui-prototype">Source Code</Link>
     </div>
   );
 };
