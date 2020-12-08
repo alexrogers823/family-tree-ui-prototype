@@ -20,6 +20,8 @@ const Signup = props => {
     <Form 
       title="Welcome to the Family!"
       maxWidth="xl"
+      isOpen={props.isOpen}
+      closeModal={props.closeModal}
       fullWidth
     >
       <TextArea className={classes.inputs} placeholder="Email" type="email" />
