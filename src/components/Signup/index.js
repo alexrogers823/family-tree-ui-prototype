@@ -19,6 +19,7 @@ const Signup = props => {
   return (
     <Form 
       title="Welcome to the Family!"
+      button="Join Us"
       maxWidth="xl"
       isOpen={props.isOpen}
       closeModal={props.closeModal}

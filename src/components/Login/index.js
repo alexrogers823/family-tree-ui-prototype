@@ -5,6 +5,7 @@ const Login = props => {
   return (
     <Form 
       title="Login"
+      button="Log In"
       isOpen={props.isOpen}
       closeModal={props.closeModal}
     >
