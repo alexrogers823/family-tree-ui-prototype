@@ -19,6 +19,7 @@ const ChosenDate = props => {
     <MuiPickersUtilsProvider utils={MomentUtils}>
       <KeyboardDatePicker 
         disableToolbar
+        disableFuture
         variant="inline"
         format="MM/DD/YYYY"
         margin="normal"
