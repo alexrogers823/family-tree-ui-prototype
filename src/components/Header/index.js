@@ -6,9 +6,18 @@ import Login from '../Login';
 import Signup from '../Signup';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   link: {
     margin: theme.spacing(2),
   },
+  right: {
+    textShadow: '3px 3px rgba(4, 56, 18, 0.5)',
+    color: 'white',
+    fontWeight: 600,
+  }
 }));
 
 const Header = props => {
@@ -29,43 +38,47 @@ const Header = props => {
   
   return (
     <AppBar position="static">
-      <Toolbar>
-        <Link className={classes.link} color="textPrimary" href="#">
-          Tree
-        </Link>
-        <Link className={classes.link} color="inherit" href="#">
-          Timeline
-        </Link>
-        <Link className={classes.link} color="inherit" href="#">
-          Gallery
-        </Link>
-        <Link className={classes.link} color="inherit" href="#">
-          FAQ
-        </Link>
-        <Link 
-          className={classes.link} 
-          color="inherit" 
-          onClick={() => setOpenMemberModal(true)} 
-          href="#"
-        >
-          Add Member
-        </Link>
-        <Link 
-          className={classes.link} 
-          color="inherit" 
-          onClick={() => setOpenLoginModal(true)} 
-          href="#"
-        >
-          Login
-        </Link>
-        <Link 
-          className={classes.link} 
-          color="inherit" 
-          onClick={() => setOpenSignupModal(true)} 
-          href="#"
-        >
-          Register
-        </Link>
+      <Toolbar className={classes.root}>
+        <div>
+          <Link className={`${classes.link}`} color="textPrimary" href="#">
+            Tree
+          </Link>
+          <Link className={`${classes.link}`} color="inherit" href="#">
+            Timeline
+          </Link>
+          <Link className={`${classes.link}`} color="inherit" href="#">
+            Gallery
+          </Link>
+          <Link className={`${classes.link}`} color="inherit" href="#">
+            FAQ
+          </Link>
+          <Link 
+            className={`${classes.link}`} 
+            color="inherit" 
+            onClick={() => setOpenMemberModal(true)} 
+            href="#"
+            >
+            Add Member
+          </Link>
+        </div>
+        <div>
+          <Link 
+            className={`${classes.link} ${classes.right}`} 
+            color="inherit" 
+            onClick={() => setOpenLoginModal(true)} 
+            href="#"
+            >
+            Login
+          </Link>
+          <Link 
+            className={`${classes.link} ${classes.right}`} 
+            color="inherit" 
+            onClick={() => setOpenSignupModal(true)} 
+            href="#"
+            >
+            Register
+          </Link>
+        </div>
         <AddMemberModal isOpen={openMemberModal} closeModal={() => closeModal('member')} />
         <Login isOpen={openLoginModal} closeModal={() => closeModal('login')} />
         <Signup isOpen={openSignupModal} closeModal={() => closeModal('signup')} />
