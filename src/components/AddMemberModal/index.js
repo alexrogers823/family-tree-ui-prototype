@@ -1,6 +1,7 @@
-import React from 'react';
-import { Date } from '../common';
+import React, { useEffect, useState } from 'react';
+import { Date, Button } from '../common';
 import Form, { TextArea } from '../common/Form';
+// import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -15,6 +16,18 @@ const useStyles = makeStyles(theme => ({
 
 const AddMemberModal = props => {
   const classes = useStyles();
+
+  const [bioParagraphs, setBioParagraphs] = useState([
+    <TextArea className={classes.inputs} placeholder="Bio Paragraph #1" />
+  ]);
+
+  const addParagraph = () => {
+    const index = bioParagraphs.length + 1;
+    setBioParagraphs([
+      ...bioParagraphs, 
+      <TextArea className={classes.inputs} placeholder={`Bio Paragraph #${index}`} />
+    ]);
+  }
 
   return (
     <Form 
@@ -37,7 +50,8 @@ const AddMemberModal = props => {
       <TextArea className={classes.inputs} placeholder="Photo" />
       <TextArea className={classes.inputs} placeholder="Place of Birth" />
       <TextArea className={classes.inputs} placeholder="Place of Residence (if alive)" />
-      <TextArea className={classes.inputs} placeholder="Bio Paragraph #1" />
+      {bioParagraphs}
+      <Button onClick={addParagraph}>Add Paragraph</Button>
     </Form>
   )
 }
