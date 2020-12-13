@@ -32,27 +32,27 @@ const Form = props => {
   }, [props.isOpen]);
 
   return (
-      <Dialog 
-        open={open || false} 
-        onClose={props.closeModal}
-        aria-labelledby="form-dialog-title"
-        {...props}
-        >
-        <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
-        <DialogContent>
-          {props.children}
-        </DialogContent>
-        <DialogActions>
-          {props.button &&
-            <Button 
-              color="primary"
-              onClick={props.closeModal}
-            >
-              {props.button}
-            </Button>
-          }
-        </DialogActions>
-      </Dialog>
+    <Dialog 
+      open={open || false} 
+      onClose={props.closeModal}
+      aria-labelledby="form-dialog-title"
+      {...props}
+      >
+      <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
+      <DialogContent>
+        {props.children}
+      </DialogContent>
+      <DialogActions>
+        {props.button &&
+          <Button 
+            color="primary"
+            onClick={props.closeModal}
+          >
+            {props.button}
+          </Button>
+        }
+      </DialogActions>
+    </Dialog>
   )
 };
 
