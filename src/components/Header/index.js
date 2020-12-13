@@ -12,11 +12,10 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     margin: theme.spacing(2),
+    fontWeight: 600,
   },
   right: {
-    textShadow: '3px 3px rgba(4, 56, 18, 0.5)',
-    color: 'white',
-    fontWeight: 600,
+    textShadow: '3px 3px rgba(4, 56, 18, 0.5)'
   }
 }));
 
