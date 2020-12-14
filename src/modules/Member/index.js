@@ -5,8 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import alexSample from '../../assets/Alex_sample.jpg';
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { concatenateDate } from '../../utils';
 
 import Button from '../../components/common/Button';
 import EditMemberPageModal from '../../components/EditMemberPageModal';
@@ -101,6 +100,8 @@ const Member = props => {
     name += ` (${props.preferredName})`;
   }
 
+  
+
   return (
     <Container>
       <Paper className={classes.root} elevation={3}>
@@ -108,7 +109,10 @@ const Member = props => {
           <img src={alexSample} alt={`Photo of ${props.firstName}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
           <div className={classes.memberStatText}>
             <h1 className={classes.memberName}>{name}</h1>
-            <h3 className={classes.lifeRange}>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
+            <h3 className={classes.lifeRange}>
+              b. {concatenateDate(props.birthDay, props.birthMonth, props.birthYear)}
+              {!props.isAlive && `, d. ${concatenateDate(props.deathDay, props.deathMonth, props.deathYear)}`}
+            </h3>
             <h3 className={classes.birthplace}>Birthplace: {props.birthplace}</h3>
             <h3 className={classes.residence}>Residence: {props.residence}</h3>
           </div>
@@ -168,8 +172,12 @@ Member.propTypes = {
   middleName: PropTypes.string,
   lastName: PropTypes.string,
   preferredName: PropTypes.string,
-  birth: PropTypes.string,
-  death: PropTypes.string,
+  birthDay: PropTypes.number,
+  birthMonth: PropTypes.number,
+  birthYear: PropTypes.number,
+  deathDay: PropTypes.number,
+  deathMonth: PropTypes.number,
+  deathYear: PropTypes.number,
   residence: PropTypes.string,
   parents: PropTypes.array,
   offspring: PropTypes.array,

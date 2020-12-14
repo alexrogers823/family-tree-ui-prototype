@@ -39,9 +39,14 @@ class App extends Component {
             lastName={this.state.members[0].lastName} 
             preferredName={this.state.members[0].preferredName} 
             // birth={this.state.birth}
-            birth={"December 16, 1920"}
+            birthDay={this.state.members[0].birthDay}
+            birthMonth={this.state.members[0].birthMonth}
+            birthYear={this.state.members[0].birthYear}
+            isAlive={this.state.members[0].isAlive}
             // death={this.state.death}
-            death={null}
+            deathDay={this.state.members[0].deathDay}
+            deathMonth={this.state.members[0].deathMonth}
+            deathYear={this.state.members[0].deathYear}
             // birthplace={this.state.birthplace}
             birthplace={"Iuka, MS"}
             // residence={this.state.residence}
