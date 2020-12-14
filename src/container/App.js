@@ -17,36 +17,44 @@ import TimelineEvents from '../modules/TimelineEvents';
 import { Page404, Page500 } from '../components/ErrorPages';
 import ComingSoon from '../components/ComingSoon';
 import Lineage from '../modules/Lineage';
-import { memberData, timelineData, faqData } from '../dummyData';
+import { timelineData, faqData } from '../dummyData';
+import { familyMembers } from '../memberData';
 
 class App extends Component {
   state = {
-    ...memberData,
     // photos: ["photo 1", "photo 2", "photo 3"],
     photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
     questions: faqData,
-    timelineEvents: timelineData
+    timelineEvents: timelineData,
+    members: [ ...familyMembers ]
   }
 
   render() {
     return (
       <div className="App">
         <Base>
-          {/* <Member 
-            firstName={this.state.firstName} 
-            middleName={this.state.middleName} 
-            lastName={this.state.lastName} 
-            preferredName={this.state.preferredName} 
-            birth={this.state.birth}
-            death={this.state.death}
-            birthplace={this.state.birthplace}
-            residence={this.state.residence}
-            parents={this.state.parents}
-            offspring={this.state.children}
-            spouse={this.state.spouse}
-          /> */}
+          <Member 
+            firstName={this.state.members[0].firstName} 
+            middleName={this.state.members[0].middleName} 
+            lastName={this.state.members[0].lastName} 
+            preferredName={this.state.members[0].preferredName} 
+            // birth={this.state.birth}
+            birth={"December 16, 1920"}
+            // death={this.state.death}
+            death={null}
+            // birthplace={this.state.birthplace}
+            birthplace={"Iuka, MS"}
+            // residence={this.state.residence}
+            residence={"Gary, IN"}
+            // parents={this.state.parents}
+            parents={["Jimmy French", "Robert French"]}
+            // offspring={this.state.children}
+            offspring={["Patricia Crozier", "Rogercarole Rogers", "Barry Rogers"]}
+            // spouse={this.state.members[0].spouse}
+            spouse={"Oscar Rogers"}
+          />
           {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
-          <TimelineEvents timelineEvents={this.state.timelineEvents} />
+          {/* <TimelineEvents timelineEvents={this.state.timelineEvents} /> */}
           {/* <Main /> */}
           {/* <Login /> */}
           {/* <Signup /> */}

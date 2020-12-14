@@ -105,7 +105,7 @@ const Member = props => {
     <Container>
       <Paper className={classes.root} elevation={3}>
         <div className={classes.memberStats}>
-          <img src={alexSample} alt={`Photo of ${name}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
+          <img src={alexSample} alt={`Photo of ${props.firstName}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
           <div className={classes.memberStatText}>
             <h1 className={classes.memberName}>{name}</h1>
             <h3 className={classes.lifeRange}>b. {props.birth}{props.death && `, d. ${props.death}`}</h3>
@@ -157,7 +157,7 @@ const Member = props => {
         >
           Edit Member Info
         </Button>
-        <EditMemberPageModal firstName="Oscar" isOpen={openModal} closeModal={() => setOpenModal(false)} />
+        <EditMemberPageModal firstName={props.firstName} isOpen={openModal} closeModal={() => setOpenModal(false)} />
       </Paper>
     </Container>
     );
