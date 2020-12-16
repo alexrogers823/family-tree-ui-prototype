@@ -19,6 +19,7 @@ import ComingSoon from '../components/ComingSoon';
 import Lineage from '../modules/Lineage';
 import { timelineData, faqData } from '../dummyData';
 import { familyMembers } from '../memberData';
+import UserSettings from '../components/UserSettings';
 
 class App extends Component {
   state = {
@@ -33,7 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <Base>
-          <Member 
+          {/* <Member 
             firstName={this.state.members[0].firstName} 
             middleName={this.state.members[0].middleName} 
             lastName={this.state.members[0].lastName} 
@@ -57,12 +58,13 @@ class App extends Component {
             offspring={["Patricia Crozier", "Rogercarole Rogers", "Barry Rogers"]}
             // spouse={this.state.members[0].spouse}
             spouse={"Oscar Rogers"}
-          />
+          /> */}
           {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
           {/* <TimelineEvents timelineEvents={this.state.timelineEvents} /> */}
           {/* <Main /> */}
           {/* <Login /> */}
           {/* <Signup /> */}
+          <UserSettings />
           {/* <AddMemberModal /> */}
           {/* <EditMemberPageModal firstName="Oscar" /> */}
           {/* <AddEventModal /> */}
