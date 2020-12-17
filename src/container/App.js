@@ -64,7 +64,7 @@ class App extends Component {
           {/* <Main /> */}
           {/* <Login /> */}
           {/* <Signup /> */}
-          <UserSettings />
+          <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com"/>
           {/* <AddMemberModal /> */}
           {/* <EditMemberPageModal firstName="Oscar" /> */}
           {/* <AddEventModal /> */}
