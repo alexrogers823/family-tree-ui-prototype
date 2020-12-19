@@ -74,12 +74,9 @@ const UserSettings = props => {
         className={classes.tabs}
       >
         <Tab label="Member Information" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
-        <Tab label="Item Three" {...a11yProps(2)} />
-        <Tab label="Item Four" {...a11yProps(3)} />
-        <Tab label="Item Five" {...a11yProps(4)} />
-        <Tab label="Item Six" {...a11yProps(5)} />
-        <Tab label="Item Seven" {...a11yProps(6)} />
+        <Tab label="Family Relations" {...a11yProps(1)} />
+        <Tab label="Events Created" {...a11yProps(2)} />
+        <Tab label="Appearance Theme" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <memberInformationSettings />
@@ -91,15 +88,6 @@ const UserSettings = props => {
         Test
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Test
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Test
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Test
-      </TabPanel>
-      <TabPanel value={value} index={6}>
         Test
       </TabPanel>
     </div>
