@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Button from '../common/Button';
 
 const appearanceThemeSettings = props => {
   return (
-    <p>Test</p>
+    <Fragment>
+      <p>Light Theme</p>
+      <p>Dark Theme</p>
+      <Button>Save</Button>
+    </Fragment>
   )
 };
+
+// TODO: Turn paragraphs into radio buttons 
 
 export default appearanceThemeSettings;
