@@ -4,6 +4,7 @@ import { Container, Paper, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import alexSample from '../../assets/Alex_sample.jpg';
+import adellaSample from '../../assets/Adella_sample.jpg';
 
 import { concatenateDate } from '../../utils';
 
@@ -106,7 +107,7 @@ const Member = props => {
     <Container>
       <Paper className={classes.root} elevation={3}>
         <div className={classes.memberStats}>
-          <img src={alexSample} alt={`Photo of ${props.firstName}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
+          <img src={adellaSample} alt={`Photo of ${props.firstName}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
           <div className={classes.memberStatText}>
             <h1 className={classes.memberName}>{name}</h1>
             <h3 className={classes.lifeRange}>

@@ -83,29 +83,29 @@ class App extends Component {
                 </Route>
                 <Route path={urls.memberUrl}>
                   <Member 
-                    firstName={this.state.members[0].firstName} 
-                    middleName={this.state.members[0].middleName} 
-                    lastName={this.state.members[0].lastName} 
-                    preferredName={this.state.members[0].preferredName} 
+                    firstName={this.state.members[9].firstName} 
+                    middleName={this.state.members[9].middleName} 
+                    lastName={this.state.members[9].lastName} 
+                    preferredName={this.state.members[9].preferredName} 
                     // birth={this.state.birth}
-                    birthDay={this.state.members[0].birthDay}
-                    birthMonth={this.state.members[0].birthMonth}
-                    birthYear={this.state.members[0].birthYear}
-                    isAlive={this.state.members[0].isAlive}
+                    birthDay={this.state.members[9].birthDay}
+                    birthMonth={this.state.members[9].birthMonth}
+                    birthYear={this.state.members[9].birthYear}
+                    isAlive={this.state.members[9].isAlive}
                     // death={this.state.death}
-                    deathDay={this.state.members[0].deathDay}
-                    deathMonth={this.state.members[0].deathMonth}
-                    deathYear={this.state.members[0].deathYear}
+                    deathDay={this.state.members[9].deathDay}
+                    deathMonth={this.state.members[9].deathMonth}
+                    deathYear={this.state.members[9].deathYear}
                     // birthplace={this.state.birthplace}
-                    birthplace={"Iuka, MS"}
+                    birthplace={this.state.members[9].birthplace}
                     // residence={this.state.residence}
-                    residence={"Gary, IN"}
+                    residence={this.state.members[9].residence}
                     // parents={this.state.parents}
-                    parents={["Jimmy French", "Robert French"]}
+                    parents={["Patricia Crozier", "Ronald Crozier"]}
                     // offspring={this.state.children}
-                    offspring={["Patricia Crozier", "Rogercarole Rogers", "Barry Rogers"]}
+                    offspring={["Child 1"]}
                     // spouse={this.state.members[0].spouse}
-                    spouse={"Oscar Rogers"}
+                    spouse={"Nikita"}
                   />
                 </Route>
                 <Route path={urls.timelineUrl}>
