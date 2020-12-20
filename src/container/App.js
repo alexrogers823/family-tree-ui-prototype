@@ -6,6 +6,8 @@ import {
   Link
 } from "react-router-dom";
 
+import * as urls from '../urls';
+
 import './App.css';
 import Base from '../hoc/Base';
 import Member from '../modules/Member';
@@ -76,10 +78,10 @@ class App extends Component {
               </nav> */}
 
               <Switch>
-                <Route path="/faq">
+                <Route path={urls.faqUrl}>
                   <FrequentlyAskedQuestions questions={this.state.questions} />
                 </Route>
-                <Route path="/member">
+                <Route path={urls.memberUrl}>
                   <Member 
                     firstName={this.state.members[0].firstName} 
                     middleName={this.state.members[0].middleName} 
@@ -106,23 +108,26 @@ class App extends Component {
                     spouse={"Oscar Rogers"}
                   />
                 </Route>
-                <Route path="/timeline">
+                <Route path={urls.timelineUrl}>
                   <TimelineEvents timelineEvents={this.state.timelineEvents} />
                 </Route>
-                <Route path="/user">
+                <Route path={urls.userUrl}>
                   <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com"/>
                 </Route>
-                <Route path="/comingsoon">
+                <Route path={urls.comingSoonUrl}>
                   <ComingSoon />
                 </Route>
-                <Route path="/lineage">
+                <Route path={urls.lineageUrl}>
                   <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} />
                 </Route>
-                <Route path="/404">
+                <Route path={urls.notFoundUrl}>
                   <Page404 />
                 </Route>
-                <Route path="/500">
+                <Route path={urls.serverErrorUrl}>
                   <Page500 />
+                </Route>
+                <Route path={urls.galleryUrl}>
+                  <Gallery />
                 </Route>
                 <Route path="/">
                   <Main />

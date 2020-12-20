@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
+import {
+  faqUrl,
+  galleryUrl,
+  lineageUrl,
+  timelineUrl
+} from '../../urls';
+
 import AddMemberModal from '../AddMemberModal';
 import Login from '../Login';
 import Signup from '../Signup';
@@ -39,16 +47,16 @@ const Header = props => {
     <AppBar position="static">
       <Toolbar className={classes.root}>
         <div>
-          <Link className={`${classes.link}`} color="textPrimary" href="#">
+          <Link className={`${classes.link}`} color="textPrimary" href={lineageUrl}>
             Tree
           </Link>
-          <Link className={`${classes.link}`} color="inherit" href="#">
+          <Link className={`${classes.link}`} color="inherit" href={timelineUrl}>
             Timeline
           </Link>
-          <Link className={`${classes.link}`} color="inherit" href="#">
+          <Link className={`${classes.link}`} color="inherit" href={galleryUrl}>
             Gallery
           </Link>
-          <Link className={`${classes.link}`} color="inherit" href="#">
+          <Link className={`${classes.link}`} color="inherit" href={faqUrl}>
             FAQ
           </Link>
           <Link 
