@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const familyRelationsSettings = props => {
+const FamilyRelationsSettings = props => {
   return (
     <Fragment>
       <p>Parents: Parent 1, Parent 2</p>
@@ -10,4 +10,4 @@ const familyRelationsSettings = props => {
   )
 };
 
-export default familyRelationsSettings;
+export default FamilyRelationsSettings;

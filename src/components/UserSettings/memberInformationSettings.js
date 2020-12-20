@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Button from '../common/Button';
 
-const memberInformationSettings = props => {
+const MemberInformationSettings = props => {
   return (
     <Fragment>
       <p>Username/Member Name: {props.firstName} {props.lastName}</p>
@@ -20,4 +20,4 @@ const memberInformationSettings = props => {
 // TODO: Use moment to format profile created and last logged in (similar to in Eros) 
 
 
-export default memberInformationSettings;
+export default MemberInformationSettings;

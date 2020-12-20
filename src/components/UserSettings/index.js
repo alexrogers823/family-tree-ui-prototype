@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import memberInformationSettings from './memberInformationSettings';
+import MemberInformationSettings from './MemberInformationSettings';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -79,7 +79,7 @@ const UserSettings = props => {
         <Tab label="Appearance Theme" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <memberInformationSettings />
+        <MemberInformationSettings />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Test

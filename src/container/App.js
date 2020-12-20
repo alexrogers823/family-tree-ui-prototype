@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import './App.css';
 import Base from '../hoc/Base';
 import Member from '../modules/Member';
@@ -34,51 +41,109 @@ class App extends Component {
     return (
       <div className="App">
         <Base>
-          {/* <Member 
-            firstName={this.state.members[0].firstName} 
-            middleName={this.state.members[0].middleName} 
-            lastName={this.state.members[0].lastName} 
-            preferredName={this.state.members[0].preferredName} 
-            // birth={this.state.birth}
-            birthDay={this.state.members[0].birthDay}
-            birthMonth={this.state.members[0].birthMonth}
-            birthYear={this.state.members[0].birthYear}
-            isAlive={this.state.members[0].isAlive}
-            // death={this.state.death}
-            deathDay={this.state.members[0].deathDay}
-            deathMonth={this.state.members[0].deathMonth}
-            deathYear={this.state.members[0].deathYear}
-            // birthplace={this.state.birthplace}
-            birthplace={"Iuka, MS"}
-            // residence={this.state.residence}
-            residence={"Gary, IN"}
-            // parents={this.state.parents}
-            parents={["Jimmy French", "Robert French"]}
-            // offspring={this.state.children}
-            offspring={["Patricia Crozier", "Rogercarole Rogers", "Barry Rogers"]}
-            // spouse={this.state.members[0].spouse}
-            spouse={"Oscar Rogers"}
-          /> */}
-          {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
-          {/* <TimelineEvents timelineEvents={this.state.timelineEvents} /> */}
-          {/* <Main /> */}
-          {/* <Login /> */}
-          {/* <Signup /> */}
-          <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com"/>
-          {/* <AddMemberModal /> */}
-          {/* <EditMemberPageModal firstName="Oscar" /> */}
-          {/* <AddEventModal /> */}
-          {/* <FrequentlyAskedQuestions questions={this.state.questions} /> */}
-          {/* <Header /> */}
-          {/* <Footer /> */}
-          {/* <Gallery photos={this.state.photos} /> */}
-          {/* <Page404 /> */}
-          {/* <Page500 /> */}
-          {/* <ComingSoon /> */}
+          <Router>
+            <div>
+              {/* <nav>
+                <ul>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/faq">Frequently Asked Questions</Link>
+                  </li>
+                  <li>
+                    <Link to="/member">Family Member Page Example</Link>
+                  </li>
+                  <li>
+                    <Link to="/timeline">Past Family Events</Link>
+                  </li>
+                  <li>
+                    <Link to="/user">User Settings Example</Link>
+                  </li>
+                  <li>
+                    <Link to="/comingsoon">Coming Soon Page</Link>
+                  </li>
+                  <li>
+                    <Link to="/lineage">Lineage (under construction)</Link>
+                  </li>
+                  <li>
+                    <Link to="/404">Not Found Page</Link>
+                  </li>
+                  <li>
+                    <Link to="/500">Server Error Page</Link>
+                  </li>
+                </ul>
+              </nav> */}
+
+              <Switch>
+                <Route path="/faq">
+                  <FrequentlyAskedQuestions questions={this.state.questions} />
+                </Route>
+                <Route path="/member">
+                  <Member 
+                    firstName={this.state.members[0].firstName} 
+                    middleName={this.state.members[0].middleName} 
+                    lastName={this.state.members[0].lastName} 
+                    preferredName={this.state.members[0].preferredName} 
+                    // birth={this.state.birth}
+                    birthDay={this.state.members[0].birthDay}
+                    birthMonth={this.state.members[0].birthMonth}
+                    birthYear={this.state.members[0].birthYear}
+                    isAlive={this.state.members[0].isAlive}
+                    // death={this.state.death}
+                    deathDay={this.state.members[0].deathDay}
+                    deathMonth={this.state.members[0].deathMonth}
+                    deathYear={this.state.members[0].deathYear}
+                    // birthplace={this.state.birthplace}
+                    birthplace={"Iuka, MS"}
+                    // residence={this.state.residence}
+                    residence={"Gary, IN"}
+                    // parents={this.state.parents}
+                    parents={["Jimmy French", "Robert French"]}
+                    // offspring={this.state.children}
+                    offspring={["Patricia Crozier", "Rogercarole Rogers", "Barry Rogers"]}
+                    // spouse={this.state.members[0].spouse}
+                    spouse={"Oscar Rogers"}
+                  />
+                </Route>
+                <Route path="/timeline">
+                  <TimelineEvents timelineEvents={this.state.timelineEvents} />
+                </Route>
+                <Route path="/user">
+                  <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com"/>
+                </Route>
+                <Route path="/comingsoon">
+                  <ComingSoon />
+                </Route>
+                <Route path="/lineage">
+                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} />
+                </Route>
+                <Route path="/404">
+                  <Page404 />
+                </Route>
+                <Route path="/500">
+                  <Page500 />
+                </Route>
+                <Route path="/">
+                  <Main />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
         </Base>
       </div>
     );
   }
 }
+
+
+{/* <Login /> */}
+{/* <Signup /> */}
+{/* <AddMemberModal /> */}
+{/* <EditMemberPageModal firstName="Oscar" /> */}
+{/* <AddEventModal /> */}
+{/* <Header /> */}
+{/* <Footer /> */}
+{/* <Gallery photos={this.state.photos} /> */}
 
 export default App;

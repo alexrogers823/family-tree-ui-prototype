@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Button from '../common/Button';
 
-const appearanceThemeSettings = props => {
+const AppearanceThemeSettings = props => {
   return (
     <Fragment>
       <p>Light Theme</p>
@@ -13,4 +13,4 @@ const appearanceThemeSettings = props => {
 
 // TODO: Turn paragraphs into radio buttons 
 
-export default appearanceThemeSettings;
+export default AppearanceThemeSettings;
