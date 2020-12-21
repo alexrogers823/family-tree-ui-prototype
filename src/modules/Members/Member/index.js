@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Container, Paper, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import alexSample from '../../assets/Alex_sample.jpg';
-import adellaSample from '../../assets/Adella_sample.jpg';
+import alexSample from '../../../assets/Alex_sample.jpg';
+import adellaSample from '../../../assets/Adella_sample.jpg';
 
-import { concatenateDate } from '../../utils';
+import { concatenateDate } from '../../../utils';
 
-import Button from '../../components/common/Button';
-import EditMemberPageModal from '../../components/EditMemberPageModal';
+import Button from '../../../components/common/Button';
+import EditMemberPageModal from '../../../components/EditMemberPageModal';
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -3,14 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 import * as urls from '../urls';
 
 import './App.css';
 import Base from '../hoc/Base';
-import Member from '../modules/Member';
+import Member from '../modules/Members/Member';
 import Timeline from '../modules/TimelineEvents/Timeline';
 import Main from '../modules/Main';
 import Login from '../components/Login';
@@ -29,6 +28,7 @@ import Lineage from '../modules/Lineage';
 import { timelineData, faqData } from '../dummyData';
 import { familyMembers } from '../memberData';
 import UserSettings from '../components/UserSettings';
+import Members from '../modules/Members';
 
 class App extends Component {
   state = {
@@ -82,31 +82,7 @@ class App extends Component {
                   <FrequentlyAskedQuestions questions={this.state.questions} />
                 </Route>
                 <Route path={urls.memberUrl}>
-                  <Member 
-                    firstName={this.state.members[9].firstName} 
-                    middleName={this.state.members[9].middleName} 
-                    lastName={this.state.members[9].lastName} 
-                    preferredName={this.state.members[9].preferredName} 
-                    // birth={this.state.birth}
-                    birthDay={this.state.members[9].birthDay}
-                    birthMonth={this.state.members[9].birthMonth}
-                    birthYear={this.state.members[9].birthYear}
-                    isAlive={this.state.members[9].isAlive}
-                    // death={this.state.death}
-                    deathDay={this.state.members[9].deathDay}
-                    deathMonth={this.state.members[9].deathMonth}
-                    deathYear={this.state.members[9].deathYear}
-                    // birthplace={this.state.birthplace}
-                    birthplace={this.state.members[9].birthplace}
-                    // residence={this.state.residence}
-                    residence={this.state.members[9].residence}
-                    // parents={this.state.parents}
-                    parents={["Patricia Crozier", "Ronald Crozier"]}
-                    // offspring={this.state.children}
-                    offspring={["Child 1"]}
-                    // spouse={this.state.members[0].spouse}
-                    spouse={"Nikita"}
-                  />
+                  <Members {...this.state} />
                 </Route>
                 <Route path={urls.timelineUrl}>
                   <TimelineEvents timelineEvents={this.state.timelineEvents} />
