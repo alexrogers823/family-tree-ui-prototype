@@ -27,7 +27,7 @@ import ComingSoon from '../components/ComingSoon';
 import Lineage from '../modules/Lineage';
 import { timelineData, faqData } from '../dummyData';
 import { familyMembers } from '../memberData';
-import UserSettings from '../components/UserSettings';
+import UserSettings from '../modules/UserSettings';
 import Members from '../modules/Members';
 
 class App extends Component {

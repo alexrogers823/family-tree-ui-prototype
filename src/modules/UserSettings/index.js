@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import MemberInformationSettings from './MemberInformationSettings';
+import FamilyRelationsSettings from './FamilyRelationsSettings';
+import EventsCreatedSettings from './EventsCreatedSettings';
+import AppearanceThemeSettings from './AppearanceThemeSettings';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -82,13 +85,13 @@ const UserSettings = props => {
         <MemberInformationSettings />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Test
+        <FamilyRelationsSettings />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Test
+        <EventsCreatedSettings />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Test
+        <AppearanceThemeSettings />
       </TabPanel>
     </div>
   );
