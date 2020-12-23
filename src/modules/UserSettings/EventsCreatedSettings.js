@@ -4,12 +4,17 @@ import Button from '../../components/common/Button';
 const EventsCreatedSettings = props => {
   return (
     <Fragment>
-      <p>No. of Events Created: 5</p>
-      <div>
-        <p>Event</p>
-        <Button>Edit</Button>
-        <Button>Delete</Button>
-      </div>
+      <p>{`No. of Events created: ${props.events.length}`}</p>
+      {props.events.map(ev => {
+        return (
+          <div>
+            <p>{`Event: ${ev.timelineEvent}`}</p>
+            <p>{`Year: ${ev.year}`}</p>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </div>
+        )
+      })}
     </Fragment>
   )
 };

@@ -88,7 +88,7 @@ class App extends Component {
                   <TimelineEvents timelineEvents={this.state.timelineEvents} />
                 </Route>
                 <Route path={urls.userUrl}>
-                  <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com"/>
+                  <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com" {...this.state} />
                 </Route>
                 <Route path={urls.comingSoonUrl}>
                   <ComingSoon />

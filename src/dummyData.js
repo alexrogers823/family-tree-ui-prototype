@@ -2,26 +2,36 @@ const timelineData = [
   {
     id: 1,
     year: 1995,
+    createdOn: null,
+    createdByUserId: 17,
     timelineEvent: "Some event happened"
   },
   {
     id: 2,
     year: 2012,
+    createdOn: null,
+    createdByUserId: 17,
     timelineEvent: "Alex graduates high school"
   },
   {
     id: 3,
     year: 2017,
+    createdOn: null,
+    createdByUserId: 17,
     timelineEvent: "Simone and Chris marry"
   },
   {
     id: 4,
     year: 2018,
+    createdOn: null,
+    createdByUserId: 17,
     timelineEvent: "Jae graduates from WashU"
   },
   {
     id: 5,
     year: 2020,
+    createdOn: null,
+    createdByUserId: 17,
     timelineEvent: "Helen F. Rogers turns 100 years old"
   }
 ];

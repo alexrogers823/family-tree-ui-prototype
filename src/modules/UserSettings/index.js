@@ -62,6 +62,8 @@ const UserSettings = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+  const { timelineEvents } = props;
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -88,7 +90,7 @@ const UserSettings = props => {
         <FamilyRelationsSettings />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <EventsCreatedSettings />
+        <EventsCreatedSettings events={timelineEvents} />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <AppearanceThemeSettings />
