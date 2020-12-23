@@ -6,7 +6,8 @@ import {
   faqUrl,
   galleryUrl,
   lineageUrl,
-  timelineUrl
+  timelineUrl,
+  userUrl
 } from '../../urls';
 
 import AddMemberModal from '../AddMemberModal';
@@ -32,6 +33,7 @@ const Header = props => {
   const [openMemberModal, setOpenMemberModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const closeModal = modal => {
     if (modal === 'member') {
@@ -69,14 +71,25 @@ const Header = props => {
           </Link>
         </div>
         <div>
-          <Link 
-            className={`${classes.link} ${classes.right}`} 
-            color="inherit" 
-            onClick={() => setOpenLoginModal(true)} 
-            href="#"
-            >
-            Login
-          </Link>
+          {isAuthenticated &&
+            <Link className={`${classes.link} ${classes.right}`} color="inherit" href={userUrl}>
+              Alex
+            </Link>
+          }
+          {
+            isAuthenticated ?
+              <Link className={`${classes.link} ${classes.right}`} color="inherit" href="#">
+                Logout
+              </Link>
+            : <Link 
+              className={`${classes.link} ${classes.right}`} 
+              color="inherit" 
+              onClick={() => setOpenLoginModal(true)} 
+              href="#"
+              >
+              Login
+            </Link>
+          }
           <Link 
             className={`${classes.link} ${classes.right}`} 
             color="inherit" 
