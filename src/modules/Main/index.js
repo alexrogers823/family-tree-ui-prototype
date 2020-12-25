@@ -2,6 +2,12 @@ import React from 'react';
 import { Link, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import {
+  galleryUrl,
+  lineageUrl,
+  timelineUrl,
+} from '../../urls';
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3),
@@ -26,16 +32,14 @@ const Main = () => {
         Explore our roots by seeing the new  
         <Link
           className={classes.link}
-          href="#"
-          onClick={(e) => e.preventDefault()}
+          href={lineageUrl}
         >
           family tree
         </Link>
         , checking out  
         <Link
           className={classes.link}
-          href="#"
-          onClick={(e) => e.preventDefault()}
+          href={galleryUrl}
         >
           pictures
         </Link>
@@ -46,8 +50,7 @@ const Main = () => {
         You can also contribute to our family  
         <Link
           className={classes.link}
-          href="#"
-          onClick={(e) => e.preventDefault()}
+          href={timelineUrl}
         >
           timeline
         </Link>
