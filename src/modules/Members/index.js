@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 
 import Member from './Member';
+import { memberBioPlaceholder } from '../../dummyData';
 
 const ChosenMember = props => {
   let { topicId } = useParams();
@@ -38,6 +39,7 @@ const ChosenMember = props => {
       offspring={["Child 1"]}
       // spouse={props.members[0].spouse}
       spouse={"Nikita"}
+      bio={memberBioPlaceholder}
     />
   )
 }
