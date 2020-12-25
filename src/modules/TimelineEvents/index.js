@@ -64,7 +64,7 @@ const TimelineEvents = props => {
                 <TimelineDot variant="outlined" />
                 <TimelineConnector />
               </TimelineSeparator>
-              <TimelineContent>{ev.timelineEvent}</TimelineContent>
+              <TimelineContent>{`${ev.month ? ev.month : ''}${ev.day ? ('/' + ev.day) : ''}: ${ev.timelineEvent}`}</TimelineContent>
             </TimelineItem>
           </Fragment>
           )

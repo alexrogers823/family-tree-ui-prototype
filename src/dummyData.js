@@ -1,6 +1,8 @@
 const timelineData = [
   {
     id: 1,
+    day: 6,
+    month: 4,
     year: 1995,
     createdOn: null,
     createdByUserId: 17,
@@ -8,6 +10,8 @@ const timelineData = [
   },
   {
     id: 2,
+    day: 7,
+    month: 6,
     year: 2012,
     createdOn: null,
     createdByUserId: 17,
@@ -15,6 +19,8 @@ const timelineData = [
   },
   {
     id: 3,
+    day: 12,
+    month: 10,
     year: 2017,
     createdOn: null,
     createdByUserId: 17,
@@ -22,6 +28,8 @@ const timelineData = [
   },
   {
     id: 4,
+    day: null,
+    month: 5,
     year: 2018,
     createdOn: null,
     createdByUserId: 17,
@@ -29,6 +37,8 @@ const timelineData = [
   },
   {
     id: 5,
+    day: 16,
+    month: 12,
     year: 2020,
     createdOn: null,
     createdByUserId: 17,
