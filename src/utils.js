@@ -32,5 +32,6 @@ const concatenateDate = (day = null, month = null, year = null) => {
 };
 
 export {
+  mapIntToMonth,
   concatenateDate,
 }

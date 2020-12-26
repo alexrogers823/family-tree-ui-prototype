@@ -1,17 +1,18 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot
+} from '@material-ui/lab';
 
 import AddEventModal from '../../components/AddEventModal';
 import Button from '../../components/common/Button';
-import { Timeline as FamilyTimeline } from './Timeline';
-
-import Timeline from '@material-ui/lab/Timeline';
-import TimelineItem from '@material-ui/lab/TimelineItem';
-import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
-import TimelineConnector from '@material-ui/lab/TimelineConnector';
-import TimelineContent from '@material-ui/lab/TimelineContent';
-import TimelineDot from '@material-ui/lab/TimelineDot';
+import { mapIntToMonth } from '../../utils';
 
 
 const useStyles = makeStyles(theme => ({
@@ -39,15 +40,7 @@ const TimelineEvents = props => {
         <h1>Timeline of Family Events</h1>
         <Button onClick={() => setOpenModal(true)}>Add an event</Button>
       </div>
-      {/* {props.timelineEvents.map(ev => {
-        return (
-          <FamilyTimeline 
-          year={ev.year} 
-          timelineEvent={ev.timelineEvent} 
-          key={`event_${ev.id}`} 
-          />
-          )
-        })} */}
+
       <Timeline align="right">
         {props.timelineEvents.map(ev => {
           return (
@@ -64,7 +57,7 @@ const TimelineEvents = props => {
                 <TimelineDot variant="outlined" />
                 <TimelineConnector />
               </TimelineSeparator>
-              <TimelineContent>{`${ev.month ? ev.month : ''}${ev.day ? ('/' + ev.day) : ''}: ${ev.timelineEvent}`}</TimelineContent>
+              <TimelineContent>{`${ev.month ? mapIntToMonth(ev.month) : ''}${ev.day ? (' ' + ev.day) : ''}: ${ev.timelineEvent}`}</TimelineContent>
             </TimelineItem>
           </Fragment>
           )

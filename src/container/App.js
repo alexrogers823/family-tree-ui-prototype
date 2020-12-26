@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 
 import * as urls from '../urls';
@@ -94,7 +95,8 @@ class App extends Component {
                   <ComingSoon />
                 </Route>
                 <Route path={urls.lineageUrl}>
-                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} />
+                  {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
+                  <Redirect to={urls.comingSoonUrl} />
                 </Route>
                 <Route path={urls.notFoundUrl}>
                   <Page404 />
