@@ -30,6 +30,7 @@ import { timelineData, faqData } from '../dummyData';
 import { familyMembers } from '../memberData';
 import UserSettings from '../modules/UserSettings';
 import Members from '../modules/Members';
+import Artifacts from '../modules/Artifacts';
 
 class App extends Component {
   state = {
@@ -106,6 +107,9 @@ class App extends Component {
                 </Route>
                 <Route path={urls.galleryUrl}>
                   <Gallery />
+                </Route>
+                <Route path={urls.artifactsUrl}>
+                  <Artifacts />
                 </Route>
                 <Route path="/">
                   <Main />

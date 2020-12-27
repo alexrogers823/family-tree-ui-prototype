@@ -1,3 +1,4 @@
+export const artifactsUrl = "/artifacts";
 export const comingSoonUrl = "/comingsoon";
 export const faqUrl = "/faq";
 export const galleryUrl = "/gallery";
