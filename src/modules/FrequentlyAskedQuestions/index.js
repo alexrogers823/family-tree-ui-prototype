@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Accordion from '@material-ui/core/Accordion';
+import Link from '@material-ui/core/Link';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
@@ -48,6 +49,12 @@ const FrequentlyAskedQuestions = props => {
     <div className={classes.root}>
       <h1>Frequently Asked Questions</h1>
       {ListOfQuestions()}
+      <h3>Don't see your question here?</h3>
+      <h3>
+        <Link>
+          Contact the administrator
+        </Link>
+      </h3>
     </div>
   );
 };

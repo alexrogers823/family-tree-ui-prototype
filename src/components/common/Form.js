@@ -27,6 +27,8 @@ export const TextArea = (props) => (
 const Form = props => {
   const [open, setOpen] = useState(false);
 
+  console.log('props', props);
+
   useEffect(() => {
     setOpen(props.isOpen)
   }, [props.isOpen]);
@@ -37,7 +39,7 @@ const Form = props => {
       onClose={props.closeModal}
       aria-labelledby="form-dialog-title"
       {...props}
-      >
+    >
       <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
       <DialogContent>
         {props.children}
