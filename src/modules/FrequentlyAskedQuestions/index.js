@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Accordion from '@material-ui/core/Accordion';
-import Link from '@material-ui/core/Link';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography
+} from '@material-ui/core';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
+
+import Link from '../../components/common/Link';
+import ContactAdminModal from '../../components/ContactAdminModal';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +30,8 @@ const useStyles = makeStyles(theme => ({
 
 const FrequentlyAskedQuestions = props => {
   const classes = useStyles();
+
+  const [openContactAdmin, setOpenContactAdmin] = useState(false);
 
   const ListOfQuestions = () => {
     return props.questions.map((q, i) => {
@@ -51,10 +58,13 @@ const FrequentlyAskedQuestions = props => {
       {ListOfQuestions()}
       <h3>Don't see your question here?</h3>
       <h3>
-        <Link>
+        <Link
+          onClick={() => setOpenContactAdmin(true)}
+        >
           Contact the administrator
         </Link>
       </h3>
+      <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -8,6 +8,7 @@ import {
   timelineUrl,
 } from '../../urls';
 
+import Link from '../../components/common/Link';
 import ContactAdminModal from '../../components/ContactAdminModal';
 
 const useStyles = makeStyles(theme => ({
@@ -17,9 +18,6 @@ const useStyles = makeStyles(theme => ({
   text: {
     fontStyle: 'italic',
     textAlign: 'justify',
-  },
-  link: {
-    marginLeft: theme.spacing(0.5),
   },
 }));
 
@@ -36,16 +34,14 @@ const Main = () => {
         <p className={classes.text}>
           Explore our roots by seeing the new  
           <Link
-            className={classes.link}
             href={lineageUrl}
-            >
+          >
             family tree
           </Link>
           , checking out  
           <Link
-            className={classes.link}
             href={galleryUrl}
-            >
+          >
             pictures
           </Link>
           , or finding out more about a specific person.
@@ -54,9 +50,8 @@ const Main = () => {
         <p className={classes.text}>
           You can also contribute to our family  
           <Link
-            className={classes.link}
             href={timelineUrl}
-            >
+          >
             timeline
           </Link>
           .
@@ -65,11 +60,9 @@ const Main = () => {
         <p className={classes.text}>
           If you're having issues or need help, 
           <Link
-            className={classes.link} 
-            href="#" 
             onClick={() => setOpenContactAdmin(true)}
-            >
-            contact the adminstrator
+          >
+            contact the administrator
           </Link>
           .
         </p>
