@@ -96,8 +96,8 @@ class App extends Component {
                   <ComingSoon />
                 </Route>
                 <Route path={urls.lineageUrl}>
-                  {/* <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={this.state.parents} /> */}
-                  <Redirect to={urls.comingSoonUrl} />
+                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={[this.state.members[9].primaryParentId, this.state.members[9].secondaryParentId]} />
+                  {/* <Redirect to={urls.comingSoonUrl} /> */}
                 </Route>
                 <Route path={urls.notFoundUrl}>
                   <Page404 />
