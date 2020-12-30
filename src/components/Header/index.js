@@ -34,6 +34,12 @@ const Header = props => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [color, setColor] = useState({
+    lineage: 'inherit',
+    timeline: 'inherit',
+    gallery: 'inherit',
+    faq: 'inherit'
+  });
 
   const closeModal = modal => {
     if (modal === 'member') {
@@ -49,16 +55,36 @@ const Header = props => {
     <AppBar position="static">
       <Toolbar className={classes.root}>
         <div>
-          <Link className={`${classes.link}`} color="textPrimary" href={lineageUrl}>
+          <Link 
+            className={`${classes.link}`} 
+            color={color.lineage}
+            href={lineageUrl}
+            onClick={() => setColor({...color, lineage: 'textPrimary'})}
+          >
             Tree
           </Link>
-          <Link className={`${classes.link}`} color="inherit" href={timelineUrl}>
+          <Link 
+            className={`${classes.link}`} 
+            color={color.timeline}
+            href={timelineUrl}
+            onClick={() => setColor({...color, timeline: 'textPrimary'})}
+          >
             Timeline
           </Link>
-          <Link className={`${classes.link}`} color="inherit" href={galleryUrl}>
+          <Link 
+            className={`${classes.link}`} 
+            color={color.gallery}
+            href={galleryUrl}
+            onClick={() => setColor({...color, gallery: 'textPrimary'})}
+          >
             Gallery
           </Link>
-          <Link className={`${classes.link}`} color="inherit" href={faqUrl}>
+          <Link 
+            className={`${classes.link}`} 
+            color={color.faq}
+            href={faqUrl}
+            onClick={() => setColor({...color, faq: 'textPrimary'})}
+          >
             FAQ
           </Link>
           <Link 
