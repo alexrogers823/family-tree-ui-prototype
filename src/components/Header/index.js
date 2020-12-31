@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
+  artifactsUrl,
   faqUrl,
   galleryUrl,
   lineageUrl,
@@ -35,6 +36,7 @@ const Header = props => {
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [color, setColor] = useState({
+    artifacts: 'inherit',
     lineage: 'inherit',
     timeline: 'inherit',
     gallery: 'inherit',
@@ -78,6 +80,14 @@ const Header = props => {
             onClick={() => setColor({...color, gallery: 'textPrimary'})}
           >
             Gallery
+          </Link>
+          <Link 
+            className={`${classes.link}`} 
+            color={color.artifacts}
+            href={artifactsUrl}
+            onClick={() => setColor({...color, artifacts: 'textPrimary'})}
+          >
+            Artifacts
           </Link>
           <Link 
             className={`${classes.link}`} 
