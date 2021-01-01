@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -85,7 +85,10 @@ const Header = props => {
             className={`${classes.link}`} 
             color={color.artifacts}
             href={artifactsUrl}
-            onClick={() => setColor({...color, artifacts: 'textPrimary'})}
+            onClick={() => {
+              setColor({...color, artifacts: 'textPrimary'})
+              console.log('new color', color);
+            }}
           >
             Artifacts
           </Link>

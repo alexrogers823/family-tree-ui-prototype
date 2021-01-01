@@ -51,7 +51,10 @@ const AddMemberModal = props => {
       <TextArea className={classes.inputs} placeholder="Place of Birth" />
       <TextArea className={classes.inputs} placeholder="Place of Residence (if alive)" />
       {bioParagraphs}
-      <Button onClick={addParagraph}>Add Paragraph</Button>
+      {
+        bioParagraphs.length < 5 &&
+        <Button onClick={addParagraph}>Add Paragraph</Button>
+      }
     </Form>
   )
 }
