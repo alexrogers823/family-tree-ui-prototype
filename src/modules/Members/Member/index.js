@@ -64,6 +64,12 @@ const useStyles = makeStyles(theme => ({
     color: 'black',
     textShadow: '2px 2px white'
   },
+  memberNameAlt: {
+    fontWeight: 300,
+    color: 'black',
+    fontStyle: 'italic',
+    fontSize: 12
+  },
   memberStats: {
     // border: '1px solid black',
     display: 'flex',
@@ -109,7 +115,13 @@ const Member = props => {
         <div className={classes.memberStats}>
           <img src={adellaSample} alt={`Photo of ${props.firstName}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
           <div className={classes.memberStatText}>
-            <h1 className={classes.memberName}>{name}</h1>
+            {props.preferredName
+              ? <Fragment>
+                  <h1 className={classes.memberName}>{props.preferredName} {props.lastName}</h1>
+                  <p className={classes.memberNameAlt}>{`Neé ${props.firstName} ${props.middleName} ${props.lastName}`}</p>
+                </Fragment>
+              : <h1 className={classes.memberName}>{name}</h1>
+            }
             <h3 className={classes.lifeRange}>
               b. {concatenateDate(props.birthDay, props.birthMonth, props.birthYear)}
               {!props.isAlive && `, d. ${concatenateDate(props.deathDay, props.deathMonth, props.deathYear)}`}
