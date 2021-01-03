@@ -1,10 +1,11 @@
 import { createStore } from 'redux';
-import { faqData } from '../dummyData';
+import { timelineData, faqData } from '../dummyData';
+import { familyMembers } from '../memberData';
 
 const initialState = {
-  questions: [
-    ...faqData
-  ]
+  members: [ ...familyMembers ],
+  questions: [ ...faqData ], 
+  timelineEvents: [ ...timelineData ]
 };
 
 function reducer(state = initialState, action) {

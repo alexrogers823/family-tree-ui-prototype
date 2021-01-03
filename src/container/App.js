@@ -11,35 +11,20 @@ import * as urls from '../urls';
 
 import './App.css';
 import Base from '../hoc/Base';
-import Member from '../modules/Members/Member';
-import Timeline from '../modules/TimelineEvents/Timeline';
 import Main from '../modules/Main';
-import Login from '../components/Login';
-import Signup from '../components/Signup';
-import AddMemberModal from '../components/AddMemberModal';
-import AddEventModal from '../components/AddEventModal';
-import EditMemberPageModal from '../components/EditMemberPageModal';
 import FrequentlyAskedQuestions from '../modules/FrequentlyAskedQuestions';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import Gallery from '../modules/Gallery';
 import TimelineEvents from '../modules/TimelineEvents';
 import { Page404, Page500 } from '../components/ErrorPages';
 import ComingSoon from '../components/ComingSoon';
 import Lineage from '../modules/Lineage';
-import { timelineData, faqData } from '../dummyData';
-import { familyMembers } from '../memberData';
 import UserSettings from '../modules/UserSettings';
 import Members from '../modules/Members';
 import Artifacts from '../modules/Artifacts';
 
 class App extends Component {
   state = {
-    // photos: ["photo 1", "photo 2", "photo 3"],
     photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
-    // questions: faqData,
-    timelineEvents: timelineData,
-    members: [ ...familyMembers ]
   }
 
   render() {
@@ -86,10 +71,10 @@ class App extends Component {
                   <FrequentlyAskedQuestions questions={this.props.questions} />
                 </Route>
                 <Route path={urls.memberUrl}>
-                  <Members {...this.state} />
+                  <Members members={this.props.members} />
                 </Route>
                 <Route path={urls.timelineUrl}>
-                  <TimelineEvents timelineEvents={this.state.timelineEvents} />
+                  <TimelineEvents timelineEvents={this.props.timelineEvents} />
                 </Route>
                 <Route path={urls.userUrl}>
                   <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com" {...this.state} />
@@ -98,7 +83,7 @@ class App extends Component {
                   <ComingSoon />
                 </Route>
                 <Route path={urls.lineageUrl}>
-                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={[this.state.members[9].primaryParentId, this.state.members[9].secondaryParentId]} />
+                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={[this.props.members[9].primaryParentId, this.props.members[9].secondaryParentId]} />
                   {/* <Redirect to={urls.comingSoonUrl} /> */}
                 </Route>
                 <Route path={urls.notFoundUrl}>
@@ -136,7 +121,9 @@ class App extends Component {
 {/* <Gallery photos={this.state.photos} /> */}
 
 const mapStateToProps = state => ({
-  questions: state.questions
+  members: state.members,
+  questions: state.questions,
+  timelineEvents: state.timelineEvents
 });
 
 export default connect(mapStateToProps)(App);
