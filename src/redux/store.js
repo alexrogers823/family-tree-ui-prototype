@@ -1,9 +1,10 @@
 import { createStore } from 'redux';
+import { faqData } from '../dummyData';
 
 const initialState = {
-  id: 0,
-  question: 'test question',
-  answer: 'test answer'
+  questions: [
+    ...faqData
+  ]
 };
 
 function reducer(state = initialState, action) {
@@ -11,8 +12,14 @@ function reducer(state = initialState, action) {
   switch(action.type) {
     case "ADD QUESTION":
       return {
-        question: 'another test question',
-        answer: 'another test answer'
+        questions: [
+          ...state.questions,
+          {
+            id: 1,
+            question: 'another test question',
+            answer: 'another test answer'
+          }
+        ]
       };
     default:
       return state;
@@ -20,7 +27,7 @@ function reducer(state = initialState, action) {
 }
 
 const store = createStore(reducer);
-store.dispatch({ type: "ADD QUESTION" });
+// store.dispatch({ type: "ADD QUESTION" });
 
 export default store;
 

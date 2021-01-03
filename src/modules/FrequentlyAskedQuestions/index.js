@@ -32,6 +32,7 @@ const FrequentlyAskedQuestions = props => {
   const classes = useStyles();
 
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
+  console.log('faq props', props);
 
   const ListOfQuestions = () => {
     return props.questions.map((q, i) => {

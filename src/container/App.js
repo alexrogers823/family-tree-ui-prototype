@@ -37,12 +37,13 @@ class App extends Component {
   state = {
     // photos: ["photo 1", "photo 2", "photo 3"],
     photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
-    questions: faqData,
+    // questions: faqData,
     timelineEvents: timelineData,
     members: [ ...familyMembers ]
   }
 
   render() {
+    console.log('main props', this.props);
     return (
       <div className="App">
         <Base>
@@ -82,7 +83,7 @@ class App extends Component {
 
               <Switch>
                 <Route path={urls.faqUrl}>
-                  <FrequentlyAskedQuestions questions={this.state.questions} />
+                  <FrequentlyAskedQuestions questions={this.props.questions} />
                 </Route>
                 <Route path={urls.memberUrl}>
                   <Members {...this.state} />
@@ -135,9 +136,7 @@ class App extends Component {
 {/* <Gallery photos={this.state.photos} /> */}
 
 const mapStateToProps = state => ({
-  id: state.id,
-  question: state.question,
-  answer: state.answer
+  questions: state.questions
 });
 
 export default connect(mapStateToProps)(App);
