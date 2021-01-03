@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
@@ -133,4 +134,10 @@ class App extends Component {
 {/* <Footer /> */}
 {/* <Gallery photos={this.state.photos} /> */}
 
-export default App;
+const mapStateToProps = state => ({
+  id: state.id,
+  question: state.question,
+  answer: state.answer
+});
+
+export default connect(mapStateToProps)(App);
