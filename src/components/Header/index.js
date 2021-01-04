@@ -34,7 +34,7 @@ const Header = props => {
   const [openMemberModal, setOpenMemberModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [color, setColor] = useState({
     artifacts: 'inherit',
     lineage: 'inherit',
@@ -100,14 +100,16 @@ const Header = props => {
           >
             FAQ
           </Link>
-          <Link 
-            className={`${classes.link}`} 
-            color="inherit" 
-            onClick={() => setOpenMemberModal(true)} 
-            href="#"
+          {isAuthenticated &&
+            <Link 
+              className={`${classes.link}`} 
+              color="inherit" 
+              onClick={() => setOpenMemberModal(true)} 
+              href="#"
             >
-            Add Member
-          </Link>
+              Add Member
+            </Link>
+          }
         </div>
         <div>
           {isAuthenticated &&
