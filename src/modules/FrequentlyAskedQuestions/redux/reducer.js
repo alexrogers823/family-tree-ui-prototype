@@ -4,7 +4,9 @@ import {
 
 import { faqData } from '../../../dummyData';
 
-const INIT_STATE = {};
+const INIT_STATE = {
+  questions: [ ...faqData ], 
+};
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {

@@ -4,7 +4,9 @@ import {
 
 import { timelineData } from '../../../dummyData';
 
-const INIT_STATE = {};
+const INIT_STATE = {
+  timelineEvents: [ ...timelineData ]
+};
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {

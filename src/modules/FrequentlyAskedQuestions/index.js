@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Accordion,
@@ -12,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Link from '../../components/common/Link';
 import ContactAdminModal from '../../components/ContactAdminModal';
+
+import { getAllQuestions } from './redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,9 +33,14 @@ const useStyles = makeStyles(theme => ({
 
 const FrequentlyAskedQuestions = props => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
   console.log('faq props', props);
+
+  useEffect(() => {
+    dispatch(getAllQuestions());
+  })
 
   const ListOfQuestions = () => {
     return props.questions.map((q, i) => {

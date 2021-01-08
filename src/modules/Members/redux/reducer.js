@@ -4,7 +4,9 @@ import {
 
 import { familyMembers } from '../../../memberData';
 
-const INIT_STATE = {};
+const INIT_STATE = {
+  members: [ ...familyMembers ],
+};
 
 export default (state =  INIT_STATE, action) => {
   switch (action.type) {

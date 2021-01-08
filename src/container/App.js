@@ -110,16 +110,6 @@ class App extends Component {
   }
 }
 
-
-{/* <Login /> */}
-{/* <Signup /> */}
-{/* <AddMemberModal /> */}
-{/* <EditMemberPageModal firstName="Oscar" /> */}
-{/* <AddEventModal /> */}
-{/* <Header /> */}
-{/* <Footer /> */}
-{/* <Gallery photos={this.state.photos} /> */}
-
 const mapStateToProps = state => ({
   members: state.members,
   questions: state.questions,
