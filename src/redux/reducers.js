@@ -4,11 +4,15 @@ import { combineReducers } from 'redux';
 import faq from '../modules/FrequentlyAskedQuestions/redux/reducer'
 import members from '../modules/Members/redux/reducer';
 import timelineEvents from '../modules/TimelineEvents/redux/reducer';
+import artifacts from '../modules/Artifacts/redux/reducer';
+import photos from '../modules/Gallery/redux/reducer';
 
 const reducersModules = {
   ...faq,
   ...members,
   ...timelineEvents,
+  ...artifacts,
+  ...photos
 };
 
 const reducers = combineReducers(reducersModules);
