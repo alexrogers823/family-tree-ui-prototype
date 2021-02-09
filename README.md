@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CFPG Family Tree (UI)
 
-## Available Scripts
+![GitHub last commit](https://img.shields.io/github/last-commit/alexrogers823/family-tree-ui-prototype)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/alexrogers823/family-tree-ui-prototype)
 
-In the project directory, you can run:
+This is a full-stack application about preserving and updating a family tree. Users of the app can see our family lineage, view biographies of each family member in the tree, see a timeline of important family events, and even view historic documents that are unique to our family history.
 
-### `npm start`
+### _Technologies Used_
+The application is built using PostgreSQL, C#.NET, React.js, and Redux.js. This repository is the frontend part of the application (click [here](https://github.com/alexrogers823/CfpgFamilyTree) for the backend).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### _Background / Motivation_
+The idea for this project was conceived in August 2020. My grandmother was turning 100-years old in December of that year, and I wanted to give her and the family a gift that would be extremely beneficial and long-lasting to commemorate a historic milestone. A family tree had been previously created 10 years prior on a pen and paper, which was put on the wall of my grandmother's basement. Knowing that it needed to be upgraded and digitized, I began designing and building the application.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### _Objective_
+The project aims to acheive the following:
+- Allow for dynamic expansion and editing of family lineage
+- Decentralize responsibility of editing so that each user of the app can make additions and edits
+- Include biographical content of each family member to enhance and preserve our family history
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### _Getting Started_
+Tech Requirements:
+- [PostgreSQL](https://postgresapp.com/downloads.html)
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)
+- [Node.js](https://nodejs.org/en/download/)
+- React.js
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### _Installation_
+1. Clone the repository
+    - SSH: `git clone git@github.com:alexrogers823/family-tree-ui-prototype.git`
+    - HTTPS:  `git clone https://github.com/alexrogers823/family-tree-ui-prototype.git`
+    - [Download ZIP](https://github.com/alexrogers823/family-tree-ui-prototype/archive/master.zip)
+2. Make sure you have node installed
+3. Install all dependencies with `npm install`
+4. Launch a local host instance with `npm start`
