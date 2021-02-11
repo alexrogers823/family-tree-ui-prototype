@@ -9,6 +9,11 @@ import {
 
 import * as urls from '../urls';
 
+// TODO: Remove once redux is working 
+import { faqData, timelineData } from '../dummyData';
+import { familyMembers } from '../memberData';
+
+
 import './App.css';
 import Base from '../hoc/Base';
 import Main from '../modules/Main';
@@ -25,6 +30,9 @@ import Artifacts from '../modules/Artifacts';
 class App extends Component {
   state = {
     photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
+    questions: [ ...faqData ],
+    members: [ ...familyMembers ],
+    timelineEvents: [ ...timelineData ]
   }
 
   render() {
@@ -68,13 +76,13 @@ class App extends Component {
 
               <Switch>
                 <Route path={urls.faqUrl}>
-                  <FrequentlyAskedQuestions questions={this.props.questions} />
+                  <FrequentlyAskedQuestions questions={this.state.questions} />
                 </Route>
                 <Route path={urls.memberUrl}>
-                  <Members members={this.props.members} />
+                  <Members members={this.state.members} />
                 </Route>
                 <Route path={urls.timelineUrl}>
-                  <TimelineEvents timelineEvents={this.props.timelineEvents} />
+                  <TimelineEvents timelineEvents={this.state.timelineEvents} />
                 </Route>
                 <Route path={urls.userUrl}>
                   <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com" {...this.state} />
@@ -83,7 +91,7 @@ class App extends Component {
                   <ComingSoon />
                 </Route>
                 <Route path={urls.lineageUrl}>
-                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={[this.props.members[9].primaryParentId, this.props.members[9].secondaryParentId]} />
+                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={[this.state.members[9].primaryParentId, this.state.members[9].secondaryParentId]} />
                   {/* <Redirect to={urls.comingSoonUrl} /> */}
                 </Route>
                 <Route path={urls.notFoundUrl}>
@@ -110,10 +118,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  members: state.members,
-  questions: state.questions,
-  timelineEvents: state.timelineEvents
-});
+// const mapStateToProps = state => ({
+//   members: state.members,
+//   questions: state.questions,
+//   timelineEvents: state.timelineEvents
+// });
 
-export default connect(mapStateToProps)(App);
+// export default connect(mapStateToProps)(App);
+export default App;
