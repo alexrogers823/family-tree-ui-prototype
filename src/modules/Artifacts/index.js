@@ -5,9 +5,12 @@ const Artifacts = props => {
   return (
     <Fragment>
       <h1>Artifacts</h1>
-      { props.photos
-        ? <p>A lot of photos</p>
-        : <p>Add important family documents to see them here!</p>
+      {
+        props.documents.map(document => {
+          return (
+            <h3>{document.description}</h3>
+          )
+        })
       }
     </Fragment>
   )

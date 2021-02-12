@@ -11,7 +11,7 @@ import * as urls from '../urls';
 import { concatenateDate } from '../utils';
 
 // TODO: Remove once redux is working 
-import { faqData, timelineData } from '../dummyData';
+import { faqData, timelineData, artifactData } from '../dummyData';
 import { familyMembers } from '../memberData';
 
 
@@ -31,6 +31,7 @@ import Artifacts from '../modules/Artifacts';
 class App extends Component {
   state = {
     photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
+    artifacts: [ ...artifactData ],
     questions: [ ...faqData ],
     members: [ ...familyMembers ],
     timelineEvents: [ ...timelineData ]
@@ -110,7 +111,7 @@ class App extends Component {
                   <Gallery />
                 </Route>
                 <Route path={urls.artifactsUrl}>
-                  <Artifacts />
+                  <Artifacts documents={this.state.artifacts} />
                 </Route>
                 <Route path="/">
                   <Main />
