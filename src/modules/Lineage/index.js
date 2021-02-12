@@ -7,7 +7,7 @@ const Lineage = props => {
       {props.parents.map(parent => {
         return (
           <MemberCard 
-            name={parent}
+            name={props.name}
             birth={props.birth}
             death={props.death}
           />

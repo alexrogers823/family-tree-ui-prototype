@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import * as urls from '../urls';
+import { concatenateDate } from '../utils';
 
 // TODO: Remove once redux is working 
 import { faqData, timelineData } from '../dummyData';
@@ -91,7 +92,12 @@ class App extends Component {
                   <ComingSoon />
                 </Route>
                 <Route path={urls.lineageUrl}>
-                  <Lineage name={this.state.firstName} birth={this.state.birth} death={this.state.death} parents={[this.state.members[9].primaryParentId, this.state.members[9].secondaryParentId]} />
+                  <Lineage 
+                    name={this.state.members[4].firstName} 
+                    birth={concatenateDate(this.state.members[4].birthDay, this.state.members[4].birthMonth, this.state.members[4].birthYear)} 
+                    death={concatenateDate(this.state.members[4].deathDay, this.state.members[4].deathMonth, this.state.members[4].deathYear)} 
+                    parents={[this.state.members[4].primaryParentId, this.state.members[4].secondaryParentId]} 
+                  />
                   {/* <Redirect to={urls.comingSoonUrl} /> */}
                 </Route>
                 <Route path={urls.notFoundUrl}>
