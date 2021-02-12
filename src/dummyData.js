@@ -46,20 +46,6 @@ const timelineData = [
   }
 ];
 
-const memberData = {
-  firstName: "John",
-  middleName: "French",
-  lastName: "Doe",
-  preferredName: null,
-  birth: "April 23, 1934",
-  death: "October 9, 1982",
-  birthplace: "Chicago, IL",
-  residence: "Charlotte, NC",
-  parents: ["Vladimir Doe", "Genevieve Doe"],
-  children: null,
-  spouse: "Jane Doe",
-};
-
 const faqData = [
   {
     id: 1,
@@ -83,6 +69,19 @@ const faqData = [
   }
 ];
 
+const artifactData = [
+  {
+    id: 1,
+    photoUrl: 'fake-photo.com/iuka-house',
+    description: 'Deed to the French house in Iuka'
+  },
+  {
+    id: 2,
+    photoUrl: 'fake-photo.com/marriage-license',
+    description: 'Oscar and Helen Rogers marriage license'
+  }
+]
+
 const memberBioPlaceholder = [
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque dignissim enim. Et leo duis ut diam quam nulla porttitor massa id. Sed risus pretium quam vulputate dignissim suspendisse in est. Scelerisque purus semper eget duis at. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Purus in mollis nunc sed id semper risus in. Nulla facilisi etiam dignissim diam. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Elementum curabitur vitae nunc sed velit dignissim sodales. Enim diam vulputate ut pharetra. Odio ut sem nulla pharetra diam sit amet nisl. Cras adipiscing enim eu turpis egestas pretium aenean pharetra. Tellus pellentesque eu tincidunt tortor aliquam nulla. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.",
   "Risus quis varius quam quisque id diam vel. Risus sed vulputate odio ut enim blandit volutpat maecenas. Quam elementum pulvinar etiam non quam lacus suspendisse faucibus interdum. Enim eu turpis egestas pretium aenean pharetra magna. Egestas sed sed risus pretium quam vulputate dignissim. Euismod in pellentesque massa placerat duis ultricies. Penatibus et magnis dis parturient. Semper quis lectus nulla at volutpat. Urna condimentum mattis pellentesque id nibh tortor id aliquet lectus. Donec et odio pellentesque diam volutpat. Faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Non pulvinar neque laoreet suspendisse interdum consectetur. Interdum velit laoreet id donec ultrices tincidunt arcu non sodales.",
@@ -92,7 +91,7 @@ const memberBioPlaceholder = [
 
 export {
   timelineData,
-  memberData,
   faqData,
+  artifactData,
   memberBioPlaceholder
 };
