@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Paper, Link } from '@material-ui/core';
+import { Container, Paper, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import alexSample from '../../../assets/Alex_sample.jpg';
@@ -133,7 +133,7 @@ const Member = props => {
 
         <div className={classes.body}>
           {props.bio
-            ? props.bio.map(line => <p className={classes.bio}>{line}</p>)
+            ? props.bio.map(line => <Typography paragraph>{line}</Typography>)
             : <h3>No information added yet for {props.firstName}. Be the first to add it!</h3>
           }
         </div>
