@@ -73,12 +73,15 @@ const artifactData = [
   {
     id: 1,
     photoUrl: 'fake-photo.com/iuka-house',
-    description: 'Deed to the French house in Iuka'
+    title: 'Deed to the French house in Iuka',
+    description: 'Lorem ipsum...'
   },
   {
     id: 2,
     photoUrl: 'fake-photo.com/marriage-license',
-    description: 'Oscar and Helen Rogers marriage license'
+    title: 'Oscar and Helen Rogers marriage license',
+    date: 'October 12, 1944',
+    description: 'Lorem ipsum...'
   }
 ]
 
