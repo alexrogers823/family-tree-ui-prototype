@@ -12,8 +12,9 @@ export default (state = INIT_STATE, action) => {
   switch (action.type) {
 
     case GET_ALL_QUESTIONS:
-      return { ...state,
-        questions: [ ...faqData ],
+      return { 
+        ...state,
+        questions: [ ...faqData, {id: 999, question: 'test question', answer: 'test answer'} ],
       }
 
     default:

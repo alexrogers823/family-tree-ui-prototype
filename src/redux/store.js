@@ -1,74 +1,78 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
+
 // import reducer from './reducers';
 
 import { faqData, timelineData, artifactData } from '../dummyData';
 import { familyMembers } from '../memberData';
 
+import reducer from '../modules/FrequentlyAskedQuestions/redux/reducer';
 
-export const GET_ALL_QUESTIONS = "GET_ALL_QUESTIONS";
-export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 
-function getAllQuestions() {
-    return {
-        type: GET_ALL_QUESTIONS,
-        info: "Returns all questions"
-    }
-}
+// export const GET_ALL_QUESTIONS = "GET_ALL_QUESTIONS";
+// export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 
-function getAllEvents() {
-    return {
-        type: GET_ALL_EVENTS,
-        info: "Returns all timeline events"
-    }
-}
+// function getAllQuestions() {
+//     return {
+//         type: GET_ALL_QUESTIONS,
+//         info: "Returns all questions"
+//     }
+// }
 
-const initialPhotoState = {
-    photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
-    // questions: [ ...faqData ],
-    // timelineEvents: [ ...timelineData ]
-};
+// function getAllEvents() {
+//     return {
+//         type: GET_ALL_EVENTS,
+//         info: "Returns all timeline events"
+//     }
+// }
 
-const initialArtifactState = {
-    artifacts: [ ...artifactData ],
-}
+// const initialPhotoState = {
+//     photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
+//     // questions: [ ...faqData ],
+//     // timelineEvents: [ ...timelineData ]
+// };
 
-const initialMemberState = {
-    members: [ ...familyMembers ],
-}
+// const initialArtifactState = {
+//     artifacts: [ ...artifactData ],
+// }
 
-const faqReducer = (state = initialArtifactState, action) => {
-    switch (action.type) {
-        case GET_ALL_QUESTIONS:
-            return { 
-                ...state,
-                questions: [ ...faqData ],
-            }
+// const initialMemberState = {
+//     members: [ ...familyMembers ],
+// }
 
-        default:
-            return state
-    }
-}
+// const faqReducer = (state = initialArtifactState, action) => {
+//     switch (action.type) {
+//         case GET_ALL_QUESTIONS:
+//             return { 
+//                 ...state,
+//                 questions: [ ...faqData ],
+//             }
 
-const timelineReducer = (state = initialMemberState, action) => {
-    switch (action.type) {
-        case GET_ALL_EVENTS:
-            return { ...state, 
-                timelineEvents: [ ...timelineData ], 
-            }
-        default:
-            return state
-    }
-}
+//         default:
+//             return state
+//     }
+// }
 
-const rootReducer = combineReducers({
-    faq: faqReducer,
-    timeline: timelineReducer
-});
+// const timelineReducer = (state = initialMemberState, action) => {
+//     switch (action.type) {
+//         case GET_ALL_EVENTS:
+//             return { ...state, 
+//                 timelineEvents: [ ...timelineData ], 
+//             }
+//         default:
+//             return state
+//     }
+// }
 
-const store = createStore(rootReducer);
-console.log('Initial state', store.getState());
-const unsubscribe = store.subscribe(() => console.log('Updated state', store.getState()))
-store.dispatch(getAllQuestions())
-store.dispatch(getAllEvents())
-unsubscribe();
+// const rootReducer = combineReducers({
+//     faq: faqReducer,
+//     timeline: timelineReducer
+// });
+
+const store = createStore(reducer);
+// console.log('Initial state', store.getState());
+// const unsubscribe = store.subscribe(() => {});
+// store.dispatch(getAllQuestions())
+// store.dispatch(getAllEvents())
+// unsubscribe();
 export default store;

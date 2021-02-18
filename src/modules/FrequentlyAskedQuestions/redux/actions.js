@@ -1,5 +1,7 @@
 import { GET_ALL_QUESTIONS } from "./actionTypes";
 
-export const getAllQuestions = () => ({
-  type: GET_ALL_QUESTIONS
-});
+export const getAllQuestions = () => {
+  return {
+    type: GET_ALL_QUESTIONS
+  }
+};

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Accordion,
@@ -33,14 +33,14 @@ const useStyles = makeStyles(theme => ({
 
 const FrequentlyAskedQuestions = props => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
   console.log('faq props', props);
 
-  useEffect(() => {
-    dispatch(getAllQuestions());
-  })
+  // useEffect(() => {
+  //   dispatch(getAllQuestions());
+  // })
 
   const ListOfQuestions = () => {
     return props.questions.map((q, i) => {
@@ -73,6 +73,7 @@ const FrequentlyAskedQuestions = props => {
           Contact the administrator
         </Link>
       </h3>
+      <button onClick={props.getAllQuestions}>Test dispatch</button>
       <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
     </div>
   );
@@ -82,4 +83,19 @@ FrequentlyAskedQuestions.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
-export default FrequentlyAskedQuestions;
+const mapStateToProps = state => {
+  return {
+    questions: state.questions
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllQuestions: () => dispatch(getAllQuestions())
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(FrequentlyAskedQuestions);
