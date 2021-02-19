@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -13,6 +14,8 @@ import {
 import AddEventModal from '../../components/AddEventModal';
 import Button from '../../components/common/Button';
 import { mapIntToMonth } from '../../utils';
+
+import { getAllEvents } from './redux/actions';
 
 
 const useStyles = makeStyles(theme => ({
@@ -72,4 +75,20 @@ TimelineEvents.propTypes = {
   timelineEvents: PropTypes.arrayOf(PropTypes.object)
 }
 
-export default TimelineEvents;
+const mapStateToProps = state => {
+  return {
+    // timelineEvents: state.timelineEventsReducer.timelineEvents
+    ...state.timelineEventsReducer
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllEvents: () => dispatch(getAllEvents())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps 
+)(TimelineEvents);

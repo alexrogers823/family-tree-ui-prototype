@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Accordion,
@@ -41,6 +41,9 @@ const FrequentlyAskedQuestions = props => {
   // useEffect(() => {
   //   dispatch(getAllQuestions());
   // })
+
+  // const questions = useSelector(state => state.questions);
+  // const dispatch = useDispatch()
 
   const ListOfQuestions = () => {
     return props.questions.map((q, i) => {
@@ -85,7 +88,8 @@ FrequentlyAskedQuestions.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    questions: state.questions
+    // questions: state.faqReducer.questions
+    ...state.faqReducer
   }
 }
 
@@ -99,3 +103,5 @@ export default connect(
   mapStateToProps, 
   mapDispatchToProps
 )(FrequentlyAskedQuestions);
+
+// export default FrequentlyAskedQuestions;

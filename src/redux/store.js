@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
+import logger from 'redux-logger';
 
-// import reducer from './reducers';
+import reducer from './reducers';
 
 import { faqData, timelineData, artifactData } from '../dummyData';
 import { familyMembers } from '../memberData';
 
-import reducer from '../modules/FrequentlyAskedQuestions/redux/reducer';
+// import reducer from '../modules/FrequentlyAskedQuestions/redux/reducer'
+import timelineEvents from '../modules/TimelineEvents/redux/reducer';
+
 
 
 // export const GET_ALL_QUESTIONS = "GET_ALL_QUESTIONS";
@@ -65,11 +67,13 @@ import reducer from '../modules/FrequentlyAskedQuestions/redux/reducer';
 // }
 
 // const rootReducer = combineReducers({
-//     faq: faqReducer,
-//     timeline: timelineReducer
+//     reducer,
+//     timelineEvents,
 // });
 
-const store = createStore(reducer);
+// console.log('all reducers', rootReducer)
+
+const store = createStore(reducer, applyMiddleware(logger));
 // console.log('Initial state', store.getState());
 // const unsubscribe = store.subscribe(() => {});
 // store.dispatch(getAllQuestions())
