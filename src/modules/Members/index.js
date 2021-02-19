@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,6 +11,9 @@ import {
 
 import Member from './Member';
 import { memberBioPlaceholder } from '../../dummyData';
+
+import { getAllFamilyMembers } from './redux/actions';
+
 
 const ChosenMember = props => {
   let { topicId } = useParams();
@@ -62,4 +66,20 @@ const Members = (props) => {
   
 };
 
-export default Members;
+const mapStateToProps = state => {
+  return {
+    // members: state.membersReducer.members
+    ...state.membersReducer
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllFamilyMembers: () => dispatch(getAllFamilyMembers())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps 
+)(Members);
