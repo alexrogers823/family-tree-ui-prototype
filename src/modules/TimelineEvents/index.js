@@ -15,7 +15,7 @@ import AddEventModal from '../../components/AddEventModal';
 import Button from '../../components/common/Button';
 import { mapIntToMonth } from '../../utils';
 
-import { getAllEvents } from './redux/actions';
+import { getAllEvents, postNewEvent } from './redux/actions';
 
 
 const useStyles = makeStyles(theme => ({
@@ -66,7 +66,7 @@ const TimelineEvents = props => {
           )
         })}
       </Timeline>
-      <AddEventModal isOpen={openModal} closeModal={() => setOpenModal(false)} />
+      <AddEventModal isOpen={openModal} closeModal={() => setOpenModal(false)} addEvent={props.postNewEvent}/>
     </Fragment>
   )
 };
@@ -84,7 +84,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllEvents: () => dispatch(getAllEvents())
+    getAllEvents: () => dispatch(getAllEvents()),
+    postNewEvent: () => dispatch(postNewEvent())
   }
 }
 

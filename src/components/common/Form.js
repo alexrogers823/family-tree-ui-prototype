@@ -46,7 +46,10 @@ const Form = props => {
         {props.button &&
           <Button 
             color="primary"
-            onClick={props.closeModal}
+            onClick={() => {
+              // props.postChange()
+              props.closeModal()
+            }}
           >
             {props.button}
           </Button>

@@ -5,7 +5,7 @@ import {
 import { familyMembers } from '../../../memberData';
 
 const INIT_STATE = {
-  members: [ ...familyMembers ],
+  members: [],
 };
 
 export default (state =  INIT_STATE, action) => {

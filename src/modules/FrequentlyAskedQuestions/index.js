@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from '../../components/common/Link';
 import ContactAdminModal from '../../components/ContactAdminModal';
 
-import { getAllQuestions } from './redux/actions';
+import { getAllQuestions, postNewQuestion } from './redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,9 +38,9 @@ const FrequentlyAskedQuestions = props => {
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
   console.log('faq props', props);
 
-  // useEffect(() => {
-  //   dispatch(getAllQuestions());
-  // })
+  useEffect(() => {
+    props.getAllQuestions();
+  }, [])
 
   // const questions = useSelector(state => state.questions);
   // const dispatch = useDispatch()
@@ -76,7 +76,7 @@ const FrequentlyAskedQuestions = props => {
           Contact the administrator
         </Link>
       </h3>
-      <button onClick={props.getAllQuestions}>Test dispatch</button>
+      <button onClick={props.postNewQuestion}>Test dispatch</button>
       <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
     </div>
   );
@@ -88,14 +88,14 @@ FrequentlyAskedQuestions.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    // questions: state.faqReducer.questions
     ...state.faqReducer
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllQuestions: () => dispatch(getAllQuestions())
+    getAllQuestions: () => dispatch(getAllQuestions()),
+    postNewQuestion: () => dispatch(postNewQuestion())
   }
 }
 
@@ -103,5 +103,3 @@ export default connect(
   mapStateToProps, 
   mapDispatchToProps
 )(FrequentlyAskedQuestions);
-
-// export default FrequentlyAskedQuestions;

@@ -8,6 +8,7 @@ const AddEventModal = props => {
       title="Add an event"
       button="POST IT!"
       isOpen={props.isOpen}
+      postChange={props.postNewEvent}
       closeModal={props.closeModal}
     >
       <Date label="Event Date" />

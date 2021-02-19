@@ -5,7 +5,7 @@ import {
 import { artifactData } from '../../../dummyData';
 
 const INIT_STATE = {
-  artifacts: [ ...artifactData ]
+  artifacts: []
 };
 
 export default (state = INIT_STATE, action) => {
