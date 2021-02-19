@@ -124,8 +124,9 @@ class App extends Component {
       <Provider store={store}>
         <div className='App'>
           {/* <FrequentlyAskedQuestions /> */}
-          <TimelineEvents />
+          {/* <TimelineEvents /> */}
           {/* <Members /> */}
+          <Artifacts />
         </div>
       </Provider>
     );

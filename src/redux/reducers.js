@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 import faqReducer from '../modules/FrequentlyAskedQuestions/redux/reducer'
 import membersReducer from '../modules/Members/redux/reducer';
 import timelineEventsReducer from '../modules/TimelineEvents/redux/reducer';
-import artifacts from '../modules/Artifacts/redux/reducer';
+import artifactsReducer from '../modules/Artifacts/redux/reducer';
 import photos from '../modules/Gallery/redux/reducer';
 
 const reducersModules = {
@@ -18,7 +18,8 @@ const reducersModules = {
 const reducers = combineReducers({
   faqReducer,
   timelineEventsReducer,
-  membersReducer
+  membersReducer,
+  artifactsReducer
 });
 
 export default reducers;

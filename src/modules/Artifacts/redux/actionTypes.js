@@ -1,0 +1,1 @@
+export const GET_ALL_ARTIFACTS = 'GET_ALL_ARTIFACTS'

@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -13,6 +15,10 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+import {
+  getAllArtifacts
+} from './redux/actions';
 
 // page specifically for family documents (marriage licenses, deeds, etc) 
 
@@ -51,7 +57,7 @@ const Artifacts = props => {
     <Fragment>
       <h1>Artifacts</h1>
       {
-        props.documents.map(document => {
+        props.artifacts.map(artifact => {
           return (
             <Card className={classes.root} variant="outlined">
               <CardHeader
@@ -65,17 +71,17 @@ const Artifacts = props => {
                     <MoreVertIcon />
                   </IconButton>
                 }
-                title={document.title}
-                subheader={document.date || "Date Unknown"}
+                title={artifact.title}
+                subheader={artifact.date || "Date Unknown"}
               />
               <CardMedia
                 className={classes.media}
-                image={document.photoUrl}
-                title={document.title}
+                image={artifact.photoUrl}
+                title={artifact.title}
               />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  {document.shortDescription}
+                  {artifact.shortDescription}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
@@ -92,7 +98,7 @@ const Artifacts = props => {
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                  <Typography paragraph>{document.longDescription || document.shortDescription}</Typography>
+                  <Typography paragraph>{artifact.longDescription || artifact.shortDescription}</Typography>
                 </CardContent>
               </Collapse>
             </Card>
@@ -103,4 +109,22 @@ const Artifacts = props => {
   )
 };
 
-export default Artifacts;
+const mapStateToProps = state => {
+  return {
+    // artifacts: state.artifactsReducer.artifacts
+    ...state.artifactsReducer
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllArtifacts: () => dispatch(getAllArtifacts())
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(Artifacts);
+
+// export default Artifacts;
