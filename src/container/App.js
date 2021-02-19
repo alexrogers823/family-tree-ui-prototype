@@ -40,95 +40,97 @@ class App extends Component {
 
   render() {
     return (
-      // <div className="App">
-      //   <Base>
-      //     <Router>
-      //       <div>
-      //         {/* <nav>
-      //           <ul>
-      //             <li>
-      //               <Link to="/">Home</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/faq">Frequently Asked Questions</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/member">Family Member Page Example</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/timeline">Past Family Events</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/user">User Settings Example</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/comingsoon">Coming Soon Page</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/lineage">Lineage (under construction)</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/404">Not Found Page</Link>
-      //             </li>
-      //             <li>
-      //               <Link to="/500">Server Error Page</Link>
-      //             </li>
-      //           </ul>
-      //         </nav> */}
-
-      //         <Switch>
-      //           <Route path={urls.faqUrl}>
-      //             <FrequentlyAskedQuestions questions={this.state.questions} />
-      //           </Route>
-      //           <Route path={urls.memberUrl}>
-      //             <Members members={this.state.members} />
-      //           </Route>
-      //           <Route path={urls.timelineUrl}>
-      //             <TimelineEvents timelineEvents={this.state.timelineEvents} />
-      //           </Route>
-      //           <Route path={urls.userUrl}>
-      //             <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com" {...this.state} />
-      //           </Route>
-      //           <Route path={urls.comingSoonUrl}>
-      //             <ComingSoon />
-      //           </Route>
-      //           <Route path={urls.lineageUrl}>
-      //             <Lineage 
-      //               name={this.state.members[4].firstName} 
-      //               birth={concatenateDate(this.state.members[4].birthDay, this.state.members[4].birthMonth, this.state.members[4].birthYear)} 
-      //               death={concatenateDate(this.state.members[4].deathDay, this.state.members[4].deathMonth, this.state.members[4].deathYear)} 
-      //               parents={[this.state.members[4].primaryParentId, this.state.members[4].secondaryParentId]} 
-      //             />
-      //             {/* <Redirect to={urls.comingSoonUrl} /> */}
-      //           </Route>
-      //           <Route path={urls.notFoundUrl}>
-      //             <Page404 />
-      //           </Route>
-      //           <Route path={urls.serverErrorUrl}>
-      //             <Page500 />
-      //           </Route>
-      //           <Route path={urls.galleryUrl}>
-      //             <Gallery />
-      //           </Route>
-      //           <Route path={urls.artifactsUrl}>
-      //             <Artifacts documents={this.state.artifacts} />
-      //           </Route>
-      //           <Route path="/">
-      //             <Main />
-      //           </Route>
-      //         </Switch>
-      //       </div>
-      //     </Router>
-      //   </Base>
-      // </div>
       <Provider store={store}>
-        <div className='App'>
-          {/* <FrequentlyAskedQuestions /> */}
-          {/* <TimelineEvents /> */}
-          {/* <Members /> */}
-          <Artifacts />
+        <div className="App">
+          <Base>
+            <Router>
+              <div>
+                {/* <nav>
+                  <ul>
+                    <li>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                      <Link to="/faq">Frequently Asked Questions</Link>
+                    </li>
+                    <li>
+                      <Link to="/member">Family Member Page Example</Link>
+                    </li>
+                    <li>
+                      <Link to="/timeline">Past Family Events</Link>
+                    </li>
+                    <li>
+                      <Link to="/user">User Settings Example</Link>
+                    </li>
+                    <li>
+                      <Link to="/comingsoon">Coming Soon Page</Link>
+                    </li>
+                    <li>
+                      <Link to="/lineage">Lineage (under construction)</Link>
+                    </li>
+                    <li>
+                      <Link to="/404">Not Found Page</Link>
+                    </li>
+                    <li>
+                      <Link to="/500">Server Error Page</Link>
+                    </li>
+                  </ul>
+                </nav> */}
+
+                <Switch>
+                  <Route path={urls.faqUrl}>
+                    <FrequentlyAskedQuestions />
+                  </Route>
+                  <Route path={urls.memberUrl}>
+                    <Members />
+                  </Route>
+                  <Route path={urls.timelineUrl}>
+                    <TimelineEvents />
+                  </Route>
+                  <Route path={urls.userUrl}>
+                    {/* <UserSettings firstName="Harry" lastName="Potter" email="halfbloodprince@gmail.com" {...this.state} /> */}
+                  </Route>
+                  <Route path={urls.comingSoonUrl}>
+                    <ComingSoon />
+                  </Route>
+                  <Route path={urls.lineageUrl}>
+                    {/* <Lineage 
+                      name={this.state.members[4].firstName} 
+                      birth={concatenateDate(this.state.members[4].birthDay, this.state.members[4].birthMonth, this.state.members[4].birthYear)} 
+                      death={concatenateDate(this.state.members[4].deathDay, this.state.members[4].deathMonth, this.state.members[4].deathYear)} 
+                      parents={[this.state.members[4].primaryParentId, this.state.members[4].secondaryParentId]} 
+                    /> */}
+                    <Redirect to={urls.comingSoonUrl} />
+                  </Route>
+                  <Route path={urls.notFoundUrl}>
+                    <Page404 />
+                  </Route>
+                  <Route path={urls.serverErrorUrl}>
+                    <Page500 />
+                  </Route>
+                  <Route path={urls.galleryUrl}>
+                    <Gallery />
+                  </Route>
+                  <Route path={urls.artifactsUrl}>
+                    <Artifacts />
+                  </Route>
+                  <Route path="/">
+                    <Main />
+                  </Route>
+                </Switch>
+              </div>
+            </Router>
+          </Base>
         </div>
       </Provider>
+      // <Provider store={store}>
+      //   <div className='App'>
+      //     {/* <FrequentlyAskedQuestions /> */}
+      //     {/* <TimelineEvents /> */}
+      //     {/* <Members /> */}
+      //     <Artifacts />
+      //   </div>
+      // </Provider>
     );
   }
 }
