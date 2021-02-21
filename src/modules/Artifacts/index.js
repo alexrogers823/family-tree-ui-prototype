@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -47,7 +47,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Artifacts = props => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    props.getAllArtifacts();
+  }, []);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);

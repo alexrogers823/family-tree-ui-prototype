@@ -27,10 +27,6 @@ const AddEventModal = props => {
   );
 };
 
-const mapStateToProps = () => {
-  return {}
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     postNewEvent: newEvent => dispatch(postNewEvent(newEvent))
@@ -38,6 +34,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps 
 )(AddEventModal);

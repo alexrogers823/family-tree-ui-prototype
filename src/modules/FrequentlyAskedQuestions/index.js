@@ -36,7 +36,6 @@ const FrequentlyAskedQuestions = props => {
   // const dispatch = useDispatch();
 
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
-  console.log('faq props', props);
 
   useEffect(() => {
     props.getAllQuestions();
