@@ -9,7 +9,8 @@ export const getAllEvents = () => {
   }
 };
 
-export const postNewEvent = () => {
+export const postNewEvent = timelineEvent => {
+  console.log('event emitted', timelineEvent);
   return {
     type: POST_NEW_EVENT
   }

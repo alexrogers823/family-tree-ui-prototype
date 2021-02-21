@@ -26,6 +26,7 @@ export const TextArea = (props) => (
 
 const Form = props => {
   const [open, setOpen] = useState(false);
+  const [formValue, setFormValue] = useState({});
 
   useEffect(() => {
     setOpen(props.isOpen)
@@ -46,8 +47,11 @@ const Form = props => {
         {props.button &&
           <Button 
             color="primary"
-            onClick={() => {
-              // props.postChange()
+            onClick={e => {
+              console.log('button pressed', e);
+              if (props.onClick) {
+                props.onClick(e.target.value);
+              }
               props.closeModal()
             }}
           >

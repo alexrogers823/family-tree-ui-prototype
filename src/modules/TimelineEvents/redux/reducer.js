@@ -6,7 +6,7 @@ import {
 import { timelineData } from '../../../dummyData';
 
 const INIT_STATE = {
-  timelineEvents: [ ...timelineData ]
+  timelineEvents: []
 };
 
 export default (state = INIT_STATE, action) => {

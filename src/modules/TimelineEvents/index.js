@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,6 +36,10 @@ const useStyles = makeStyles(theme => ({
 const TimelineEvents = props => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    props.getAllEvents();
+  }, []);
 
   return (
     <Fragment>
@@ -85,7 +89,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getAllEvents: () => dispatch(getAllEvents()),
-    postNewEvent: () => dispatch(postNewEvent())
   }
 }
 
