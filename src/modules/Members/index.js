@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -17,6 +17,13 @@ import { getAllFamilyMembers } from './redux/actions';
 
 const ChosenMember = props => {
   let { topicId } = useParams();
+
+  useEffect(() => {
+    props.getAllFamilyMembers();
+  }, []);
+
+  console.log('id', topicId);
+  console.log('props', props);
 
   return (
     <Member 
@@ -51,11 +58,19 @@ const ChosenMember = props => {
 const Members = (props) => {
   let match = useRouteMatch();
 
+  console.log('parent props', props);
+  
+  useEffect(() => {
+    props.getAllFamilyMembers();
+  }, []);
+
   return (
     <div>
       <Switch>
-        <Route path={`${match.path}/:topicId`}>
-          <ChosenMember {...props} />
+        <Route 
+          path={`${match.path}/:topicId`}
+          render={props => <ChosenMember {...props} />}
+        >
         </Route>
         <Route path={match.path}>
           <h3>Family member pages by their id. Put '/1' after the url as an example.</h3>

@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+
 import PropTypes from 'prop-types';
 import { Container, Paper, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +12,8 @@ import { concatenateDate } from '../../../utils';
 
 import Button from '../../../components/common/Button';
 import EditMemberPageModal from '../../../components/EditMemberPageModal';
+
+import { getAllFamilyMembers } from '../redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -92,6 +96,12 @@ const useStyles = makeStyles(theme => ({
 const Member = props => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    props.getAllFamilyMembers();
+  }, []);
+
+  console.log('child props', props);
 
   let name = '';
   name += props.firstName;
@@ -187,4 +197,20 @@ Member.propTypes = {
   offspring: PropTypes.array,
 }
 
-export default Member;
+const mapStateToProps = state => {
+  return {
+    // members: state.membersReducer.members
+    ...state.membersReducer
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllFamilyMembers: () => dispatch(getAllFamilyMembers())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps 
+)(Member);
