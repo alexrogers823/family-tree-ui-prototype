@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Accordion,
@@ -33,19 +33,18 @@ const useStyles = makeStyles(theme => ({
 
 const FrequentlyAskedQuestions = props => {
   const classes = useStyles();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
 
   useEffect(() => {
-    props.getAllQuestions();
+    dispatch(getAllQuestions());
   }, [])
 
-  // const questions = useSelector(state => state.questions);
-  // const dispatch = useDispatch()
+  const questions = useSelector(state => state.faqReducer.questions);
 
   const ListOfQuestions = () => {
-    return props.questions.map((q, i) => {
+    return questions.map((q, i) => {
       return (
         <Accordion key={`Question ${i}`} className={classes.root}>
           <AccordionSummary
@@ -75,7 +74,7 @@ const FrequentlyAskedQuestions = props => {
           Contact the administrator
         </Link>
       </h3>
-      <button onClick={props.postNewQuestion}>Test dispatch</button>
+      <button onClick={() => dispatch(postNewQuestion())}>Test dispatch</button>
       <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
     </div>
   );
@@ -85,20 +84,17 @@ FrequentlyAskedQuestions.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
-const mapStateToProps = state => {
-  return {
-    ...state.faqReducer
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     ...state.faqReducer
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllQuestions: () => dispatch(getAllQuestions()),
-    postNewQuestion: () => dispatch(postNewQuestion())
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getAllQuestions: () => dispatch(getAllQuestions()),
+//     postNewQuestion: () => dispatch(postNewQuestion())
+//   }
+// }
 
-export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
-)(FrequentlyAskedQuestions);
+export default FrequentlyAskedQuestions;
