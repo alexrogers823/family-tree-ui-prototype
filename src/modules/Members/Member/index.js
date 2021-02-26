@@ -13,7 +13,10 @@ import { concatenateDate } from '../../../utils';
 import Button from '../../../components/common/Button';
 import EditMemberPageModal from '../../../components/EditMemberPageModal';
 
-import { getAllFamilyMembers } from '../redux/actions';
+import { 
+  getAllFamilyMembers,
+  getFamilyMemberById 
+} from '../redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -98,8 +101,9 @@ const Member = props => {
   const [openModal, setOpenModal] = useState(false);
 
   const members = useSelector(state => state.membersReducer.members);
+
   // TODO: Remove once getMemberById is in redux 
-  const member = members[props.pageId];
+  const member = useSelector(state => state.membersReducer.member);
 
   const dispatch = useDispatch();
 
@@ -107,6 +111,7 @@ const Member = props => {
 
   useEffect(() => {
     dispatch(getAllFamilyMembers());
+    dispatch(getFamilyMemberById(props.pageId));
   }, []);
 
   console.log('child props', props);

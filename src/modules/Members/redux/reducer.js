@@ -1,5 +1,6 @@
 import {
-  GET_ALL_FAMILY_MEMBERS
+  GET_ALL_FAMILY_MEMBERS,
+  GET_FAMILY_MEMBER_BY_ID
 } from "./actionTypes";
 
 import { familyMembers } from '../../../memberData';
@@ -15,6 +16,12 @@ export default (state =  INIT_STATE, action) => {
       return { 
         ...state,
         members: [ ...familyMembers ],
+      }
+
+    case GET_FAMILY_MEMBER_BY_ID:
+      return {
+        ...state,
+        member: familyMembers[action.payload]
       }
 
     default:
