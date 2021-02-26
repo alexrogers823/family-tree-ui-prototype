@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { Container, Paper, Link, Typography } from '@material-ui/core';
@@ -97,8 +97,16 @@ const Member = props => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
 
+  const members = useSelector(state => state.membersReducer.members);
+  // TODO: Remove once getMemberById is in redux 
+  const member = members[props.pageId];
+
+  const dispatch = useDispatch();
+
+  console.log('member', member);
+
   useEffect(() => {
-    props.getAllFamilyMembers();
+    dispatch(getAllFamilyMembers());
   }, []);
 
   console.log('child props', props);
@@ -197,20 +205,17 @@ Member.propTypes = {
   offspring: PropTypes.array,
 }
 
-const mapStateToProps = state => {
-  return {
-    // members: state.membersReducer.members
-    ...state.membersReducer
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     // members: state.membersReducer.members
+//     ...state.membersReducer
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllFamilyMembers: () => dispatch(getAllFamilyMembers())
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getAllFamilyMembers: () => dispatch(getAllFamilyMembers())
+//   }
+// }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps 
-)(Member);
+export default Member;

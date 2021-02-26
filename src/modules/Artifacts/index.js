@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -19,6 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {
   getAllArtifacts
 } from './redux/actions';
+import { getAllEvents } from '../TimelineEvents/redux/actions';
 
 // page specifically for family documents (marriage licenses, deeds, etc) 
 
@@ -49,8 +50,11 @@ const Artifacts = props => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
+  const artifacts = useSelector(state => state.artifactsReducer.artifacts);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    props.getAllArtifacts();
+    dispatch(getAllArtifacts());
   }, []);
 
   const handleExpandClick = () => {
@@ -61,7 +65,7 @@ const Artifacts = props => {
     <Fragment>
       <h1>Artifacts</h1>
       {
-        props.artifacts.map(artifact => {
+        artifacts.map(artifact => {
           return (
             <Card className={classes.root} variant="outlined">
               <CardHeader
@@ -113,22 +117,17 @@ const Artifacts = props => {
   )
 };
 
-const mapStateToProps = state => {
-  return {
-    // artifacts: state.artifactsReducer.artifacts
-    ...state.artifactsReducer
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     // artifacts: state.artifactsReducer.artifacts
+//     ...state.artifactsReducer
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllArtifacts: () => dispatch(getAllArtifacts())
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getAllArtifacts: () => dispatch(getAllArtifacts())
+//   }
+// }
 
-export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
-)(Artifacts);
-
-// export default Artifacts;
+export default Artifacts;

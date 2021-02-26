@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -37,8 +37,11 @@ const TimelineEvents = props => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
 
+  const timelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    props.getAllEvents();
+    dispatch(getAllEvents());
   }, []);
 
   return (
@@ -49,7 +52,7 @@ const TimelineEvents = props => {
       </div>
 
       <Timeline align="right">
-        {props.timelineEvents.map(ev => {
+        {timelineEvents.map(ev => {
           return (
             <Fragment>
               <TimelineItem>
@@ -79,20 +82,17 @@ TimelineEvents.propTypes = {
   timelineEvents: PropTypes.arrayOf(PropTypes.object)
 }
 
-const mapStateToProps = state => {
-  return {
-    // timelineEvents: state.timelineEventsReducer.timelineEvents
-    ...state.timelineEventsReducer
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     // timelineEvents: state.timelineEventsReducer.timelineEvents
+//     ...state.timelineEventsReducer
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllEvents: () => dispatch(getAllEvents()),
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getAllEvents: () => dispatch(getAllEvents()),
+//   }
+// }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps 
-)(TimelineEvents);
+export default TimelineEvents;
