@@ -15,7 +15,11 @@ import AddEventModal from '../../components/AddEventModal';
 import Button from '../../components/common/Button';
 import { mapIntToMonth } from '../../utils';
 
-import { getAllEvents, postNewEvent } from './redux/actions';
+import { 
+  getAllEvents, 
+  getTimelineEventById,
+  createTimelineEvent 
+} from './redux/actions';
 
 
 const useStyles = makeStyles(theme => ({
@@ -38,11 +42,15 @@ const TimelineEvents = props => {
   const [openModal, setOpenModal] = useState(false);
 
   const timelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents);
+  const timelineEvent = useSelector(state => state.timelineEventsReducer.timelineEvent);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllEvents());
+    dispatch(getTimelineEventById(2));
   }, []);
+
+  console.log('single event', timelineEvent);
 
   return (
     <Fragment>

@@ -1,12 +1,14 @@
 import {
   GET_ALL_EVENTS,
-  POST_NEW_EVENT
+  GET_TIMELINE_EVENT_BY_ID,
+  CREATE_TIMELINE_EVENT
 } from "./actionTypes";
 
 import { timelineData } from '../../../dummyData';
 
 const INIT_STATE = {
-  timelineEvents: []
+  timelineEvents: [],
+  timelineEvent: {}
 };
 
 export default (state = INIT_STATE, action) => {
@@ -17,7 +19,13 @@ export default (state = INIT_STATE, action) => {
         timelineEvents: [ ...timelineData ], 
       }
 
-    case POST_NEW_EVENT:
+    case GET_TIMELINE_EVENT_BY_ID:
+      return {
+        ...state,
+        timelineEvent: timelineData.find(ev => ev.id === action.payload)
+      }
+
+    case CREATE_TIMELINE_EVENT:
       return {
         ...state,
         timelineEvents: [

@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import { Date, Button, Modal } from '../common';
 import Form, { TextArea } from '../common/Form';
 
-import { postNewEvent } from '../../modules/TimelineEvents/redux/actions';
+import { createTimelineEvent } from '../../modules/TimelineEvents/redux/actions';
 
 const AddEventModal = props => {
-  // const [newEvent, setNewEvent] = useState({});
+  const [newEvent, setNewEvent] = useState({});
 
   return (
     <Form 
       title="Add an event"
       button="POST IT!"
       isOpen={props.isOpen}
-      onClick={props.postNewEvent}
+      onClick={props.createTimelineEvent}
       closeModal={props.closeModal}
     >
       <Date label="Event Date" />
@@ -29,7 +29,7 @@ const AddEventModal = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    postNewEvent: newEvent => dispatch(postNewEvent(newEvent))
+    createTimelineEvent: newEvent => dispatch(createTimelineEvent(newEvent))
   }
 }
 

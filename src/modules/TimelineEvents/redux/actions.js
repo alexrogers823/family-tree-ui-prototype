@@ -1,6 +1,7 @@
 import { 
   GET_ALL_EVENTS,
-  POST_NEW_EVENT 
+  GET_TIMELINE_EVENT_BY_ID,
+  CREATE_TIMELINE_EVENT 
 } from "./actionTypes";
 
 export const getAllEvents = () => {
@@ -9,9 +10,16 @@ export const getAllEvents = () => {
   }
 };
 
-export const postNewEvent = timelineEvent => {
+export const getTimelineEventById = (id = 0) => {
+  return {
+    type: GET_TIMELINE_EVENT_BY_ID,
+    payload: id
+  }
+}
+
+export const createTimelineEvent = (timelineEvent = {}) => {
   console.log('event emitted', timelineEvent);
   return {
-    type: POST_NEW_EVENT
+    type: CREATE_TIMELINE_EVENT
   }
 };
