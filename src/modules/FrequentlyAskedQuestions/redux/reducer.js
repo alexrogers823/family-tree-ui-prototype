@@ -1,6 +1,7 @@
 import {
   GET_ALL_QUESTIONS,
-  POST_NEW_QUESTION
+  POST_NEW_QUESTION,
+  DELETE_QUESTION
 } from "./actionTypes";
 
 import { faqData } from '../../../dummyData';
@@ -21,6 +22,12 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         questions: [ ...state.questions, {id: 999, question: 'test question', answer: 'test answer'} ],
+      }
+
+    case DELETE_QUESTION:
+      return {
+        ...state,
+        questions: state.questions.filter(question => question.id !== action.payload)
       }
 
     default:

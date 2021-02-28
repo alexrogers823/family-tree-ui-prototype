@@ -14,7 +14,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from '../../components/common/Link';
 import ContactAdminModal from '../../components/ContactAdminModal';
 
-import { getAllQuestions, postNewQuestion } from './redux/actions';
+import { 
+  getAllQuestions, 
+  postNewQuestion,
+  deleteQuestion
+ } from './redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -75,6 +79,7 @@ const FrequentlyAskedQuestions = props => {
         </Link>
       </h3>
       <button onClick={() => dispatch(postNewQuestion())}>Test dispatch</button>
+      <button onClick={() => dispatch(deleteQuestion())}>Test deletion</button>
       <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
     </div>
   );

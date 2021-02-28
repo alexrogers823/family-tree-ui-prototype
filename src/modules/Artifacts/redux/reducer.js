@@ -21,7 +21,7 @@ export default (state = INIT_STATE, action) => {
     case GET_ARTIFACT_BY_ID:
       return {
         ...state,
-        artifact: artifacts.find(doc => doc.id === action.payload)
+        artifact: artifactData.find(doc => doc.id === action.payload)
       }
 
     default:
