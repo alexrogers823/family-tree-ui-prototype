@@ -1,4 +1,7 @@
-import { USER_AUTHENTICATED } from "./actionTypes";
+import {
+  LOGIN_USER,
+  LOGOUT_USER
+} from "./actionTypes"
 
 const INIT_STATE = {
   authenticated: false
@@ -7,10 +10,16 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
 
-    case USER_AUTHENTICATED:
+    case LOGIN_USER:
       return {
         ...state,
         authenticated: true
+      }
+
+    case LOGOUT_USER:
+      return {
+        ...state,
+        authenticated: false
       }
 
     default:

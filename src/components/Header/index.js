@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppBar, Toolbar, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -14,6 +15,11 @@ import {
 import AddMemberModal from '../AddMemberModal';
 import Login from '../Login';
 import Signup from '../Signup';
+
+import {
+  loginUser,
+  logoutUser
+} from '../../modules/UserSettings/redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,7 +40,7 @@ const Header = props => {
   const [openMemberModal, setOpenMemberModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [color, setColor] = useState({
     artifacts: 'inherit',
     lineage: 'inherit',
@@ -42,6 +48,10 @@ const Header = props => {
     gallery: 'inherit',
     faq: 'inherit'
   });
+
+  const dispatch = useDispatch();
+
+  const isAuthenticated = useSelector(state => state.usersReducer.authenticated)
 
   const closeModal = modal => {
     if (modal === 'member') {
@@ -119,7 +129,7 @@ const Header = props => {
           }
           {
             isAuthenticated ?
-              <Link className={`${classes.link} ${classes.right}`} color="inherit" href="#">
+              <Link className={`${classes.link} ${classes.right}`} color="inherit" onClick={() => dispatch(logoutUser())} href="#">
                 Logout
               </Link>
             : <Link 
@@ -141,7 +151,13 @@ const Header = props => {
           </Link>
         </div>
         <AddMemberModal isOpen={openMemberModal} closeModal={() => closeModal('member')} />
-        <Login isOpen={openLoginModal} closeModal={() => closeModal('login')} />
+        <Login 
+          isOpen={openLoginModal} 
+          closeModal={() => {
+            closeModal('login');
+            dispatch(loginUser());
+          }} 
+        />
         <Signup isOpen={openSignupModal} closeModal={() => closeModal('signup')} />
       </Toolbar>
     </AppBar>

@@ -1,8 +1,17 @@
-import { USER_AUTHENTICATED } from "./actionTypes";
+import { 
+  LOGIN_USER,
+  LOGOUT_USER
+} from "./actionTypes";
 
-export const userAuthenticated = () => {
+export const loginUser = () => {
   return {
-    type: USER_AUTHENTICATED
+    type: LOGIN_USER
+  }
+};
+
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER
   }
 };
 
