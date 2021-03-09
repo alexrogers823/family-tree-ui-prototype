@@ -13,6 +13,7 @@ const ChosenDate = props => {
 
   const handleDateChange = date => {
     setSelectedDate(date);
+    console.log('new date', date);
   };
 
   return (
@@ -26,7 +27,7 @@ const ChosenDate = props => {
         id="date-picker-inline"
         label={props.label || ""}
         value={selectedDate}
-        onChange={handleDateChange}
+        onChange={props.onChange ? props.onChange : handleDateChange}
         KeyboardButtonProps={{
           'aria-label': 'change date',
         }}

@@ -30,15 +30,7 @@ export default (state = INIT_STATE, action) => {
         ...state,
         timelineEvents: [
           ...timelineData,
-          {
-            id: 6,
-            day: 6,
-            month: 1,
-            year: 2021,
-            createdOn: null,
-            createdByUserId: 17,
-            timelineEvent: action.payload
-          }
+          action.payload
         ]
       }
 

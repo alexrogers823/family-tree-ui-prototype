@@ -48,7 +48,6 @@ const Form = props => {
           <Button 
             color="primary"
             onClick={e => {
-              console.log('button pressed', e);
               if (props.onClick) {
                 props.onClick(e.target.value);
               }
