@@ -17,9 +17,10 @@ export const getTimelineEventById = (id = 0) => {
   }
 }
 
-export const createTimelineEvent = (timelineEvent = {}) => {
+export const createTimelineEvent = (timelineEvent = 'test') => {
   console.log('event emitted', timelineEvent);
   return {
-    type: CREATE_TIMELINE_EVENT
+    type: CREATE_TIMELINE_EVENT,
+    payload: timelineEvent
   }
 };

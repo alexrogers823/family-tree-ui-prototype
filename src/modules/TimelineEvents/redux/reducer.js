@@ -37,7 +37,7 @@ export default (state = INIT_STATE, action) => {
             year: 2021,
             createdOn: null,
             createdByUserId: 17,
-            timelineEvent: "Idiots breach the capitol"
+            timelineEvent: action.payload
           }
         ]
       }

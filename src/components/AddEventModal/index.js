@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import { Date, Button, Modal } from '../common';
 import Form, { TextArea } from '../common/Form';
@@ -6,15 +7,19 @@ import Form, { TextArea } from '../common/Form';
 import { createTimelineEvent } from '../../modules/TimelineEvents/redux/actions';
 
 const AddEventModal = props => {
-  const [newEvent, setNewEvent] = useState({});
+  const [newEvent, setNewEvent] = useState('test');
+  const dispatch = useDispatch();
+
+  console.log('new event', newEvent);
 
   return (
     <Form 
       title="Add an event"
       button="POST IT!"
       isOpen={props.isOpen}
-      onClick={props.createTimelineEvent}
+      onClick={() => dispatch(createTimelineEvent(newEvent))}
       closeModal={props.closeModal}
+      onChange={e => setNewEvent(e.target.value)}
     >
       <Date label="Event Date" />
       <TextArea 
@@ -27,13 +32,4 @@ const AddEventModal = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createTimelineEvent: newEvent => dispatch(createTimelineEvent(newEvent))
-  }
-}
-
-export default connect(
-  null,
-  mapDispatchToProps 
-)(AddEventModal);
+export default AddEventModal;
