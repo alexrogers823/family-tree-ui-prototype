@@ -1,6 +1,7 @@
 import { 
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
+  CREATE_USER
 } from "./actionTypes";
 
 export const loginUser = () => {
@@ -14,4 +15,10 @@ export const logoutUser = () => {
     type: LOGOUT_USER
   }
 };
+
+export const createUser = () => {
+  return {
+    type: CREATE_USER
+  }
+}
 

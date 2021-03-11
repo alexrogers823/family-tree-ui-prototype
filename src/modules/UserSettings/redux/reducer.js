@@ -1,4 +1,5 @@
 import {
+  CREATE_USER,
   LOGIN_USER,
   LOGOUT_USER
 } from "./actionTypes"
@@ -20,6 +21,12 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         authenticated: false
+      }
+
+    case CREATE_USER:
+      return {
+        ...state,
+        authenticated: true
       }
 
     default:
