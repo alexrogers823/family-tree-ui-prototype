@@ -5,7 +5,8 @@ import {
 } from "./actionTypes"
 
 const INIT_STATE = {
-  authenticated: false
+  authenticated: false,
+  user: {}
 };
 
 export default (state = INIT_STATE, action) => {
@@ -26,7 +27,8 @@ export default (state = INIT_STATE, action) => {
     case CREATE_USER:
       return {
         ...state,
-        authenticated: true
+        authenticated: true,
+        user: action.payload
       }
 
     default:

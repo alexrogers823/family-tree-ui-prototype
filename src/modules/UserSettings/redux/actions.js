@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import { 
   LOGIN_USER,
   LOGOUT_USER,
@@ -18,7 +20,17 @@ export const logoutUser = () => {
 
 export const createUser = () => {
   return {
-    type: CREATE_USER
+    type: CREATE_USER,
+    payload: {
+      id: 1,
+      firstName: "Barry",
+      middleName: "Alex",
+      lastName: "Rogers",
+      email: "alex.rogers823@gmail.com",
+      password: "test",
+      createdOn: moment("2021-03-01"),
+      lastLoggedIn: moment()
+    }
   }
 }
 
