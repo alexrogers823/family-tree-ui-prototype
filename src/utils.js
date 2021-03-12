@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const mapIntToMonth = month => {
   const months = {
     "1": "January",
@@ -31,7 +33,12 @@ const concatenateDate = (day = null, month = null, year = null) => {
   return output
 };
 
+const convertToDate = (dateObj, format = "M/D/YYYY") => {
+  return moment(dateObj).format(format);
+}
+
 export {
   mapIntToMonth,
   concatenateDate,
+  convertToDate
 }
