@@ -1,12 +1,14 @@
 import {
   CREATE_USER,
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
+  CHANGE_APPEARANCE
 } from "./actionTypes"
 
 const INIT_STATE = {
   authenticated: false,
-  user: {}
+  user: {},
+  theme: 'light'
 };
 
 export default (state = INIT_STATE, action) => {
@@ -29,6 +31,12 @@ export default (state = INIT_STATE, action) => {
         ...state,
         authenticated: true,
         user: action.payload
+      }
+
+    case CHANGE_APPEARANCE:
+      return {
+        ...state,
+        theme: action.payload
       }
 
     default:

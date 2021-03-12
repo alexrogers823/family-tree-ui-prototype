@@ -13,7 +13,8 @@ import EventsCreatedSettings from './EventsCreatedSettings';
 import AppearanceThemeSettings from './AppearanceThemeSettings';
 
 import {
-  createUser
+  createUser,
+  changeAppearance
 } from './redux/actions';
 
 function TabPanel(props) {
@@ -71,6 +72,7 @@ const UserSettings = props => {
   const { timelineEvents } = props;
 
   const user = useSelector(state => state.usersReducer.user);
+  // const theme = useSelector(state => state.usersReducer.theme);
 
   useEffect(() => {
     dispatch(createUser());

@@ -3,7 +3,8 @@ import moment from 'moment';
 import { 
   LOGIN_USER,
   LOGOUT_USER,
-  CREATE_USER
+  CREATE_USER,
+  CHANGE_APPEARANCE
 } from "./actionTypes";
 
 export const loginUser = () => {
@@ -31,6 +32,13 @@ export const createUser = () => {
       createdOn: moment("2021-03-01"),
       lastLoggedIn: moment()
     }
+  }
+}
+
+export const changeAppearance = theme => {
+  return {
+    type: CHANGE_APPEARANCE,
+    payload: theme
   }
 }
 
