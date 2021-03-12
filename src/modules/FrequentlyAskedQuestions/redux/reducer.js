@@ -1,5 +1,8 @@
 import {
   GET_ALL_QUESTIONS,
+  GET_ALL_QUESTIONS_REQUEST,
+  GET_ALL_QUESTIONS_SUCCESS,
+  GET_ALL_QUESTIONS_FAILURE,
   POST_NEW_QUESTION,
   DELETE_QUESTION
 } from "./actionTypes";
@@ -7,7 +10,9 @@ import {
 import { faqData } from '../../../dummyData';
 
 const INIT_STATE = {
-  questions: [], 
+  loading: false,
+  questions: [],
+  error: '' 
 };
 
 export default (state = INIT_STATE, action) => {
@@ -15,7 +20,28 @@ export default (state = INIT_STATE, action) => {
 
     case GET_ALL_QUESTIONS:
       return { 
+        ...state,
         questions: [ ...faqData ]
+      }
+
+    case GET_ALL_QUESTIONS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case GET_ALL_QUESTIONS_SUCCESS:
+      return {
+        loading: false,
+        questions: action.payload,
+        error: ''
+      }
+
+    case GET_ALL_QUESTIONS_FAILURE:
+      return {
+        loading: false,
+        questions: [],
+        error: action.payload
       }
 
     case POST_NEW_QUESTION:
