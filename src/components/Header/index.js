@@ -9,7 +9,8 @@ import {
   galleryUrl,
   lineageUrl,
   timelineUrl,
-  userUrl
+  userUrl,
+  memberUrl
 } from '../../urls';
 
 import AddMemberModal from '../AddMemberModal';
@@ -46,7 +47,8 @@ const Header = props => {
     lineage: 'inherit',
     timeline: 'inherit',
     gallery: 'inherit',
-    faq: 'inherit'
+    faq: 'inherit',
+    members: 'inherit'
   });
 
   const dispatch = useDispatch();
@@ -97,7 +99,6 @@ const Header = props => {
             href={artifactsUrl}
             onClick={() => {
               setColor({...color, artifacts: 'textPrimary'})
-              console.log('new color', color);
             }}
           >
             Artifacts
@@ -109,6 +110,14 @@ const Header = props => {
             onClick={() => setColor({...color, faq: 'textPrimary'})}
           >
             FAQ
+          </Link>
+          <Link
+            className={`${classes.link}`}
+            color={color.members}
+            href={memberUrl}
+            onClick={() => setColor({...color, members: 'textPrimary'})}
+          >
+            Members
           </Link>
           {isAuthenticated &&
             <Link 

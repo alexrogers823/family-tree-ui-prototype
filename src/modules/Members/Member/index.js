@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import _ from 'lodash';
 
 import PropTypes from 'prop-types';
 import { Container, Paper, Link, Typography } from '@material-ui/core';
@@ -96,9 +98,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Member = props => {
+const arrangeBiography = member => {
+  const memberBio = Object.entries(member)
+    .filter(key => key[0].startsWith('bio') 
+                && key[1])
+    .map(key => key[1]);
+
+  if (_.isEmpty(memberBio)) {
+    return <h3>No information added yet for {member.preferredName || member.firstName}. Be the first to add it!</h3>
+  }
+
+  console.log('memberBio', memberBio);
+  return (
+    memberBio.map(val => {
+      return (
+        <p>{val}</p>
+      )
+    })
+  );
+};
+
+const Member = () => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
+  let { topicId } = useParams();
 
   const members = useSelector(state => state.membersReducer.members);
 
@@ -107,88 +130,92 @@ const Member = props => {
 
   const dispatch = useDispatch();
 
-  console.log('member', member);
-
   useEffect(() => {
     dispatch(getAllFamilyMembers());
-    dispatch(getFamilyMemberById(props.pageId));
+    dispatch(getFamilyMemberById(topicId));
   }, []);
+  
+  const arrangeName = member => {
+    if (!member) {
+      return {}
+    };
 
-  console.log('child props', props);
-
-  let name = '';
-  name += props.firstName;
-  if (props.middleName) {
-    name += ` ${props.middleName.charAt(0)}.`;
+    let name = '';
+    name += member.firstName;
+    if (member.middleName) {
+      name += ` ${member.middleName.charAt(0)}.`;
+    }
+  
+    if (member.lastName) {
+      name += ` ${member.lastName}`;
+    }
+  
+    if (member.preferredName) {
+      name += ` (${member.preferredName})`;
+    }
   }
 
-  if (props.lastName) {
-    name += ` ${props.lastName}`;
-  }
-
-  if (props.preferredName) {
-    name += ` (${props.preferredName})`;
-  }
 
   return (
     <Container>
       <Paper className={classes.root} elevation={3}>
-        <div className={classes.memberStats}>
-          <img src={adellaSample} alt={`Photo of ${props.firstName}`} className={`${classes.image} ${props.death && classes.deceased}`}/>
-          <div className={classes.memberStatText}>
-            {props.preferredName
-              ? <Fragment>
-                  <h1 className={classes.memberName}>{props.preferredName} {props.lastName}</h1>
-                  <p className={classes.memberNameAlt}>{`Neé ${props.firstName} ${props.middleName} ${props.lastName}`}</p>
-                </Fragment>
-              : <h1 className={classes.memberName}>{name}</h1>
-            }
-            <h3 className={classes.lifeRange}>
-              b. {concatenateDate(props.birthDay, props.birthMonth, props.birthYear)}
-              {!props.isAlive && `, d. ${concatenateDate(props.deathDay, props.deathMonth, props.deathYear)}`}
-            </h3>
-            <h3 className={classes.birthplace}>Birthplace: {props.birthplace}</h3>
-            <h3 className={classes.residence}>Residence: {props.residence}</h3>
+        {member &&
+        <Fragment>
+          <div className={classes.memberStats}>
+            <img src={adellaSample} alt={`Photo of ${member.firstName}`} className={`${classes.image} ${member.death && classes.deceased}`}/>
+            <div className={classes.memberStatText}>
+              {member.preferredName
+                ? <Fragment>
+                    <h1 className={classes.memberName}>{member.preferredName} {member.lastName}</h1>
+                    <p className={classes.memberNameAlt}>{`Neé ${member.firstName} ${member.middleName} ${member.lastName}`}</p>
+                  </Fragment>
+                : <h1 className={classes.memberName}>{arrangeName(member)}</h1>
+              }
+              <h3 className={classes.lifeRange}>
+                b. {concatenateDate(member.birthDay, member.birthMonth, member.birthYear)}
+                {!member.isAlive && `, d. ${concatenateDate(member.deathDay, member.deathMonth, member.deathYear)}`}
+              </h3>
+              <h3 className={classes.birthplace}>Birthplace: {member.birthplace}</h3>
+              <h3 className={classes.residence}>Residence: {member.residence}</h3>
+            </div>
           </div>
-        </div>
 
-        <div className={classes.body}>
-          {props.bio
-            ? props.bio.map(line => <Typography paragraph>{line}</Typography>)
-            : <h3>No information added yet for {props.firstName}. Be the first to add it!</h3>
+          <div className={classes.body}>
+            {arrangeBiography(member)}
+          </div>
+          <hr />
+          <div className={classes.lineage}>
+            <span>Parents: </span>
+            {member.parents 
+            ? member.parents.map((parent, i) => {
+              return (i > 0) ? <span>&amp;<Link className={classes.link}>{parent}</Link></span> : <Link className={classes.link}>{parent}</Link>
+            })
+            : <span>Unknown</span>
           }
-        </div>
-        <hr />
-        <div className={classes.lineage}>
-          <span>Parents: </span>
-          {props.parents 
-          ? props.parents.map((parent, i) => {
-            return (i > 0) ? <span>&amp;<Link className={classes.link}>{parent}</Link></span> : <Link className={classes.link}>{parent}</Link>
-          })
-          : <span>Unknown</span>
-          }
-          {
-            props.spouse && 
-            <p>Spouse: <Link className={classes.link}>{props.spouse}</Link></p>
-          }
-          {
-            props.offspring && 
-            <Fragment>
-              <p>Children: </p>
-              <ul>
-                {props.offspring.map((child, i) => {
-                  return <Link key={i} className={`${classes.children} ${classes.link}`}>{child}</Link>
-                })}
-              </ul>
-            </Fragment>
-          }
-        </div>
-        <Button
+            {
+              member.spouse && 
+              <p>Spouse: <Link className={classes.link}>{member.spouse}</Link></p>
+            }
+            {
+              member.offspring && 
+              <Fragment>
+                <p>Children: </p>
+                <ul>
+                  {member.offspring.map((child, i) => {
+                    return <Link key={i} className={`${classes.children} ${classes.link}`}>{child}</Link>
+                  })}
+                </ul>
+              </Fragment>
+            }
+          </div>
+          <Button
           onClick={() => setOpenModal(true)}
-        >
-          Edit Member Info
-        </Button>
-        <EditMemberPageModal firstName={props.firstName} isOpen={openModal} closeModal={() => setOpenModal(false)} />
+          >
+            Edit Member Info
+          </Button>
+          <EditMemberPageModal firstName={member.firstName} isOpen={openModal} closeModal={() => setOpenModal(false)} />
+      </Fragment>
+      }
       </Paper>
     </Container>
     );

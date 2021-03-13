@@ -1,5 +1,23 @@
 import moment from 'moment';
 
+const concatenateDate = (day = null, month = null, year = null) => {
+  let output = '';
+  if (month && day) {
+    output += `${mapIntToMonth(month)} ${day}, `;
+  } else if (month) {
+    output += `${mapIntToMonth(month)}, `;
+  }
+  if (year) {
+    output += year
+  }
+
+  return output
+};
+
+const convertToDate = (dateObj, format = "M/D/YYYY") => {
+  return moment(dateObj).format(format);
+}
+
 const mapIntToMonth = month => {
   const months = {
     "1": "January",
@@ -19,26 +37,8 @@ const mapIntToMonth = month => {
   return months[`${month}`];
 }
 
-const concatenateDate = (day = null, month = null, year = null) => {
-  let output = '';
-  if (month && day) {
-    output += `${mapIntToMonth(month)} ${day}, `;
-  } else if (month) {
-    output += `${mapIntToMonth(month)}, `;
-  }
-  if (year) {
-    output += year
-  }
-
-  return output
-};
-
-const convertToDate = (dateObj, format = "M/D/YYYY") => {
-  return moment(dateObj).format(format);
-}
-
 export {
-  mapIntToMonth,
   concatenateDate,
-  convertToDate
+  convertToDate,
+  mapIntToMonth,
 }
