@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { 
   GET_ALL_QUESTIONS,
   GET_ALL_QUESTIONS_REQUEST,
@@ -12,6 +14,21 @@ export const getAllQuestions = () => {
     type: GET_ALL_QUESTIONS
   }
 };
+
+// export const getAllQuestions = () => {
+//   return dispatch => {
+//     dispatch(getAllQuestionsRequest)
+//     axios.get('url')
+//       .then(res => {
+//         const questions = res.data
+//         dispatch(getAllQuestionsSuccess(questions))
+//       })
+//       .catch(err => {
+//         const errMsg = err.message
+//         dispatch(getAllQuestionsFailure(errMsg))
+//       })
+//   }
+// }
 
 export const getAllQuestionsRequest = () => {
   return {

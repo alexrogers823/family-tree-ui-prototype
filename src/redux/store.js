@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 
@@ -75,6 +76,7 @@ import timelineEvents from '../modules/TimelineEvents/redux/reducer';
 // console.log('all reducers', rootReducer)
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger)));
+// const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger, thunk)));
 // console.log('Initial state', store.getState());
 // const unsubscribe = store.subscribe(() => {});
 // store.dispatch(getAllQuestions())

@@ -1,5 +1,8 @@
 import { 
   GET_ALL_EVENTS,
+  GET_ALL_EVENTS_REQUEST,
+  GET_ALL_EVENTS_SUCCESS,
+  GET_ALL_EVENTS_FAILURE,
   GET_TIMELINE_EVENT_BY_ID,
   CREATE_TIMELINE_EVENT 
 } from "./actionTypes";
@@ -7,6 +10,26 @@ import {
 export const getAllEvents = () => {
   return {
     type: GET_ALL_EVENTS
+  }
+};
+
+export const getAllEventsRequest = () => {
+  return {
+    type: GET_ALL_EVENTS_REQUEST
+  }
+};
+
+export const getAllEventsSuccess = timelineEvents => {
+  return {
+    type: GET_ALL_EVENTS_SUCCESS,
+    payload: timelineEvents
+  }
+};
+
+export const getAllEventsFailure = error => {
+  return {
+    type: GET_ALL_EVENTS_FAILURE,
+    payload: error
   }
 };
 
