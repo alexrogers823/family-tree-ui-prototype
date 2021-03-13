@@ -45,38 +45,6 @@ class App extends Component {
           <Base>
             <Router>
               <div>
-                {/* <nav>
-                  <ul>
-                    <li>
-                      <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                      <Link to="/faq">Frequently Asked Questions</Link>
-                    </li>
-                    <li>
-                      <Link to="/member">Family Member Page Example</Link>
-                    </li>
-                    <li>
-                      <Link to="/timeline">Past Family Events</Link>
-                    </li>
-                    <li>
-                      <Link to="/user">User Settings Example</Link>
-                    </li>
-                    <li>
-                      <Link to="/comingsoon">Coming Soon Page</Link>
-                    </li>
-                    <li>
-                      <Link to="/lineage">Lineage (under construction)</Link>
-                    </li>
-                    <li>
-                      <Link to="/404">Not Found Page</Link>
-                    </li>
-                    <li>
-                      <Link to="/500">Server Error Page</Link>
-                    </li>
-                  </ul>
-                </nav> */}
-
                 <Switch>
                   <Route path={urls.faqUrl}>
                     <FrequentlyAskedQuestions />
@@ -88,7 +56,8 @@ class App extends Component {
                     <TimelineEvents />
                   </Route>
                   <Route path={urls.userUrl}>
-                    <UserSettings />
+                    {/* <UserSettings /> */}
+                    <Redirect to={urls.comingSoonUrl} />
                   </Route>
                   <Route path={urls.comingSoonUrl}>
                     <ComingSoon />
@@ -109,10 +78,12 @@ class App extends Component {
                     <Page500 />
                   </Route>
                   <Route path={urls.galleryUrl}>
-                    <Gallery />
+                    {/* <Gallery /> */}
+                    <Redirect to={urls.comingSoonUrl} />
                   </Route>
                   <Route path={urls.artifactsUrl}>
-                    <Artifacts />
+                    {/* <Artifacts /> */}
+                    <Redirect to={urls.comingSoonUrl} />
                   </Route>
                   <Route path="/">
                     <Main />
@@ -123,23 +94,8 @@ class App extends Component {
           </Base>
         </div>
       </Provider>
-      // <Provider store={store}>
-      //   <div className='App'>
-      //     {/* <FrequentlyAskedQuestions /> */}
-      //     {/* <TimelineEvents /> */}
-      //     {/* <Members /> */}
-      //     <Artifacts />
-      //   </div>
-      // </Provider>
     );
   }
 }
 
-// const mapStateToProps = state => ({
-//   members: state.members,
-//   questions: state.questions,
-//   timelineEvents: state.timelineEvents
-// });
-
-// export default connect(mapStateToProps)(App);
 export default App;
