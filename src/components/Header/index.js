@@ -54,7 +54,7 @@ const Header = props => {
 
   const dispatch = useDispatch();
 
-  const isAuthenticated = useSelector(state => state.usersReducer.authenticated)
+  const { user, isAuthenticated } = useSelector(state => state.usersReducer);
 
   const closeModal = modal => {
     if (modal === 'member') {
@@ -134,7 +134,7 @@ const Header = props => {
         <div>
           {isAuthenticated &&
             <Link className={`${classes.link} ${classes.right}`} color="inherit" href={userUrl}>
-              Alex
+              {user.username}
             </Link>
           }
           {

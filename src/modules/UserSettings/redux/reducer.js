@@ -6,7 +6,7 @@ import {
 } from "./actionTypes"
 
 const INIT_STATE = {
-  authenticated: false,
+  isAuthenticated: false,
   user: {},
   theme: 'light'
 };
@@ -17,19 +17,20 @@ export default (state = INIT_STATE, action) => {
     case LOGIN_USER:
       return {
         ...state,
-        authenticated: true
+        isAuthenticated: true,
+        user: action.payload
       }
 
     case LOGOUT_USER:
       return {
         ...state,
-        authenticated: false
+        isAuthenticated: false
       }
 
     case CREATE_USER:
       return {
         ...state,
-        authenticated: true,
+        isAuthenticated: true,
         user: action.payload
       }
 

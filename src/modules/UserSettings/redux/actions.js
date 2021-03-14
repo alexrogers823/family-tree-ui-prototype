@@ -7,9 +7,10 @@ import {
   CHANGE_APPEARANCE
 } from "./actionTypes";
 
-export const loginUser = () => {
+export const loginUser = user => {
   return {
-    type: LOGIN_USER
+    type: LOGIN_USER,
+    payload: user
   }
 };
 
