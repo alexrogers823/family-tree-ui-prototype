@@ -18,7 +18,7 @@ import {
   getAllQuestions, 
   postNewQuestion,
   deleteQuestion
- } from './redux/actions';
+ } from '../../redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {

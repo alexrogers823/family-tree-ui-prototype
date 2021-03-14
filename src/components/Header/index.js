@@ -21,6 +21,7 @@ import {
   loginUser,
   logoutUser
 } from '../../modules/UserSettings/redux/actions';
+// TODO: Find out why when centralizing this, it breaks 
 
 const useStyles = makeStyles(theme => ({
   root: {

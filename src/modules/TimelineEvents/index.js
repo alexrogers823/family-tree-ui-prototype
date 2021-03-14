@@ -19,7 +19,7 @@ import {
   getAllEvents, 
   getTimelineEventById,
   createTimelineEvent 
-} from './redux/actions';
+} from '../../redux/actions';
 
 
 const useStyles = makeStyles(theme => ({

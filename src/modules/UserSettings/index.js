@@ -15,7 +15,7 @@ import AppearanceThemeSettings from './AppearanceThemeSettings';
 import {
   createUser,
   changeAppearance
-} from './redux/actions';
+} from '../../redux/actions';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

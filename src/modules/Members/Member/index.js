@@ -15,10 +15,15 @@ import { concatenateDate } from '../../../utils';
 import Button from '../../../components/common/Button';
 import EditMemberPageModal from '../../../components/EditMemberPageModal';
 
-import { 
+// import { 
+//   getAllFamilyMembers,
+//   getFamilyMemberById 
+// } from '../redux/actions';
+
+import {
   getAllFamilyMembers,
-  getFamilyMemberById 
-} from '../redux/actions';
+  getFamilyMemberById
+} from '../../../redux/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -108,11 +113,10 @@ const arrangeBiography = member => {
     return <h3>No information added yet for {member.preferredName || member.firstName}. Be the first to add it!</h3>
   }
 
-  console.log('memberBio', memberBio);
   return (
-    memberBio.map(val => {
+    memberBio.map(paragraph => {
       return (
-        <p>{val}</p>
+        <p>{paragraph}</p>
       )
     })
   );
@@ -162,7 +166,7 @@ const Member = () => {
         {member &&
         <Fragment>
           <div className={classes.memberStats}>
-            <img src={adellaSample} alt={`Photo of ${member.firstName}`} className={`${classes.image} ${member.death && classes.deceased}`}/>
+            <img src={adellaSample} alt={`Photo of ${member.firstName}`} className={`${classes.image} ${!member.isAlive && classes.deceased}`}/>
             <div className={classes.memberStatText}>
               {member.preferredName
                 ? <Fragment>

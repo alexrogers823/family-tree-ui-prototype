@@ -16,7 +16,7 @@ import { memberBioPlaceholder } from '../../dummyData';
 
 import {
   getAllFamilyMembers
-} from './redux/actions';
+} from '../../redux/actions';
 
 
 const ChosenMember = props => {

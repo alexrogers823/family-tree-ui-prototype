@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Date, Button, Modal } from '../common';
 import Form, { TextArea } from '../common/Form';
 
-import { createTimelineEvent } from '../../modules/TimelineEvents/redux/actions';
+import { createTimelineEvent } from '../../redux/actions';
 
 const AddEventModal = props => {
   const [newEvent, setNewEvent] = useState({

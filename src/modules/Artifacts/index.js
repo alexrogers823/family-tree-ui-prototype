@@ -17,9 +17,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import {
-  getAllArtifacts
-} from './redux/actions';
-import { getAllEvents } from '../TimelineEvents/redux/actions';
+  getAllArtifacts,
+  getAllEvents
+} from '../../redux/actions';
 
 // page specifically for family documents (marriage licenses, deeds, etc) 
 
