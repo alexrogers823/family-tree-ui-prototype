@@ -134,7 +134,7 @@ const Header = props => {
         <div>
           {isAuthenticated &&
             <Link className={`${classes.link} ${classes.right}`} color="inherit" href={userUrl}>
-              {user.username}
+              {user.username || 'User'}
             </Link>
           }
           {
