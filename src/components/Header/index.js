@@ -23,6 +23,15 @@ import {
 } from '../../modules/UserSettings/redux/actions';
 // TODO: Find out why when centralizing this, it breaks 
 
+import {
+  openLoginModal,
+  closeLoginModal,
+  openRegisterModal,
+  closeRegisterModal,
+  openAddMemberModal,
+  closeAddMemberModal
+} from '../../redux/actions';
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -39,9 +48,9 @@ const useStyles = makeStyles(theme => ({
 
 const Header = props => {
   const classes = useStyles();
-  const [openMemberModal, setOpenMemberModal] = useState(false);
-  const [openLoginModal, setOpenLoginModal] = useState(false);
-  const [openSignupModal, setOpenSignupModal] = useState(false);
+  // const [openMemberModal, setOpenMemberModal] = useState(false);
+  // const [openLoginModal, setOpenLoginModal] = useState(false);
+  // const [openSignupModal, setOpenSignupModal] = useState(false);
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [color, setColor] = useState({
     artifacts: 'inherit',
@@ -55,16 +64,17 @@ const Header = props => {
   const dispatch = useDispatch();
 
   const { user, isAuthenticated } = useSelector(state => state.usersReducer);
+  const { loginModalOpen, registerModalOpen, addMemberModalOpen } = useSelector(state => state.othersReducer);
 
-  const closeModal = modal => {
-    if (modal === 'member') {
-      setOpenMemberModal(false);
-    } else if (modal === 'login') {
-      setOpenLoginModal(false);
-    } else if (modal === 'signup') {
-      setOpenSignupModal(false);
-    }
-  }
+  // const closeModal = modal => {
+  //   if (modal === 'member') {
+  //     setOpenMemberModal(false);
+  //   } else if (modal === 'login') {
+  //     setOpenLoginModal(false);
+  //   } else if (modal === 'signup') {
+  //     setOpenSignupModal(false);
+  //   }
+  // }
   
   return (
     <AppBar position="static">
@@ -124,7 +134,7 @@ const Header = props => {
             <Link 
               className={`${classes.link}`} 
               color="inherit" 
-              onClick={() => setOpenMemberModal(true)} 
+              onClick={() => dispatch(openAddMemberModal())} 
               href="#"
             >
               Add Member
@@ -145,7 +155,7 @@ const Header = props => {
             : <Link 
               className={`${classes.link} ${classes.right}`} 
               color="inherit" 
-              onClick={() => setOpenLoginModal(true)} 
+              onClick={() => dispatch(openLoginModal())} 
               href="#"
               >
               Login
@@ -154,21 +164,29 @@ const Header = props => {
           <Link 
             className={`${classes.link} ${classes.right}`} 
             color="inherit" 
-            onClick={() => setOpenSignupModal(true)} 
+            onClick={() => dispatch(openRegisterModal())} 
             href="#"
             >
             Register
           </Link>
         </div>
-        <AddMemberModal isOpen={openMemberModal} closeModal={() => closeModal('member')} />
-        <Login 
-          isOpen={openLoginModal} 
+        <AddMemberModal 
+          isOpen={addMemberModalOpen} 
           closeModal={() => {
-            closeModal('login');
+            dispatch(closeAddMemberModal())
+          }} />
+        <Login 
+          isOpen={loginModalOpen} 
+          closeModal={() => {
+            dispatch(closeLoginModal());
             dispatch(loginUser());
           }} 
         />
-        <Signup isOpen={openSignupModal} closeModal={() => closeModal('signup')} />
+        <Signup 
+          isOpen={registerModalOpen} 
+          closeModal={() => {
+            dispatch(closeRegisterModal())
+          }} />
       </Toolbar>
     </AppBar>
     
