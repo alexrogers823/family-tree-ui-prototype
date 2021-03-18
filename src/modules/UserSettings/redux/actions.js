@@ -4,6 +4,7 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   CREATE_USER,
+  UPDATE_USER,
   CHANGE_APPEARANCE
 } from "./actionTypes";
 
@@ -33,6 +34,13 @@ export const createUser = () => {
       createdOn: moment("2021-03-01"),
       lastLoggedIn: moment()
     }
+  }
+}
+
+export const updateUser = (user = {}) => {
+  return {
+    type: UPDATE_USER,
+    payload: user
   }
 }
 

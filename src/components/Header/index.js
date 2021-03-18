@@ -19,11 +19,7 @@ import Signup from '../Signup';
 
 import {
   loginUser,
-  logoutUser
-} from '../../modules/UserSettings/redux/actions';
-// TODO: Find out why when centralizing this, it breaks 
-
-import {
+  logoutUser,
   openLoginModal,
   closeLoginModal,
   openRegisterModal,

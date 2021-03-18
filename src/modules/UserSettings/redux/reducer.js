@@ -2,6 +2,7 @@ import {
   CREATE_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  UPDATE_USER,
   CHANGE_APPEARANCE
 } from "./actionTypes"
 
@@ -31,6 +32,12 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         isAuthenticated: true,
+        user: action.payload
+      }
+
+    case UPDATE_USER:
+      return {
+        ...state,
         user: action.payload
       }
 

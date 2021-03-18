@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Form, { TextArea } from '../common/Form';
 
-import { loginUser } from '../../modules/UserSettings/redux/actions';
+import { loginUser } from '../../redux/actions';
 // TODO: Find out why when centralizing this, it breaks 
 
 const Login = props => {
