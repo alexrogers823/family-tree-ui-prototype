@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Resizer from 'react-image-file-resizer';
 import _ from 'lodash';
 
 import PropTypes from 'prop-types';
@@ -55,8 +56,8 @@ const useStyles = makeStyles(theme => ({
     filter: 'grayscale(100%)'
   },
   image: {
-    maxWidth: '25%',
-    height: 'auto',
+    // maxWidth: '25%',
+    // height: 'auto',
     border: '1px solid #ddd',
     padding: 5,
     // boxShadow: '2px 2px black',
@@ -159,6 +160,19 @@ const Member = () => {
     }
   }
 
+  const compressImage = image => {
+    Resizer.imageFileResizer(
+      image,
+      480,
+      480,
+      "JPEG",
+      70,
+      0,
+      (uri) => console.log(uri),
+      "base64"
+    );
+  }
+
 
   return (
     <Container>
@@ -166,7 +180,12 @@ const Member = () => {
         {member &&
         <Fragment>
           <div className={classes.memberStats}>
-            <img src={adellaSample} alt={`Photo of ${member.firstName}`} className={`${classes.image} ${!member.isAlive && classes.deceased}`}/>
+            <img 
+              src={adellaSample} 
+              alt={`Photo of ${member.firstName}`}
+              onChange={e => compressImage(e.target.files[0])} 
+              className={`${classes.image} ${!member.isAlive && classes.deceased}`}
+            />
             <div className={classes.memberStatText}>
               {member.preferredName
                 ? <Fragment>
