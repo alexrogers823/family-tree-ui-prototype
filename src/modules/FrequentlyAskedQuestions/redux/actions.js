@@ -6,6 +6,7 @@ import {
   GET_ALL_QUESTIONS_SUCCESS,
   GET_ALL_QUESTIONS_FAILURE, 
   POST_NEW_QUESTION,
+  UPDATE_QUESTION,
   DELETE_QUESTION 
 } from "./actionTypes";
 
@@ -53,6 +54,12 @@ export const postNewQuestion = () => {
     type: POST_NEW_QUESTION
   }
 };
+
+export const updateQuestion = () => {
+  return {
+    type: UPDATE_QUESTION
+  }
+}
 
 export const deleteQuestion = (id = 1) => {
   return {

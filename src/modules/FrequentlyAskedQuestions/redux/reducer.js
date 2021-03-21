@@ -4,7 +4,8 @@ import {
   GET_ALL_QUESTIONS_SUCCESS,
   GET_ALL_QUESTIONS_FAILURE,
   POST_NEW_QUESTION,
-  DELETE_QUESTION
+  DELETE_QUESTION,
+  UPDATE_QUESTION
 } from "./actionTypes";
 
 import { faqData } from '../../../dummyData';
@@ -48,6 +49,12 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         questions: [ ...state.questions, {id: 999, question: 'test question', answer: 'test answer'} ],
+      }
+
+    case UPDATE_QUESTION:
+      return {
+        ...state,
+        questions: [ ...state.questions, {id: 1, question: 'update question', answer: 'updated answer'}],
       }
 
     case DELETE_QUESTION:
