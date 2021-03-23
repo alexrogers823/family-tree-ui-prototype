@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Resizer from 'react-image-file-resizer';
 import _ from 'lodash';
 
 import PropTypes from 'prop-types';
@@ -11,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import alexSample from '../../../assets/Alex_sample.jpg';
 import adellaSample from '../../../assets/Adella_sample.jpg';
 
-import { concatenateDate } from '../../../utils';
+import { concatenateDate, compressImage } from '../../../utils';
 
 import Button from '../../../components/common/Button';
 import EditMemberPageModal from '../../../components/EditMemberPageModal';
@@ -123,6 +122,7 @@ const arrangeBiography = member => {
   );
 };
 
+
 const Member = () => {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
@@ -159,20 +159,6 @@ const Member = () => {
       name += ` (${member.preferredName})`;
     }
   }
-
-  const compressImage = image => {
-    Resizer.imageFileResizer(
-      image,
-      480,
-      480,
-      "JPEG",
-      70,
-      0,
-      (uri) => console.log(uri),
-      "base64"
-    );
-  }
-
 
   return (
     <Container>
