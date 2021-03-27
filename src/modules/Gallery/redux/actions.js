@@ -1,7 +1,8 @@
 import {
   GET_ALL_PHOTOS,
   GET_PHOTO_BY_ID,
-  UPLOAD_PHOTO
+  UPLOAD_PHOTO,
+  DELETE_PHOTO
 } from './actionTypes';
 
 export const getAllPhotos = photos => {
@@ -23,3 +24,10 @@ export const uploadPhoto = () => {
     type: UPLOAD_PHOTO
   }
 };
+
+export const deletePhoto = photo => {
+  return {
+    type: DELETE_PHOTO,
+    payload: photo
+  }
+}

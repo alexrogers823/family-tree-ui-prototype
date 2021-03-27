@@ -1,7 +1,8 @@
 import {
   GET_ALL_PHOTOS,
   GET_PHOTO_BY_ID,
-  UPLOAD_PHOTO
+  UPLOAD_PHOTO,
+  DELETE_PHOTO
 } from './actionTypes';
 
 const INIT_STATE = {
@@ -25,6 +26,12 @@ export default (state = INIT_STATE, action) => {
     case UPLOAD_PHOTO:
       return {
         ...state
+      }
+
+    case DELETE_PHOTO:
+      return {
+        ...state,
+        photos: state.photos.filter(photo => photo != action.payload)
       }
 
     default:
