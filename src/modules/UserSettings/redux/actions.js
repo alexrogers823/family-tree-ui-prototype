@@ -1,17 +1,32 @@
 import moment from 'moment';
 
 import { 
-  LOGIN_USER,
+  LOGIN_USER_REQUEST,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_FAILURE,
   LOGOUT_USER,
   CREATE_USER,
   UPDATE_USER,
   CHANGE_APPEARANCE
 } from "./actionTypes";
 
-export const loginUser = user => {
+export const loginUserRequest = () => {
   return {
-    type: LOGIN_USER,
+    type: LOGIN_USER_REQUEST,
+  }
+};
+
+export const loginUserSuccess = user => {
+  return {
+    type: LOGIN_USER_SUCCESS,
     payload: user
+  }
+};
+
+export const loginUserFailure = error => {
+  return {
+    type: LOGIN_USER_FAILURE,
+    payload: error
   }
 };
 
