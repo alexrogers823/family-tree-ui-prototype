@@ -4,6 +4,9 @@ import {
   GET_ALL_QUESTIONS_SUCCESS,
   GET_ALL_QUESTIONS_FAILURE,
   POST_NEW_QUESTION,
+  POST_NEW_QUESTION_REQUEST,
+  POST_NEW_QUESTION_SUCCESS,
+  POST_NEW_QUESTION_FAILURE,
   DELETE_QUESTION,
   UPDATE_QUESTION
 } from "./actionTypes";
@@ -49,6 +52,26 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         questions: [ ...state.questions, {id: 999, question: 'test question', answer: 'test answer'} ],
+      }
+
+    case POST_NEW_QUESTION_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case POST_NEW_QUESTION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        questions: state.questions.push(action.payload)
+      }
+
+    case POST_NEW_QUESTION_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       }
 
     case UPDATE_QUESTION:

@@ -6,6 +6,9 @@ import {
   GET_ALL_QUESTIONS_SUCCESS,
   GET_ALL_QUESTIONS_FAILURE, 
   POST_NEW_QUESTION,
+  POST_NEW_QUESTION_REQUEST,
+  POST_NEW_QUESTION_SUCCESS,
+  POST_NEW_QUESTION_FAILURE,
   UPDATE_QUESTION,
   DELETE_QUESTION 
 } from "./actionTypes";
@@ -55,15 +58,35 @@ export const postNewQuestion = () => {
   }
 };
 
+export const postNewQuestionRequest = () => {
+  return {
+    type: POST_NEW_QUESTION_REQUEST
+  }
+};
+
+export const postNewQuestionSuccess = question => {
+  return {
+    type: POST_NEW_QUESTION_SUCCESS,
+    payload: question
+  }
+};
+
+export const postNewQuestionFailure = error => {
+  return {
+    type: POST_NEW_QUESTION_FAILURE,
+    payload: error
+  }
+};
+
 export const updateQuestion = () => {
   return {
     type: UPDATE_QUESTION
   }
-}
+};
 
 export const deleteQuestion = (id = 1) => {
   return {
     type: DELETE_QUESTION,
     payload: id
   }
-}
+};
