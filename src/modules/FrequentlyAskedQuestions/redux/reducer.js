@@ -8,6 +8,9 @@ import {
   POST_NEW_QUESTION_SUCCESS,
   POST_NEW_QUESTION_FAILURE,
   DELETE_QUESTION,
+  DELETE_QUESTION_REQUEST,
+  DELETE_QUESTION_SUCCESS,
+  DELETE_QUESTION_FAILURE,
   UPDATE_QUESTION
 } from "./actionTypes";
 
@@ -84,6 +87,26 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         questions: state.questions.filter(question => question.id !== action.payload)
+      }
+
+    case DELETE_QUESTION_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case DELETE_QUESTION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        questions: state.questions.filter(question => question.id !== action.payload)
+      }
+
+    case DELETE_QUESTION_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       }
 
     default:

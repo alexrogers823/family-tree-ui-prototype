@@ -7,7 +7,11 @@ import {
   CREATE_TIMELINE_EVENT,
   CREATE_TIMELINE_EVENT_REQUEST,
   CREATE_TIMELINE_EVENT_SUCCESS,
-  CREATE_TIMELINE_EVENT_FAILURE
+  CREATE_TIMELINE_EVENT_FAILURE,
+  DELETE_TIMELINE_EVENT,
+  DELETE_TIMELINE_EVENT_REQUEST,
+  DELETE_TIMELINE_EVENT_SUCCESS,
+  DELETE_TIMELINE_EVENT_FAILURE
 } from "./actionTypes";
 
 import { timelineData } from '../../../dummyData';
@@ -77,6 +81,26 @@ export default (state = INIT_STATE, action) => {
       }
 
     case CREATE_TIMELINE_EVENT_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      }
+
+    case DELETE_TIMELINE_EVENT_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case DELETE_TIMELINE_EVENT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        timelineEvents: state.timelineEvents.filter(tEvent => tEvent.id !== action.payload)
+      }
+
+    case DELETE_TIMELINE_EVENT_FAILURE:
       return {
         ...state,
         loading: false,

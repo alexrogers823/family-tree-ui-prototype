@@ -10,7 +10,10 @@ import {
   POST_NEW_QUESTION_SUCCESS,
   POST_NEW_QUESTION_FAILURE,
   UPDATE_QUESTION,
-  DELETE_QUESTION 
+  DELETE_QUESTION,
+  DELETE_QUESTION_REQUEST,
+  DELETE_QUESTION_SUCCESS,
+  DELETE_QUESTION_FAILURE
 } from "./actionTypes";
 
 export const getAllQuestions = () => {
@@ -88,5 +91,25 @@ export const deleteQuestion = (id = 1) => {
   return {
     type: DELETE_QUESTION,
     payload: id
+  }
+};
+
+export const deleteQuestionRequest = () => {
+  return {
+    type: DELETE_QUESTION_REQUEST
+  }
+};
+
+export const deleteQuestionSuccess = id => {
+  return {
+    type: DELETE_QUESTION_SUCCESS,
+    payload: id
+  }
+};
+
+export const deleteQuestionFailure = error => {
+  return {
+    type: DELETE_QUESTION_FAILURE,
+    payload: error
   }
 };

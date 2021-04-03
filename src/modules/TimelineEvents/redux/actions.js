@@ -1,3 +1,6 @@
+import { getDisplayDate } from "@material-ui/pickers/_helpers/text-field-helper";
+import axios from "axios";
+import { DELETE_QUESTION_REQUEST } from "../../FrequentlyAskedQuestions/redux/actionTypes";
 import { 
   GET_ALL_EVENTS,
   GET_ALL_EVENTS_REQUEST,
@@ -7,8 +10,42 @@ import {
   CREATE_TIMELINE_EVENT,
   CREATE_TIMELINE_EVENT_REQUEST,
   CREATE_TIMELINE_EVENT_SUCCESS,
-  CREATE_TIMELINE_EVENT_FAILURE 
+  CREATE_TIMELINE_EVENT_FAILURE,
+  DELETE_TIMELINE_EVENT,
+  DELETE_TIMELINE_EVENT_REQUEST,
+  DELETE_TIMELINE_EVENT_SUCCESS,
+  DELETE_TIMELINE_EVENT_FAILURE
 } from "./actionTypes";
+
+// export const getAllQuestions = () => {
+//   return dispatch => {
+//     dispatch(getAllQuestionsRequest)
+//     axios.get('url')
+//       .then(res => {
+//         const questions = res.data
+//         dispatch(getAllQuestionsSuccess(questions))
+//       })
+//       .catch(err => {
+//         const errMsg = err.message
+//         dispatch(getAllQuestionsFailure(errMsg))
+//       })
+//   }
+// }
+
+export const deleteTimelineEvent = () => {
+  return dispatch => {
+    dispatch(deleteTimelineEventRequest)
+    axios.get('url')
+      .then(res => {
+        const timelineEvent = res.data
+        dispatch(deleteTimelineEventSuccess(timelineEvent.id))
+      })
+      .catch(err => {
+        const errMsg = err.message
+        dispatch(deleteTimelineEventFailure(errMsg))
+      })
+  }
+}
 
 export const getAllEvents = () => {
   return {
@@ -66,6 +103,27 @@ export const createTimelineEventSuccess = timelineEvent => {
 export const createTimelineEventFailure = error => {
   return {
     type: CREATE_TIMELINE_EVENT_FAILURE,
+    payload: error
+  }
+}
+
+// only the admin can delete timeline events 
+export const deleteTimelineEventRequest = () => {
+  return {
+    type: DELETE_QUESTION_REQUEST
+  }
+}
+
+export const deleteTimelineEventSuccess = id => {
+  return {
+    type: DELETE_TIMELINE_EVENT_SUCCESS,
+    payload: id
+  }
+}
+
+export const deleteTimelineEventFailure = error => {
+  return {
+    type: DELETE_TIMELINE_EVENT_FAILURE,
     payload: error
   }
 }
