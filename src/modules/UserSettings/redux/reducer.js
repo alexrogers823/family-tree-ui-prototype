@@ -5,6 +5,9 @@ import {
   LOGIN_USER_FAILURE,
   LOGOUT_USER,
   UPDATE_USER,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILURE,
   CHANGE_APPEARANCE
 } from "./actionTypes"
 
@@ -57,6 +60,27 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         user: action.payload
+      }
+
+    case DELETE_USER_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: false,
+        user: {} // check to see how to permenately delete in database
+      }
+
+    case DELETE_USER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       }
 
     case CHANGE_APPEARANCE:

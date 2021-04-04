@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { DELETE_QUESTION_REQUEST } from '../../FrequentlyAskedQuestions/redux/actionTypes';
 
 import { 
   LOGIN_USER_REQUEST,
@@ -7,6 +8,9 @@ import {
   LOGOUT_USER,
   CREATE_USER,
   UPDATE_USER,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILURE,
   CHANGE_APPEARANCE
 } from "./actionTypes";
 
@@ -56,6 +60,26 @@ export const updateUser = (user = {}) => {
   return {
     type: UPDATE_USER,
     payload: user
+  }
+}
+
+export const deleteUserRequest = () => {
+  return {
+    type: DELETE_USER_REQUEST
+  }
+}
+
+export const deleteUserSuccess = userId => {
+  return {
+    type: DELETE_USER_SUCCESS,
+    payload: userId
+  }
+}
+
+export const deleteUserFailure = error => {
+  return {
+    type: DELETE_USER_FAILURE,
+    payload: error
   }
 }
 
