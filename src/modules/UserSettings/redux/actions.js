@@ -8,6 +8,9 @@ import {
   LOGOUT_USER,
   CREATE_USER,
   UPDATE_USER,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILURE,
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
@@ -60,6 +63,26 @@ export const updateUser = (user = {}) => {
   return {
     type: UPDATE_USER,
     payload: user
+  }
+}
+
+export const updateUserRequest = () => {
+  return {
+    type: UPDATE_USER_REQUEST
+  }
+}
+
+export const updateUserSuccess = (user = {}) => {
+  return {
+    type: UPDATE_USER_SUCCESS,
+    payload: user
+  }
+}
+
+export const updateUserFailure = error => {
+  return {
+    type: UPDATE_USER_FAILURE,
+    payload: error
   }
 }
 

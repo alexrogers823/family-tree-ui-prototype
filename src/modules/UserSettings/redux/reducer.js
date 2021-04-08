@@ -5,6 +5,9 @@ import {
   LOGIN_USER_FAILURE,
   LOGOUT_USER,
   UPDATE_USER,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILURE,
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
@@ -60,6 +63,26 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         user: action.payload
+      }
+
+    case UPDATE_USER_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        user: action.payload
+      }
+
+    case UPDATE_USER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       }
 
     case DELETE_USER_REQUEST:
