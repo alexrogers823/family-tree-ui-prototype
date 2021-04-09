@@ -4,6 +4,10 @@ import {
   GET_ALL_FAMILY_MEMBERS_SUCCESS,
   GET_ALL_FAMILY_MEMBERS_FAILURE,
   GET_FAMILY_MEMBER_BY_ID,
+  UPDATE_FAMILY_MEMBER,
+  UPDATE_FAMILY_MEMBER_REQUEST,
+  UPDATE_FAMILY_MEMBER_SUCCESS,
+  UPDATE_FAMILY_MEMBER_FAILURE,
   DELETE_FAMILY_MEMBER_REQUEST,
   DELETE_FAMILY_MEMBER_SUCCESS,
   DELETE_FAMILY_MEMBER_FAILURE
@@ -50,6 +54,26 @@ export default (state =  INIT_STATE, action) => {
       return {
         ...state,
         member: familyMembers[action.payload]
+      }
+
+    case UPDATE_FAMILY_MEMBER_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case UPDATE_FAMILY_MEMBER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        member: action.payload
+      }
+
+    case UPDATE_FAMILY_MEMBER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       }
 
     case DELETE_FAMILY_MEMBER_REQUEST:

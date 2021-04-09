@@ -4,6 +4,10 @@ import {
   GET_ALL_FAMILY_MEMBERS_SUCCESS,
   GET_ALL_FAMILY_MEMBERS_FAILURE,
   GET_FAMILY_MEMBER_BY_ID,
+  UPDATE_FAMILY_MEMBER,
+  UPDATE_FAMILY_MEMBER_REQUEST,
+  UPDATE_FAMILY_MEMBER_SUCCESS,
+  UPDATE_FAMILY_MEMBER_FAILURE,
   DELETE_FAMILY_MEMBER_REQUEST,
   DELETE_FAMILY_MEMBER_SUCCESS,
   DELETE_FAMILY_MEMBER_FAILURE
@@ -39,6 +43,32 @@ export const getFamilyMemberById = id => {
   return {
     type: GET_FAMILY_MEMBER_BY_ID,
     payload: id
+  }
+};
+
+export const updateFamilyMember = () => {
+  return {
+    type: UPDATE_FAMILY_MEMBER
+  }
+};
+
+export const updateFamilyMemberRequest = () => {
+  return {
+    type: UPDATE_FAMILY_MEMBER_REQUEST
+  }
+};
+
+export const updateFamilyMemberSuccess = (member = {}) => {
+  return {
+    type: UPDATE_FAMILY_MEMBER_SUCCESS,
+    payload: member
+  }
+};
+
+export const updateFamilyMemberFailure = error => {
+  return {
+    type: UPDATE_FAMILY_MEMBER_FAILURE,
+    payload: error
   }
 };
 
