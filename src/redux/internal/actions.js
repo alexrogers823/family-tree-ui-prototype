@@ -4,7 +4,9 @@ import {
   OPEN_REGISTER_MODAL,
   CLOSE_REGISTER_MODAL,
   OPEN_ADD_MEMBER_MODAL,
-  CLOSE_ADD_MEMBER_MODAL
+  CLOSE_ADD_MEMBER_MODAL,
+  LOGIN_USER,
+  LOGOUT_USER
 } from './actionTypes';
 
 export const openLoginModal = () => {
@@ -42,3 +44,15 @@ export const closeAddMemberModal = () => {
     type: CLOSE_ADD_MEMBER_MODAL
   }
 };
+
+export const loginUser = () => {
+  return {
+    type: LOGIN_USER
+  }
+};
+
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER
+  }
+}

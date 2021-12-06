@@ -4,7 +4,9 @@ import {
   OPEN_REGISTER_MODAL,
   CLOSE_REGISTER_MODAL,
   OPEN_ADD_MEMBER_MODAL,
-  CLOSE_ADD_MEMBER_MODAL
+  CLOSE_ADD_MEMBER_MODAL,
+  LOGIN_USER,
+  LOGOUT_USER
 } from './actionTypes';
 
 const INIT_STATE = {
@@ -51,6 +53,20 @@ export default (state = INIT_STATE, action) => {
       }
 
     case CLOSE_ADD_MEMBER_MODAL:
+      return {
+        loginModalOpen: false,
+        registerModalOpen: false,
+        addMemberModalOpen: false
+      }
+
+    case LOGIN_USER:
+      return {
+        loginModalOpen: false,
+        registerModalOpen: false,
+        addMemberModalOpen: false
+      }
+
+    case LOGOUT_USER:
       return {
         loginModalOpen: false,
         registerModalOpen: false,
