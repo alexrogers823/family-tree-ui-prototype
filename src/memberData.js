@@ -1,6 +1,6 @@
 export const familyMembers = [
   {
-    id: 1,
+    id: 0,
     firstName: "Helen",
     middleName: "French",
     lastName: "Rogers",
@@ -13,8 +13,8 @@ export const familyMembers = [
     deathDay: null,
     deathMonth: null,
     deathYear: null,
-    bioParagraph1: null,
-    bioParagraph2: null,
+    bioParagraph1: 'test one',
+    bioParagraph2: 'test two',
     bioParagraph3: null,
     bioParagraph4: null,
     bioParagraph5: null,
@@ -31,7 +31,7 @@ export const familyMembers = [
     userId: null 
   },
   {
-    id: 2,
+    id: 1,
     firstName: "Oscar",
     middleName: null,
     lastName: "Rogers",
@@ -55,7 +55,7 @@ export const familyMembers = [
     userId: null 
   },
   {
-    id: 3,
+    id: 2,
     firstName: "Patricia",
     middleName: null,
     lastName: "Crozier",
@@ -68,18 +68,25 @@ export const familyMembers = [
     deathDay: null,
     deathMonth: null,
     deathYear: null,
-    birthplace: null,
-    residence: null,
+    bioParagraph1: 'child test one',
+    bioParagraph2: 'child test two',
+    bioParagraph3: 'child test three',
+    bioParagraph4: null,
+    bioParagraph5: null,
+    bioParagraph6: null,
+    bioParagraph7: null,
+    birthplace: "Gary, IN",
+    residence: "Gary, IN",
     isAlive: true,
     hasSpouse: true,
-    primaryParentId: 1,
-    secondaryParentId: 2,
+    primaryParentId: 0,
+    secondaryParentId: 1,
     isActiveUser: false,
     spouseId: 4,
     userId: null 
   },
   {
-    id: 4,
+    id: 3,
     firstName: "Ronald",
     middleName: null,
     lastName: "Crozier",
@@ -103,7 +110,7 @@ export const familyMembers = [
     userId: null 
   },
   {
-    id: 5,
+    id: 4,
     firstName: "Rogercarole",
     middleName: null,
     lastName: "Rogers",
@@ -127,7 +134,7 @@ export const familyMembers = [
     userId: null 
   },
   {
-    id: 6,
+    id: 5,
     firstName: "Robert",
     middleName: null,
     lastName: "Hall",
@@ -151,7 +158,7 @@ export const familyMembers = [
     userId: null 
   },
   {
-    id: 7,
+    id: 6,
     firstName: "Oscar",
     middleName: "Barry",
     lastName: "Rogers",
@@ -391,7 +398,7 @@ export const familyMembers = [
     residence: "Atlanta, GA",
     isAlive: true,
     hasSpouse: false,
-    primaryParentId: 7,
+    primaryParentId: 6,
     secondaryParentId: null,
     isActiveUser: true,
     spouseId: null,

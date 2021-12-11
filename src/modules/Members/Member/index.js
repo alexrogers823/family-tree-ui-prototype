@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     filter: 'grayscale(100%)'
   },
   image: {
-    // maxWidth: '25%',
+    maxWidth: '25%',
     // height: 'auto',
     border: '1px solid #ddd',
     padding: 5,
@@ -122,6 +122,40 @@ const arrangeBiography = member => {
   );
 };
 
+const displayParents = (member, members, styledLink) => {
+  const {primaryParentId, secondaryParentId} = member;
+
+  console.log('first parent', primaryParentId);
+
+  if ((primaryParentId || primaryParentId === 0) && secondaryParentId) {
+    return (
+      <Fragment>
+        <span>Parents: </span>
+        <Link className={styledLink}>
+          {members.filter(m => m.id === primaryParentId)[0].firstName}
+        </Link>
+        <span>&amp;
+          <Link className={styledLink}>
+            {members.filter(m => m.id === secondaryParentId)[0].firstName}
+          </Link>
+        </span>
+      </Fragment>
+    )
+  } else if (primaryParentId || primaryParentId === 0) {
+    return (
+      <Fragment>
+        <span>Parent: </span>
+        <Link className={styledLink}>
+          {members.filter(m => m.id === primaryParentId)[0].firstName}
+        </Link>
+      </Fragment>
+    )
+  } else {
+    return <span>Parents: Unknown</span>
+  }
+
+}
+
 
 const Member = () => {
   const classes = useStyles();
@@ -158,6 +192,8 @@ const Member = () => {
     if (member.preferredName) {
       name += ` (${member.preferredName})`;
     }
+
+    return name;
   }
 
   return (
@@ -176,7 +212,7 @@ const Member = () => {
               {member.preferredName
                 ? <Fragment>
                     <h1 className={classes.memberName}>{member.preferredName} {member.lastName}</h1>
-                    <p className={classes.memberNameAlt}>{`Neé ${member.firstName} ${member.middleName} ${member.lastName}`}</p>
+                    <p className={classes.memberNameAlt}>{`Neé ${member.firstName} ${member.middleName || ''} ${member.lastName}`}</p>
                   </Fragment>
                 : <h1 className={classes.memberName}>{arrangeName(member)}</h1>
               }
@@ -194,13 +230,7 @@ const Member = () => {
           </div>
           <hr />
           <div className={classes.lineage}>
-            <span>Parents: </span>
-            {member.parents 
-            ? member.parents.map((parent, i) => {
-              return (i > 0) ? <span>&amp;<Link className={classes.link}>{parent}</Link></span> : <Link className={classes.link}>{parent}</Link>
-            })
-            : <span>Unknown</span>
-          }
+            {displayParents(member, members, classes.link)}
             {
               member.spouse && 
               <p>Spouse: <Link className={classes.link}>{member.spouse}</Link></p>
