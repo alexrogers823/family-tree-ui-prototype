@@ -49,10 +49,22 @@ const Members = () => {
 
   const familyMembers = useSelector(state => state.membersReducer.members);
 
-  console.log('family', familyMembers);
+  // console.log('family', familyMembers);
+
+  // useEffect(() => {
+  //   dispatch(getAllFamilyMembers());
+  // }, []);
 
   useEffect(() => {
-    dispatch(getAllFamilyMembers());
+    fetch('/api/members/')
+    .then(response => response.json())
+    .then(members => {
+      console.log('members', members);
+      dispatch({type: 'GET_ALL_FAMILY_MEMBERS', members: members});
+    })
+    .catch(error => {
+      console.error(error);
+    })
   }, []);
 
   return (

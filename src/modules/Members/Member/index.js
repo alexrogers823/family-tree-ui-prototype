@@ -173,6 +173,16 @@ const Member = () => {
     dispatch(getAllFamilyMembers());
     dispatch(getFamilyMemberById(topicId));
   }, []);
+
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/api/members/')
+  //   .then(response => response.json())
+  //   .then(members => {
+  //     console.log('members', members);
+  //     dispatch({type: 'GET_ALL_FAMILY_MEMBERS', members: members});
+  //   })
+  //   dispatch(getFamilyMemberById(topicId));
+  // }, []);
   
   const arrangeName = member => {
     if (!member) {

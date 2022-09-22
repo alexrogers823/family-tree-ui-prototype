@@ -27,7 +27,7 @@ export default (state =  INIT_STATE, action) => {
     case GET_ALL_FAMILY_MEMBERS:
       return { 
         ...state,
-        members: [ ...familyMembers ],
+        members: action.members,
       }
 
     case GET_ALL_FAMILY_MEMBERS_REQUEST:
