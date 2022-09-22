@@ -146,7 +146,7 @@ const displayParents = (member, members, styledLink) => {
       <Fragment>
         <span>Parent: </span>
         <Link className={styledLink}>
-          {members.filter(m => m.id === primaryParentId)[0].firstName}
+          {member.firstName}
         </Link>
       </Fragment>
     )
@@ -170,19 +170,19 @@ const Member = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllFamilyMembers());
-    dispatch(getFamilyMemberById(topicId));
+    fetch('/api/members/')
+    .then(response => response.json())
+    .then(members => {
+      dispatch({type: 'GET_ALL_FAMILY_MEMBERS', members: members});
+    })
+    
+    fetch(`/api/members/${topicId}`)
+    .then(response => response.json())
+    .then(() => {
+      const numericId = Number(topicId)
+      dispatch(getFamilyMemberById(numericId))
+    })
   }, []);
-
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/api/members/')
-  //   .then(response => response.json())
-  //   .then(members => {
-  //     console.log('members', members);
-  //     dispatch({type: 'GET_ALL_FAMILY_MEMBERS', members: members});
-  //   })
-  //   dispatch(getFamilyMemberById(topicId));
-  // }, []);
   
   const arrangeName = member => {
     if (!member) {
