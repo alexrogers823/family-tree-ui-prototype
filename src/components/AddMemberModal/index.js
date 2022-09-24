@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Date, Button } from '../common';
 import Form, { TextArea } from '../common/Form';
-// import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({

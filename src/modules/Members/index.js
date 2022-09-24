@@ -36,7 +36,7 @@ const arrangeMemberLink = (member, url) => {
       <Link 
         href={`${url}/${member.id}`}
         >
-        {member.firstName} {member.lastName}
+        {member.preferredName || member.firstName} {member.lastName}
       </Link>
       <br />
     </Fragment>

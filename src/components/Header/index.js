@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppBar, Toolbar, Link } from '@material-ui/core';
+import { AppBar } from '../common/AppBar';
+import { Link } from '../common/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -74,7 +75,6 @@ const Header = props => {
   
   return (
     <AppBar position="static">
-      <Toolbar className={classes.root}>
         <div>
           <Link 
             className={`${classes.link}`} 
@@ -183,7 +183,6 @@ const Header = props => {
           closeModal={() => {
             dispatch(closeRegisterModal())
           }} />
-      </Toolbar>
     </AppBar>
     
   );

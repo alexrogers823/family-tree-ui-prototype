@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@material-ui/core';
+import { Link } from '../common/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({

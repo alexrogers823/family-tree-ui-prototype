@@ -14,7 +14,7 @@ const EditMemberPageModal = props => {
 
   return (
     <Form 
-      title={`Edit ${props.firstName}'s page`}
+      title={`Edit ${props.preferredName || props.firstName}'s page`}
       button="Save"
       isOpen={props.isOpen}
       closeModal={props.closeModal}
@@ -22,16 +22,16 @@ const EditMemberPageModal = props => {
       <TextArea className={classes.inputs} placeholder="(Photo here)" />
       <Date className={classes.inputs} label="Birth (DOB)" />
       <Date className={classes.inputs} label="Death" />
-      <TextArea className={classes.inputs} placeholder="Place of Birth" />
-      <TextArea className={classes.inputs} placeholder="Place of Residence" />
+      <TextArea className={classes.inputs} defaultValue={props.birthplace} placeholder="Place of Birth" />
+      <TextArea className={classes.inputs} defaultValue={props.residence} placeholder="Place of Residence" />
       <TextArea className={classes.inputs} placeholder="Bio" />
-      <TextArea className={classes.inputs} placeholder="Spouse" />
-      <TextArea className={classes.inputs} placeholder="First Name" />
-      <TextArea className={classes.inputs} placeholder="Middle Name" />
-      <TextArea className={classes.inputs} placeholder="Last Name" />
-      <TextArea className={classes.inputs} placeholder="Preferred Name" />
+      <TextArea className={classes.inputs} defaultValue={props.spouse || null} placeholder="Spouse" />
+      <TextArea className={classes.inputs} defaultValue={props.firstName} placeholder="First Name" />
+      <TextArea className={classes.inputs} defaultValue={props.middleName || null} placeholder="Middle Name" />
+      <TextArea className={classes.inputs} defaultValue={props.lastName || null} placeholder="Last Name" />
+      <TextArea className={classes.inputs} defaultValue={props.preferredName || null} placeholder="Preferred Name" />
       <TextArea className={classes.inputs} placeholder="Parents (if blank)" />
-      <TextArea className={classes.inputs} placeholder="Suffix" />
+      <TextArea className={classes.inputs} defaultValue={props.suffix || null} placeholder="Suffix" />
       <TextArea className={classes.inputs} placeholder="Children (if applicable)" />
     </Form>
   );

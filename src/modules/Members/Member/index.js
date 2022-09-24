@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 
 import PropTypes from 'prop-types';
-import { Container, Paper, Link, Typography } from '@material-ui/core';
+import { Link } from '../../../components/common/Link';
+import { Container } from '../../../components/common/Container';
 import { makeStyles } from '@material-ui/core/styles';
 
 import alexSample from '../../../assets/Alex_sample.jpg';
@@ -208,7 +209,6 @@ const Member = () => {
 
   return (
     <Container>
-      <Paper className={classes.root} elevation={3}>
         {member &&
         <Fragment>
           <div className={classes.memberStats}>
@@ -262,10 +262,9 @@ const Member = () => {
           >
             Edit Member Info
           </Button>
-          <EditMemberPageModal firstName={member.firstName} isOpen={openModal} closeModal={() => setOpenModal(false)} />
+          <EditMemberPageModal isOpen={openModal} closeModal={() => setOpenModal(false)} {...member} />
       </Fragment>
       }
-      </Paper>
     </Container>
     );
 };

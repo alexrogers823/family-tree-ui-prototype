@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -28,7 +27,6 @@ const Main = () => {
 
   return (
     <Fragment>
-      <Paper className={classes.root} elevation={3}>
         <p className={classes.text}>Welcome to the family website!</p>
 
         <p className={classes.text}>
@@ -68,7 +66,6 @@ const Main = () => {
         </p>
 
         <p className={classes.text}>Enjoy our history!</p>
-      </Paper>
       <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
     </Fragment>
   );
