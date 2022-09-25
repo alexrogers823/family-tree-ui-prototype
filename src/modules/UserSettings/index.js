@@ -16,9 +16,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
+        <p>Iteration Test</p>
       )}
     </div>
   );

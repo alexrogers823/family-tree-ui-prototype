@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppBar } from '../common/AppBar';
-import { Link } from '../common/Link';
-import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '../common/AppBar';
+import Link from '../common/Link';
+// import { makeStyles } from '@material-ui/core/styles';
 
 import {
   artifactsUrl,
@@ -29,22 +29,22 @@ import {
   closeAddMemberModal
 } from '../../redux/actions';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  link: {
-    margin: theme.spacing(2),
-    fontWeight: 600,
-  },
-  right: {
-    textShadow: '3px 3px rgba(4, 56, 18, 0.5)'
-  }
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//   },
+//   link: {
+//     margin: theme.spacing(2),
+//     fontWeight: 600,
+//   },
+//   right: {
+//     textShadow: '3px 3px rgba(4, 56, 18, 0.5)'
+//   }
+// }));
 
 const Header = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
   // const [openMemberModal, setOpenMemberModal] = useState(false);
   // const [openLoginModal, setOpenLoginModal] = useState(false);
   // const [openSignupModal, setOpenSignupModal] = useState(false);
@@ -76,32 +76,28 @@ const Header = props => {
   return (
     <AppBar position="static">
         <div>
-          <Link 
-            className={`${classes.link}`} 
+          <Link  
             color={color.lineage}
             href={lineageUrl}
             onClick={() => setColor({...color, lineage: 'textPrimary'})}
           >
             Tree
           </Link>
-          <Link 
-            className={`${classes.link}`} 
+          <Link  
             color={color.timeline}
             href={timelineUrl}
             onClick={() => setColor({...color, timeline: 'textPrimary'})}
           >
             Timeline
           </Link>
-          <Link 
-            className={`${classes.link}`} 
+          <Link  
             color={color.gallery}
             href={galleryUrl}
             onClick={() => setColor({...color, gallery: 'textPrimary'})}
           >
             Gallery
           </Link>
-          <Link 
-            className={`${classes.link}`} 
+          <Link  
             color={color.artifacts}
             href={artifactsUrl}
             onClick={() => {
@@ -110,8 +106,7 @@ const Header = props => {
           >
             Artifacts
           </Link>
-          <Link 
-            className={`${classes.link}`} 
+          <Link  
             color={color.faq}
             href={faqUrl}
             onClick={() => setColor({...color, faq: 'textPrimary'})}
@@ -119,7 +114,6 @@ const Header = props => {
             FAQ
           </Link>
           <Link
-            className={`${classes.link}`}
             color={color.members}
             href={memberUrl}
             onClick={() => setColor({...color, members: 'textPrimary'})}
@@ -127,8 +121,7 @@ const Header = props => {
             Members
           </Link>
           {isAuthenticated &&
-            <Link 
-              className={`${classes.link}`} 
+            <Link  
               color="inherit" 
               onClick={() => dispatch(openAddMemberModal())} 
               href="#"
@@ -139,17 +132,16 @@ const Header = props => {
         </div>
         <div>
           {isAuthenticated &&
-            <Link className={`${classes.link} ${classes.right}`} color="inherit" href={userUrl}>
+            <Link color="inherit" href={userUrl}>
               {user.username || 'User'}
             </Link>
           }
           {
             isAuthenticated ?
-              <Link className={`${classes.link} ${classes.right}`} color="inherit" onClick={() => dispatch(logoutUser())} href="#">
+              <Link color="inherit" onClick={() => dispatch(logoutUser())} href="#">
                 Logout
               </Link>
             : <Link 
-              className={`${classes.link} ${classes.right}`} 
               color="inherit" 
               onClick={() => dispatch(openLoginModal())} 
               href="#"
@@ -157,8 +149,7 @@ const Header = props => {
               Login
             </Link>
           }
-          <Link 
-            className={`${classes.link} ${classes.right}`} 
+          <Link  
             color="inherit" 
             onClick={() => dispatch(openRegisterModal())} 
             href="#"

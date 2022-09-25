@@ -1,24 +1,17 @@
 import React from 'react';
-import { Link as MaterialLink } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-  link: {
-    marginLeft: theme.spacing(0.5)
-  }
-}));
+import { Link as MuiLink } from '@mui/material';
 
 const Link = props => {
-  const classes = useStyles();
-
   return (
-    <MaterialLink
-      className={classes.link}
+    <MuiLink
+      sx={(theme) => ({
+        ml: theme.spacing(0.5)
+      })}
       href={props.href || "#"}
       onClick={props.onClick}
-    >
+      >
       {props.children}
-    </MaterialLink>
+    </MuiLink>
   )
 };
 

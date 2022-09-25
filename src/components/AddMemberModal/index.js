@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Date, Button } from '../common';
 import Form, { TextArea } from '../common/Form';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-  title: {
-    textDecoration: 'italic',
-    color: 'green',
-  },
-  inputs: {
-    margin: theme.spacing(2),
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   title: {
+//     textDecoration: 'italic',
+//     color: 'green',
+//   },
+//   inputs: {
+//     margin: theme.spacing(2),
+//   },
+// }));
 
 const AddMemberModal = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const [bioParagraphs, setBioParagraphs] = useState([
-    <TextArea className={classes.inputs} placeholder="Bio Paragraph #1" />
+    <TextArea placeholder="Bio Paragraph #1" />
   ]);
 
   const addParagraph = () => {
     const index = bioParagraphs.length + 1;
     setBioParagraphs([
       ...bioParagraphs, 
-      <TextArea className={classes.inputs} placeholder={`Bio Paragraph #${index}`} />
+      <TextArea placeholder={`Bio Paragraph #${index}`} />
     ]);
   }
 
@@ -36,19 +36,19 @@ const AddMemberModal = props => {
       isOpen={props.isOpen}
       closeModal={props.closeModal}
     >
-      <TextArea className={classes.inputs} placeholder="First Name" />
-      <TextArea className={classes.inputs} placeholder="Middle Name" />
-      <TextArea className={classes.inputs} placeholder="Last Name" />
-      <TextArea className={classes.inputs} placeholder="Suffix" />
-      <TextArea className={classes.inputs} placeholder="Preferred Name" />
-      <TextArea className={classes.inputs} placeholder="Related Family Member" />
-      <TextArea className={classes.inputs} placeholder="Relation" />
-      <Date className={classes.inputs} label="DOB" />
-      <Date className={classes.inputs} label="Death (if applicable)" />
-      <TextArea className={classes.inputs} placeholder="Spouse (if applicable)" />
-      <TextArea className={classes.inputs} placeholder="Photo" />
-      <TextArea className={classes.inputs} placeholder="Place of Birth" />
-      <TextArea className={classes.inputs} placeholder="Place of Residence (if alive)" />
+      <TextArea placeholder="First Name" />
+      <TextArea placeholder="Middle Name" />
+      <TextArea placeholder="Last Name" />
+      <TextArea placeholder="Suffix" />
+      <TextArea placeholder="Preferred Name" />
+      <TextArea placeholder="Related Family Member" />
+      <TextArea placeholder="Relation" />
+      <Date label="DOB" />
+      <Date label="Death (if applicable)" />
+      <TextArea placeholder="Spouse (if applicable)" />
+      <TextArea placeholder="Photo" />
+      <TextArea placeholder="Place of Birth" />
+      <TextArea placeholder="Place of Residence (if alive)" />
       {bioParagraphs}
       {
         bioParagraphs.length < 5 &&

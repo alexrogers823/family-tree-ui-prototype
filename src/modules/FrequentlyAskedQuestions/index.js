@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography
-} from '@material-ui/core';
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 import Link from '../../components/common/Link';
 import ContactAdminModal from '../../components/ContactAdminModal';
@@ -20,23 +13,23 @@ import {
   deleteQuestion
  } from '../../redux/actions';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    backgroundColor: 'rgba(47, 115, 169, 0.3)'
-  },
-  question: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'left'
-  },
-  answer: {
-    fontSize: 12,
-    // color: 'green',
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     backgroundColor: 'rgba(47, 115, 169, 0.3)'
+//   },
+//   question: {
+//     fontSize: 18,
+//     fontWeight: 'bold',
+//     textAlign: 'left'
+//   },
+//   answer: {
+//     fontSize: 12,
+//     // color: 'green',
+//   },
+// }));
 
 const FrequentlyAskedQuestions = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const dispatch = useDispatch();
 
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
@@ -50,24 +43,13 @@ const FrequentlyAskedQuestions = props => {
   const ListOfQuestions = () => {
     return questions.map((q, i) => {
       return (
-        <Accordion key={`Question ${i}`} className={classes.root}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="faq-content"
-            id="faq-question"
-          >
-            <Typography className={classes.question}>{q.question}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography className={classes.answer}>{q.answer}</Typography>
-          </AccordionDetails>
-        </Accordion>
+        <p>Questions Test</p>
       )
     })
   };
 
   return (
-    <div className={classes.root}>
+    <div>
       <h1>Frequently Asked Questions</h1>
       {ListOfQuestions()}
       <h3>Don't see your question here?</h3>
