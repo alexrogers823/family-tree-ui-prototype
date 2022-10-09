@@ -79,6 +79,7 @@ const Header = props => {
           <Link  
             color={color.lineage}
             href={lineageUrl}
+            underline="hover"
             onClick={() => setColor({...color, lineage: 'textPrimary'})}
           >
             Tree
@@ -86,6 +87,7 @@ const Header = props => {
           <Link  
             color={color.timeline}
             href={timelineUrl}
+            underline="hover"
             onClick={() => setColor({...color, timeline: 'textPrimary'})}
           >
             Timeline
@@ -93,6 +95,7 @@ const Header = props => {
           <Link  
             color={color.gallery}
             href={galleryUrl}
+            underline="hover"
             onClick={() => setColor({...color, gallery: 'textPrimary'})}
           >
             Gallery
@@ -100,6 +103,7 @@ const Header = props => {
           <Link  
             color={color.artifacts}
             href={artifactsUrl}
+            underline="hover"
             onClick={() => {
               setColor({...color, artifacts: 'textPrimary'})
             }}
@@ -109,6 +113,7 @@ const Header = props => {
           <Link  
             color={color.faq}
             href={faqUrl}
+            underline="hover"
             onClick={() => setColor({...color, faq: 'textPrimary'})}
           >
             FAQ
@@ -116,6 +121,7 @@ const Header = props => {
           <Link
             color={color.members}
             href={memberUrl}
+            underline="hover"
             onClick={() => setColor({...color, members: 'textPrimary'})}
           >
             Members
@@ -123,8 +129,9 @@ const Header = props => {
           {isAuthenticated &&
             <Link  
               color="inherit" 
-              onClick={() => dispatch(openAddMemberModal())} 
               href="#"
+              underline="hover"
+              onClick={() => dispatch(openAddMemberModal())} 
             >
               Add Member
             </Link>
@@ -132,28 +139,39 @@ const Header = props => {
         </div>
         <div>
           {isAuthenticated &&
-            <Link color="inherit" href={userUrl}>
+            <Link 
+              color="inherit" 
+              href={userUrl}
+              underline="hover"
+            >
               {user.username || 'User'}
             </Link>
           }
           {
             isAuthenticated ?
-              <Link color="inherit" onClick={() => dispatch(logoutUser())} href="#">
+              <Link 
+                color="inherit" 
+                href="#"
+                underline="hover"
+                onClick={() => dispatch(logoutUser())} 
+              >
                 Logout
               </Link>
             : <Link 
-              color="inherit" 
-              onClick={() => dispatch(openLoginModal())} 
-              href="#"
+                color="inherit" 
+                href="#"
+                underline="hover"
+                onClick={() => dispatch(openLoginModal())} 
               >
               Login
             </Link>
           }
           <Link  
             color="inherit" 
-            onClick={() => dispatch(openRegisterModal())} 
             href="#"
-            >
+            underline="hover"
+            onClick={() => dispatch(openRegisterModal())} 
+          >
             Register
           </Link>
         </div>

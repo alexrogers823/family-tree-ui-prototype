@@ -7,7 +7,9 @@ const Link = props => {
       sx={(theme) => ({
         ml: theme.spacing(0.5)
       })}
+      color={props.color || "primary"}
       href={props.href || "#"}
+      underline={props.underline || "always"}
       onClick={props.onClick}
       >
       {props.children}

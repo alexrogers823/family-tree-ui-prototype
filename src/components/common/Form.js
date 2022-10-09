@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import {
-//   Input,
-//   Dialog,
-//   DialogActions,
-//   DialogContent,
-//   DialogContentText,
-//   DialogTitle,
-//   TextField
-// } from '@material-ui/core';
-// import Button from '../Button';
+import {
+  Input,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField
+} from '@mui/material';
+import Button from './Button';
 
 // export const TextArea = (props) => (
 //   <TextField
@@ -36,37 +36,33 @@ const Form = props => {
     setOpen(props.isOpen)
   }, [props.isOpen]);
 
-  // return (
-  //   <Dialog 
-  //     open={open || false} 
-  //     onClose={props.closeModal}
-  //     aria-labelledby="form-dialog-title"
-  //     {...props}
-  //   >
-  //     <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
-  //     <DialogContent>
-  //       {props.children}
-  //     </DialogContent>
-  //     <DialogActions>
-  //       {props.button &&
-  //         <Button 
-  //           color="primary"
-  //           onClick={e => {
-  //             if (props.onClick) {
-  //               props.onClick(e.target.value);
-  //             }
-  //             props.closeModal()
-  //           }}
-  //         >
-  //           {props.button}
-  //         </Button>
-  //       }
-  //     </DialogActions>
-  //   </Dialog>
-  // )
-
   return (
-    <p>Form Test</p>
+    <Dialog 
+      open={open || false} 
+      onClose={props.closeModal}
+      aria-labelledby="form-dialog-title"
+      {...props}
+    >
+      <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
+      <DialogContent>
+        {props.children}
+      </DialogContent>
+      <DialogActions>
+        {props.button &&
+          <Button 
+            color="primary"
+            onClick={e => {
+              if (props.onClick) {
+                props.onClick(e.target.value);
+              }
+              props.closeModal()
+            }}
+          >
+            {props.button}
+          </Button>
+        }
+      </DialogActions>
+    </Dialog>
   )
 };
 
