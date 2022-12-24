@@ -8,11 +8,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 const ChosenDate = props => {
-  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(
-    dayjs('2014-08-18T21:11:54')
-  );
+  const [selectedDate, setSelectedDate] = useState(props.date ? dayjs(props.date) : dayjs());
 
-  const handleDateChange = date => {
+  const handleDateChange = (date) => {
     setSelectedDate(date);
     console.log('new date', date);
   };
@@ -20,7 +18,7 @@ const ChosenDate = props => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DesktopDatePicker
-          label="Date desktop"
+          label={props.label}
           inputFormat="MM/DD/YYYY"
           value={selectedDate}
           onChange={handleDateChange}

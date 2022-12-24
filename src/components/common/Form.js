@@ -7,7 +7,11 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField
+  TextField,
+  Box,
+  FormGroup,
+  FormControlLabel,
+  Checkbox
 } from '@mui/material';
 import Button from './Button';
 
@@ -25,7 +29,17 @@ import Button from './Button';
 // );
 
 export const TextArea = props => (
-  <p>TextArea test</p>
+  <Box
+    component="form"
+  >
+    <TextField 
+      label={props.label}
+      placeholder={props.placeholder} 
+      defaultValue={props.defaultValue}
+      variant="standard" 
+      multiline={props.multiline || false}
+    />
+  </Box>
 )
 
 const Form = props => {
@@ -48,6 +62,9 @@ const Form = props => {
         {props.children}
       </DialogContent>
       <DialogActions>
+        <FormGroup>
+          <FormControlLabel control={<Checkbox checked={props.isDeceased} onChange={props.deceased} />} label="Check if deceased" />
+        </FormGroup>
         {props.button &&
           <Button 
             color="primary"

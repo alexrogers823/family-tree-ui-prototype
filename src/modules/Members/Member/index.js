@@ -170,6 +170,8 @@ const Member = () => {
 
   const dispatch = useDispatch();
 
+  console.log('member info: ', member);
+
   useEffect(() => {
     fetch('/api/members/')
     .then(response => response.json())
@@ -212,12 +214,13 @@ const Member = () => {
         {member &&
         <Fragment>
           <div>
-            <img 
+            {/* <img 
               src={adellaSample} 
               alt={`Photo of ${member.firstName}`}
               onChange={e => compressImage(e.target.files[0])} 
-            />
+            /> */}
             <div>
+              <p>(Photo)</p>
               {member.preferredName
                 ? <Fragment>
                     <h1>{member.preferredName} {member.lastName}</h1>
