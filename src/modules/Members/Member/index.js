@@ -170,8 +170,6 @@ const Member = () => {
 
   const dispatch = useDispatch();
 
-  console.log('member info: ', member);
-
   useEffect(() => {
     fetch('/api/members/')
     .then(response => response.json())
@@ -285,6 +283,7 @@ Member.propTypes = {
   residence: PropTypes.string,
   parents: PropTypes.array,
   offspring: PropTypes.array,
+  isAlive: PropTypes.bool
 }
 
 // const mapStateToProps = state => {

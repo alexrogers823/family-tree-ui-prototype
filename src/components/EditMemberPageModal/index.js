@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
 import { Date } from '../common';
 import Form, { TextArea } from '../common/Form';
+import {
+  FormControlLabel,
+  FormGroup,
+} from '@mui/material';
+import {
+  useForm,
+} from 'react-hook-form';
 
 // const useStyles = makeStyles(theme => ({
 //   inputs: {
@@ -11,8 +18,29 @@ import Form, { TextArea } from '../common/Form';
 
 const EditMemberPageModal = props => {
   // const classes = useStyles();
-
   const [isDeceased, setIsDeceased] = useState(!props.isAlive);
+
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      firstName: props.firstName,
+      middleName: props.middleName || null,
+      lastName: props.lastName,
+      preferredName: props.preferredName || null,
+      suffix: props.suffix || null,
+      birthDay: props.birthDay,
+      birthMonth: props.birthMonth,
+      birthYear: props.birthYear,
+      deathDay: props.deathDay || null,
+      deathMonth: props.deathMonth || null,
+      deathYear: props.deathYear || null,
+      birthplace: props.birthplace,
+      residence: props.residence,
+      isAlive: props.isAlive,
+      bio: ''
+    }
+  });
+
+  const onSubmit = data => console.log(data);
 
   return (
     <Form 
@@ -22,22 +50,25 @@ const EditMemberPageModal = props => {
       closeModal={props.closeModal}
       isDeceased={isDeceased}
       onChange={e => setIsDeceased(e.target.checked)}
+      onSubmit={handleSubmit(onSubmit)}
     >
-      {/* <TextArea label="(Photo here)" /> */}
-      <Date label="Birth (DOB)" date={`${props.birthYear}-${props.birthMonth}-${props.birthDay}`} />
-      { isDeceased && 
-        <Date label="Death" date={props.deathYear ? `${props.deathYear}-${props.deathMonth}-${props.deathDay}` : null} /> }
-      <TextArea defaultValue={props.birthplace} label="Place of Birth" placeholder="Ex: Los Angeles, CA" />
-      <TextArea defaultValue={props.residence} label="Place of Residence" placeholder="Ex: Chicago, IL" />
-      <TextArea label="Bio" placeholder={`Say something about ${props.preferredName || props.firstName} here`} multiline />
-      <TextArea defaultValue={props.spouse || null} label="Spouse" placeholder="Ex: Jane Doe" />
-      <TextArea defaultValue={props.firstName} label="First Name" placeholder="Ex: John" />
-      <TextArea defaultValue={props.middleName || null} label="Middle Name" placeholder="Ex: Josiah" />
-      <TextArea defaultValue={props.lastName || null} label="Last Name" placeholder="Ex: Doe" />
-      <TextArea defaultValue={props.preferredName || null} label="Preferred Name" placeholder="Ex: Johnny" />
-      {/* <TextArea label="Parents (if blank)" /> */}
-      <TextArea defaultValue={props.suffix || null} label="Suffix" placeholder="Ex: Jr." />
-      {/* <TextArea label="Children (if applicable)" /> */}
+      <FormGroup>
+        {/* <TextArea label="(Photo here)" /> */}
+        <Date control={control} label="Birth (DOB)" keyLabel="birthdate" date={`${props.birthYear}-${props.birthMonth}-${props.birthDay}`} />
+        { isDeceased && 
+          <Date control={control} label="Death" keyLabel="deceasedDate" date={props.deathYear ? `${props.deathYear}-${props.deathMonth}-${props.deathDay}` : null} /> } 
+        <TextArea control={control} defaultValue={props.birthplace} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
+        <TextArea control={control} defaultValue={props.residence} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" />
+        <TextArea control={control} label="Bio" keyLabel="bio" placeholder={`Say something about ${props.preferredName || props.firstName} here`} multiline />
+        <TextArea control={control} defaultValue={props.spouse || null} label="Spouse" keyLabel="spouse" placeholder="Ex: Jane Doe" />
+        <TextArea control={control} defaultValue={props.firstName} label="First Name" keyLabel="firstName" placeholder="Ex: John" />
+        <TextArea control={control} defaultValue={props.middleName || null} label="Middle Name" keyLabel="middleName" placeholder="Ex: Josiah" />
+        <TextArea control={control} defaultValue={props.lastName || null} label="Last Name" keyLabel="lastName" placeholder="Ex: Doe" />
+        <TextArea control={control} defaultValue={props.preferredName || null} label="Preferred Name" keyLabel="preferredName" placeholder="Ex: Johnny" />
+        {/* <TextArea label="Parents (if blank)" /> */}
+        <TextArea control={control} defaultValue={props.suffix || null} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
+        {/* <TextArea label="Children (if applicable)" /> */}
+      </FormGroup>
     </Form>
   );
 };
