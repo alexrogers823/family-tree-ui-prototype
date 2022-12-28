@@ -40,7 +40,23 @@ const EditMemberPageModal = props => {
     }
   });
 
-  const onSubmit = data => console.log(data);
+  // const onSubmit = data => console.log(data);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    try {
+      fetch(`/api/members/${props.id}`, {
+        method: "PUT",
+        headers: {
+          'Accept': 'application/json, text/plain',
+          'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: JSON.stringify(data)
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Form 
