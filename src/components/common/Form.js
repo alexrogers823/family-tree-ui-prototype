@@ -30,7 +30,8 @@ export const TextArea = props => {
             label={props.label}
             placeholder={props.placeholder} 
             defaultValue={props.defaultValue}
-            variant="filled" 
+            variant="filled"
+            type={ props.type || "text" }
             fullWidth={ props.fullWidth || false }
             multiline={ props.multiline || false }
             { ...props }
