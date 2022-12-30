@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // import { makeStyles } from '@material-ui/core/styles';
 import { Timeline } from '@mui/lab';
 
-import AddEventModal from '../../components/AddEventModal';
+import AddEventModal from '../../components/AddTimelineEventModal';
 import Button from '../../components/common/Button';
 import { mapIntToMonth } from '../../utils';
 import TimelineEvent from './TimelineEvent';
@@ -35,7 +35,9 @@ const TimelineEvents = props => {
   // const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
 
-  const familyTimelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents);
+  const familyTimelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents)
+                                .sort((a, b) => a.year + b.year); // change so that this happens on backend
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const TimelineEvents = props => {
       <Timeline>
         {familyTimelineEvents.map(ev => {
           return (
-          <TimelineEvent date={ev.year} event={ev.event} />
+          <TimelineEvent date={ev.year} event={ev.event} id={ev.id} />
         )})}
       </Timeline>
       <Button onClick={() => setOpenModal(true)}>

@@ -10,7 +10,7 @@ import Form, { TextArea } from '../common/Form';
 
 import { createTimelineEvent } from '../../redux/actions';
 
-const AddEventModal = props => {
+const AddTimelineEventModal = props => {
   const [newEvent, setNewEvent] = useState({
     id: 6,
     createdOn: null,
@@ -19,7 +19,13 @@ const AddEventModal = props => {
 
   const dispatch = useDispatch();
 
-  const { control, handleSubmit } = useForm({});
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      day: 17,
+      month: 3,
+      year: 2010
+    }
+  });
 
   useEffect(() => {
     const currentDay = moment();
@@ -43,7 +49,28 @@ const AddEventModal = props => {
     })
   }
 
-  const onSubmit = data => console.log(data);
+  // const onSubmit = data => console.log(data);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    try {
+      fetch("/api/timeline/", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json, text/plain",
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(timelineEvent => {
+        console.log('calling event: ', timelineEvent)
+        dispatch(createTimelineEvent(timelineEvent))
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <Form 
@@ -69,4 +96,4 @@ const AddEventModal = props => {
   );
 };
 
-export default AddEventModal;
+export default AddTimelineEventModal;

@@ -60,7 +60,7 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         timelineEvents: [
-          ...state,
+          ...state.timelineEvents,
           action.payload
         ]
       }

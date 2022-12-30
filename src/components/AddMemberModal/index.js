@@ -52,7 +52,7 @@ const AddMemberModal = props => {
     const onSubmit = (data) => {
       console.log(data);
       try {
-        fetch("api/members/", {
+        fetch("/api/members/", {
           method: "POST",
           headers: {
             "Accept": "application/json, text/plain",
