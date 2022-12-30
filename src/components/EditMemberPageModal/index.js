@@ -62,6 +62,7 @@ const EditMemberPageModal = props => {
       isDeceased={isDeceased}
       onChange={e => setIsDeceased(e.target.checked)}
       onSubmit={handleSubmit(onSubmit)}
+      enableDeceasedCheckbox
     >
       <FormGroup>
         {/* <TextArea label="(Photo here)" /> */}

@@ -1,5 +1,5 @@
 import 'date-fns';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
@@ -14,6 +14,7 @@ const ChosenDate = props => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
     console.log('new date', date);
+    console.log('month: ', date.month())
   };
 
   return (
@@ -24,13 +25,13 @@ const ChosenDate = props => {
         return (
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DesktopDatePicker
-                { ...field }
-                label={props.label}
-                inputFormat="MM/DD/YYYY"
-                value={selectedDate}
-                onChange={handleDateChange}
-                renderInput={(params) => <TextField {...params} />}
-              />
+              label={props.label}
+              inputFormat="MM/DD/YYYY"
+              value={selectedDate}
+              onChange={handleDateChange}
+              renderInput={(params) => <TextField {...params} />}
+              { ...field }
+            />
           </LocalizationProvider>
         )
       }}

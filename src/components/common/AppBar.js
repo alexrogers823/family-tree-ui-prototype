@@ -7,13 +7,13 @@ import {
 
 const AppBar = props => {
   return (
-    <MuiAppBar>
-      <Box>
-        <Toolbar>
+    <Box>
+      <MuiAppBar position={props.position}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
           {props.children}
         </Toolbar>
-      </Box>
-    </MuiAppBar>
+      </MuiAppBar>
+    </Box>
   )
 }
 

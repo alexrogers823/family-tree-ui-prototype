@@ -62,9 +62,11 @@ const Form = props => {
           {props.children}
         </DialogContent>
         <DialogActions>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox checked={props.isDeceased} onChange={props.onChange} />} label="Check if deceased" />
-          </FormGroup>
+          { props.enableDeceasedCheckbox &&
+            <FormGroup>
+              <FormControlLabel control={<Checkbox checked={props.isDeceased} onChange={props.onChange} />} label="Check if deceased" />
+            </FormGroup>
+          }
           {props.button &&
             <Button 
               type="submit"

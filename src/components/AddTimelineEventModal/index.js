@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import moment from 'moment';
 import { FormGroup } from '@mui/material';
 
-import { connect } from 'react-redux';
-import { Date, Button, Modal } from '../common';
+import { Date } from '../common';
 import Form, { TextArea } from '../common/Form';
 
 import { createTimelineEvent } from '../../redux/actions';

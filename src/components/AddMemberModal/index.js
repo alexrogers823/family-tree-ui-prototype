@@ -80,6 +80,7 @@ const AddMemberModal = props => {
       isDeceased={isDeceased}
       onChange={e => setIsDeceased(e.target.checked)}
       onSubmit={handleSubmit(onSubmit)}
+      enableDeceasedCheckbox
     >
       <FormGroup>
         <TextArea control={control} label="First Name" keyLabel="firstName" placeholder="Ex: John" />

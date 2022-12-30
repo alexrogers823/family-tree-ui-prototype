@@ -14,7 +14,8 @@ const EditTimelineEventModal = props => {
     defaultValues: {
       day: props.day || 17,
       month: props.month || 3,
-      year: props.year || 2010
+      year: props.year || 2010,
+      event: props.event
     }
   });
 
