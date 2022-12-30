@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
 import { Date } from '../common';
 import Form, { TextArea } from '../common/Form';
-import {
-  FormControlLabel,
-  FormGroup,
-} from '@mui/material';
-import {
-  useForm,
-} from 'react-hook-form';
+import { FormGroup } from '@mui/material';
+import { useForm } from 'react-hook-form';
 
 // const useStyles = makeStyles(theme => ({
 //   inputs: {
@@ -48,8 +43,8 @@ const EditMemberPageModal = props => {
       fetch(`/api/members/${props.id}`, {
         method: "PUT",
         headers: {
-          'Accept': 'application/json, text/plain',
-          'Content-Type': 'application/json;charset=UTF-8'
+          "Accept": "application/json, text/plain",
+          "Content-Type": "application/json;charset=UTF-8"
         },
         body: JSON.stringify(data)
       })

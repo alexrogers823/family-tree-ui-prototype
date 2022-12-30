@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import moment from 'moment';
+import { FormGroup } from '@mui/material';
 
 import { connect } from 'react-redux';
 import { Date, Button, Modal } from '../common';
@@ -16,6 +18,8 @@ const AddEventModal = props => {
   });
 
   const dispatch = useDispatch();
+
+  const { control, handleSubmit } = useForm({});
 
   useEffect(() => {
     const currentDay = moment();
@@ -39,22 +43,28 @@ const AddEventModal = props => {
     })
   }
 
+  const onSubmit = data => console.log(data);
+
   return (
     <Form 
       title="Add an event"
       button="POST IT!"
       isOpen={props.isOpen}
-      onClick={() => dispatch(createTimelineEvent(newEvent))}
+      // onClick={() => dispatch(createTimelineEvent(newEvent))}
+      onSubmit={handleSubmit(onSubmit)}
       closeModal={props.closeModal}
     >
-      <Date label="Event Date" onChange={formatDateToEvent} />
-      <TextArea 
-        label="Event" 
-        placeholder='Say in present tense. Ex "Bob graduates college..."'
-        onChange={e => setNewEvent({ ...newEvent, timelineEvent: e.target.value})}
-        fullWidth
-        multiline
-      />
+      <FormGroup>
+        <Date control={control} label="Event Date" keyLabel="eventDate" />
+        <TextArea 
+          control={control}
+          label="Event" 
+          keyLabel="event"
+          placeholder='Say in present tense. Ex "Bob graduates college..."'
+          fullWidth
+          multiline
+          />
+      </FormGroup>
     </Form>
   );
 };

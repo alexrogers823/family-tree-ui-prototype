@@ -4,6 +4,7 @@ import {
   GET_ALL_FAMILY_MEMBERS_SUCCESS,
   GET_ALL_FAMILY_MEMBERS_FAILURE,
   GET_FAMILY_MEMBER_BY_ID,
+  ADD_FAMILY_MEMBER,
   UPDATE_FAMILY_MEMBER,
   UPDATE_FAMILY_MEMBER_REQUEST,
   UPDATE_FAMILY_MEMBER_SUCCESS,
@@ -54,6 +55,15 @@ export default (state =  INIT_STATE, action) => {
       return {
         ...state,
         member: state.members.find(({id}) => id === action.payload)
+      }
+
+    case ADD_FAMILY_MEMBER:
+      return {
+        ...state,
+        members: [
+          ...state.members,
+          action.payload
+        ]
       }
 
     case UPDATE_FAMILY_MEMBER_REQUEST:

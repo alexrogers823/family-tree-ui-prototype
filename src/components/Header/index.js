@@ -126,7 +126,6 @@ const Header = props => {
           >
             Members
           </Link>
-          {isAuthenticated &&
             <Link  
               color="inherit" 
               href="#"
@@ -135,7 +134,6 @@ const Header = props => {
             >
               Add Member
             </Link>
-          }
         </div>
         <div>
           {isAuthenticated &&

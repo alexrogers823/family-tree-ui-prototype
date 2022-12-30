@@ -48,7 +48,7 @@ export const deleteTimelineEvent = () => {
 
 export const getAllEvents = () => {
   return {
-    type: GET_ALL_EVENTS
+    type: GET_ALL_EVENTS,
   }
 };
 

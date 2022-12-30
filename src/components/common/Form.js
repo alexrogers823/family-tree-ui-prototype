@@ -31,7 +31,8 @@ export const TextArea = props => {
             placeholder={props.placeholder} 
             defaultValue={props.defaultValue}
             variant="filled" 
-            multiline={props.multiline || false}
+            fullWidth={ props.fullWidth || false }
+            multiline={ props.multiline || false }
             { ...props }
           />
         )}}
@@ -47,7 +48,9 @@ const Form = props => {
   }, [props.isOpen]);
 
   return (
-    <Dialog 
+    <Dialog
+      fullWidth={true}
+      maxWidth={ props.maxWidth || "md" }
       open={open || false} 
       onClose={props.closeModal}
       aria-labelledby="form-dialog-title"

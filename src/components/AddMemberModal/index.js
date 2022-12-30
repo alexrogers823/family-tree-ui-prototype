@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
+import { useDispatch } from 'react-redux';
 import { Date, Button } from '../common';
 import Form, { TextArea } from '../common/Form';
+import { FormGroup } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { addFamilyMember } from '../../redux/actions';
+import MemberReducer from '../../modules/Members/redux/reducer';
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles(theme => ({
@@ -20,13 +25,50 @@ const AddMemberModal = props => {
     <TextArea placeholder="Bio Paragraph #1" />
   ]);
 
+  const [isDeceased, setIsDeceased] = useState(false);
+  const [state, dispatch] = useReducer(MemberReducer, {});
+
+  // const dispatch = useDispatch();
+
+  const { control, handleSubmit } = useForm({
+    defaultValues: { //remove these values after fixing date logic
+      birthDay: 14,
+      birthMonth: 2,
+      birthYear: 2020,
+      isAlive: true
+    }
+  });
+
   const addParagraph = () => {
     const index = bioParagraphs.length + 1;
     setBioParagraphs([
       ...bioParagraphs, 
-      <TextArea placeholder={`Bio Paragraph #${index}`} />
+      <TextArea control={control} label={`Bio Paragraph #${index}`} keyLabel={`paragraph${index}`} placeholder="lorem ipsum..." />
     ]);
   }
+
+    // const onSubmit = data => console.log(data);
+
+    const onSubmit = (data) => {
+      console.log(data);
+      try {
+        fetch("api/members/", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json, text/plain",
+            "Content-Type": "application/json;charset=UTF-8"
+          },
+          body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(member => {
+          console.log('calling member: ', member)
+          dispatch(addFamilyMember(member))
+        })
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
   return (
     <Form 
@@ -35,25 +77,32 @@ const AddMemberModal = props => {
       maxWidth="xl"
       isOpen={props.isOpen}
       closeModal={props.closeModal}
+      isDeceased={isDeceased}
+      onChange={e => setIsDeceased(e.target.checked)}
+      onSubmit={handleSubmit(onSubmit)}
     >
-      <TextArea placeholder="First Name" />
-      <TextArea placeholder="Middle Name" />
-      <TextArea placeholder="Last Name" />
-      <TextArea placeholder="Suffix" />
-      <TextArea placeholder="Preferred Name" />
-      <TextArea placeholder="Related Family Member" />
-      <TextArea placeholder="Relation" />
-      <Date label="DOB" />
-      <Date label="Death (if applicable)" />
-      <TextArea placeholder="Spouse (if applicable)" />
-      <TextArea placeholder="Photo" />
-      <TextArea placeholder="Place of Birth" />
-      <TextArea placeholder="Place of Residence (if alive)" />
-      {bioParagraphs}
-      {
-        bioParagraphs.length < 5 &&
-        <Button onClick={addParagraph}>Add Paragraph</Button>
-      }
+      <FormGroup>
+        <TextArea control={control} label="First Name" keyLabel="firstName" placeholder="Ex: John" />
+        <TextArea control={control} label="Middle Name" keyLabel="middleName" placeholder="Ex: Josiah" />
+        <TextArea control={control} label="Last Name" keyLabel="lastName" placeholder="Ex: Doe" />
+        <TextArea control={control} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
+        <TextArea control={control} label="Preferred Name" keyLabel="preferredName" placeholder="Ex: Johnny" />
+        {/* <TextArea control={control} placeholder="Related Family Member" /> */}
+        {/* <TextArea control={control} placeholder="Relation" /> */}
+        <Date control={control} label="Date of Birth" keyLabel="birthdate" />
+        { isDeceased &&
+          <Date control={control} label="Death" keyLabel="deceasedDate" /> }
+        <TextArea control={control} label="Spouse (if applicable)" keyLabel="spouse" placeholder="Ex: Jane Doe" />
+        {/* <TextArea control={control} placeholder="Photo" /> */}
+        <TextArea control={control} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
+        { !isDeceased && 
+          <TextArea control={control} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" /> }
+        {/* {bioParagraphs}
+        {
+          bioParagraphs.length < 5 &&
+          <Button onClick={addParagraph}>Add Paragraph</Button>
+        } */}
+      </FormGroup>
     </Form>
   )
 }

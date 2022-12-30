@@ -56,9 +56,9 @@ const Members = () => {
   // }, []);
 
   useEffect(() => {
-    fetch('/api/members/')
+    fetch("/api/members/")
     .then(response => response.json())
-    .then(members => dispatch({type: 'GET_ALL_FAMILY_MEMBERS', members: members}))
+    .then(members => dispatch({type: "GET_ALL_FAMILY_MEMBERS", members: members}))
     .catch(error => {
       console.error(error);
     })
