@@ -11,7 +11,7 @@ import Container from '../../../components/common/Container';
 import alexSample from '../../../assets/Alex_sample.jpg';
 import adellaSample from '../../../assets/Adella_sample.jpg';
 
-import { concatenateDate, compressImage } from '../../../utils';
+import { concatenateDate, convertToDate, compressImage } from '../../../utils';
 
 import Button from '../../../components/common/Button';
 import EditMemberPageModal from '../../../components/EditMemberPageModal';
@@ -227,8 +227,8 @@ const Member = () => {
                 : <h1>{arrangeName(member)}</h1>
               }
               <h3>
-                b. {concatenateDate(member.birthDay, member.birthMonth, member.birthYear)}
-                {!member.isAlive && `, d. ${concatenateDate(member.deathDay, member.deathMonth, member.deathYear)}`}
+                b. {convertToDate(member.birthdate)}
+                {!member.isAlive && `, d. ${convertToDate(member.deceasedDate)}`}
               </h3>
               <h3>Birthplace: {member.birthplace}</h3>
               <h3>Residence: {member.residence}</h3>
@@ -277,9 +277,11 @@ Member.propTypes = {
   birthDay: PropTypes.number,
   birthMonth: PropTypes.number,
   birthYear: PropTypes.number,
+  birthdate: PropTypes.instanceOf(Date),
   deathDay: PropTypes.number,
   deathMonth: PropTypes.number,
   deathYear: PropTypes.number,
+  deceasedDate: PropTypes.instanceOf(Date),
   residence: PropTypes.string,
   parents: PropTypes.array,
   offspring: PropTypes.array,

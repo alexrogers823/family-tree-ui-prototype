@@ -23,6 +23,7 @@ const Login = props => {
       closeModal={props.closeModal}
       // onClick={() => dispatch(loginUser(loginInfo))}
       onSubmit={() => handleSubmit(onSubmit)}
+      maxWidth="sm"
     >
       <FormGroup>
         <TextArea

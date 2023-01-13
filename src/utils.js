@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import Resizer from 'react-image-file-resizer';
 
 const concatenateDate = (day = null, month = null, year = null) => {
@@ -15,8 +15,8 @@ const concatenateDate = (day = null, month = null, year = null) => {
   return output
 };
 
-const convertToDate = (dateObj, format = "M/D/YYYY") => {
-  return moment(dateObj).format(format);
+const convertToDate = (dateObj, format="MMMM DD, YYYY") => {
+  return dayjs(dateObj).format(format);
 }
 
 const mapIntToMonth = month => {

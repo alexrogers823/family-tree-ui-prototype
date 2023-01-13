@@ -4,6 +4,7 @@ import { Date } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import Member from '../../modules/Members/Member';
 
 // const useStyles = makeStyles(theme => ({
 //   inputs: {
@@ -25,9 +26,11 @@ const EditMemberPageModal = props => {
       birthDay: props.birthDay,
       birthMonth: props.birthMonth,
       birthYear: props.birthYear,
+      birthdate: props.birthdate || null,
       deathDay: props.deathDay || null,
       deathMonth: props.deathMonth || null,
       deathYear: props.deathYear || null,
+      deceasedDate: props.deceasedDate || null,
       birthplace: props.birthplace,
       residence: props.residence,
       isAlive: props.isAlive,
@@ -53,6 +56,8 @@ const EditMemberPageModal = props => {
     }
   };
 
+  console.dir(props);
+
   return (
     <Form 
       title={`Edit ${props.preferredName || props.firstName}'s page`}
@@ -66,7 +71,7 @@ const EditMemberPageModal = props => {
     >
       <FormGroup>
         {/* <TextArea label="(Photo here)" /> */}
-        <Date control={control} label="Birth (DOB)" keyLabel="birthdate" date={`${props.birthYear}-${props.birthMonth}-${props.birthDay}`} />
+        <Date control={control} label="Birth (DOB)" keyLabel="birthdate" date={props.birthdate ? props.birthdate : null} />
         { isDeceased && 
           <Date control={control} label="Death" keyLabel="deceasedDate" date={props.deathYear ? `${props.deathYear}-${props.deathMonth}-${props.deathDay}` : null} /> } 
         <TextArea control={control} defaultValue={props.birthplace} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
