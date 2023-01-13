@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import _ from 'lodash';
 import Resizer from 'react-image-file-resizer';
 
 const concatenateDate = (day = null, month = null, year = null) => {
@@ -38,18 +39,19 @@ const mapIntToMonth = month => {
   return months[`${month}`];
 }
 
-const compressImage = image => {
-  Resizer.imageFileResizer(
-    image,
-    480,
-    480,
-    "JPEG",
-    70,
-    0,
-    (uri) => console.log(uri),
-    "base64"
-  );
-}
+const compressImage = image => 
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      image,
+      480,
+      480,
+      "JPEG",
+      70,
+      0,
+      (uri) => resolve(uri),
+      "base64"
+    );
+});
 
 export {
   concatenateDate,

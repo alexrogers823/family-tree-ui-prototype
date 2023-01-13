@@ -35,6 +35,7 @@ const AddMemberModal = props => {
       birthDay: 14,
       birthMonth: 2,
       birthYear: 2020,
+      birthdate: props.birthdate || null,
       isAlive: true
     }
   });

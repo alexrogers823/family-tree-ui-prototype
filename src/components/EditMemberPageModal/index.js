@@ -33,6 +33,7 @@ const EditMemberPageModal = props => {
       deceasedDate: props.deceasedDate || null,
       birthplace: props.birthplace,
       residence: props.residence,
+      biography: props.biography || null,
       isAlive: props.isAlive,
       bio: ''
     }
@@ -76,7 +77,7 @@ const EditMemberPageModal = props => {
           <Date control={control} label="Death" keyLabel="deceasedDate" date={props.deathYear ? `${props.deathYear}-${props.deathMonth}-${props.deathDay}` : null} /> } 
         <TextArea control={control} defaultValue={props.birthplace} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
         <TextArea control={control} defaultValue={props.residence} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" />
-        <TextArea control={control} label="Bio" keyLabel="bio" placeholder={`Say something about ${props.preferredName || props.firstName} here`} multiline />
+        <TextArea control={control} label="Biography" keyLabel="biography" placeholder={`Say something about ${props.preferredName || props.firstName} here`} multiline />
         <TextArea control={control} defaultValue={props.spouse || null} label="Spouse" keyLabel="spouse" placeholder="Ex: Jane Doe" />
         <TextArea control={control} defaultValue={props.firstName} label="First Name" keyLabel="firstName" placeholder="Ex: John" />
         <TextArea control={control} defaultValue={props.middleName || null} label="Middle Name" keyLabel="middleName" placeholder="Ex: Josiah" />

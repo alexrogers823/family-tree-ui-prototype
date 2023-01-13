@@ -105,22 +105,15 @@ import {
 // }));
 
 const arrangeBiography = member => {
-  const memberBio = Object.entries(member)
-    .filter(key => key[0].startsWith('bio') 
-                && key[1])
-    .map(key => key[1]);
+  const memberBio = member.biography.split('\n')
 
-  if (_.isEmpty(memberBio)) {
+  console.log('bio: ', memberBio);
+
+  if (!memberBio) {
     return <h3>No information added yet for {member.preferredName || member.firstName}. Be the first to add it!</h3>
   }
 
-  return (
-    memberBio.map(paragraph => {
-      return (
-        <p>{paragraph}</p>
-      )
-    })
-  );
+  return memberBio.map(line => <p>{line}</p>);
 };
 
 const displayParents = (member, members, styledLink) => {
@@ -210,15 +203,15 @@ const Member = () => {
   return (
     <Container>
         {member &&
-        <Fragment>
+        <>
           <div>
             {/* <img 
               src={adellaSample} 
               alt={`Photo of ${member.firstName}`}
-              onChange={e => compressImage(e.target.files[0])} 
+              onChange={async (e) => await compressImage(e.target.files[0])} 
             /> */}
             <div>
-              <p>(Photo)</p>
+              <p>(photo)</p>
               {member.preferredName
                 ? <Fragment>
                     <h1>{member.preferredName} {member.lastName}</h1>
@@ -263,7 +256,7 @@ const Member = () => {
             Edit Member Info
           </Button>
           <EditMemberPageModal isOpen={openModal} closeModal={() => setOpenModal(false)} {...member} />
-      </Fragment>
+      </>
       }
     </Container>
     );
