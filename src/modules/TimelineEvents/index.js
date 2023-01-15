@@ -6,7 +6,7 @@ import { Timeline } from '@mui/lab';
 
 import AddEventModal from '../../components/AddTimelineEventModal';
 import Button from '../../components/common/Button';
-import { mapIntToMonth } from '../../utils';
+import { mapIntToMonth, convertToDate } from '../../utils';
 import TimelineEvent from './TimelineEvent';
 import TimelineEventReducer from './redux/reducer';
 
@@ -56,16 +56,10 @@ const TimelineEvents = props => {
 
   return (
     <Fragment>
-      <div>Timeline event test</div>
-      <div>Timeline event test</div>
-      <div>Timeline event test</div>
-      <div>Timeline event test</div>
-      <div>Timeline event test</div>
-      <div>Timeline event test</div>
       <Timeline>
         {familyTimelineEvents.map(ev => {
           return (
-          <TimelineEvent date={ev.year} event={ev.event} id={ev.id} />
+          <TimelineEvent date={convertToDate(ev.eventDate, "YYYY")} event={ev.event} id={ev.id} />
         )})}
       </Timeline>
       <Button onClick={() => setOpenModal(true)}>

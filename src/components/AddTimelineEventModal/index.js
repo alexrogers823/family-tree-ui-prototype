@@ -22,7 +22,8 @@ const AddTimelineEventModal = props => {
     defaultValues: {
       day: 17,
       month: 3,
-      year: 2010
+      year: 2010,
+      eventDate: props.eventDate || null
     }
   });
 

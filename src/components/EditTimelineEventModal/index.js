@@ -15,6 +15,7 @@ const EditTimelineEventModal = props => {
       day: props.day || 17,
       month: props.month || 3,
       year: props.year || 2010,
+      eventDate: props.eventDate || null,
       event: props.event
     }
   });
@@ -44,7 +45,7 @@ const EditTimelineEventModal = props => {
       closeModal={props.closeModal}
     >
       <FormGroup>
-        <Date control={control} label="Event Date" keyLabel="eventDate" />
+        <Date control={control} label="Event Date" keyLabel="eventDate" date={props.eventDate} />
         <TextArea 
           control={control}
           label="Event" 

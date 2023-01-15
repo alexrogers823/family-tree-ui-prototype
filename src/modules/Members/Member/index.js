@@ -105,7 +105,7 @@ import {
 // }));
 
 const arrangeBiography = member => {
-  const memberBio = member.biography.split('\n')
+  const memberBio = member.biography ? member.biography.split('\n') : null;
 
   console.log('bio: ', memberBio);
 
@@ -121,7 +121,7 @@ const displayParents = (member, members, styledLink) => {
 
   console.log('first parent', primaryParentId);
 
-  if ((primaryParentId || primaryParentId === 0) && secondaryParentId) {
+  if (primaryParentId && secondaryParentId) {
     return (
       <Fragment>
         <span>Parents: </span>
@@ -135,12 +135,12 @@ const displayParents = (member, members, styledLink) => {
         </span>
       </Fragment>
     )
-  } else if (primaryParentId || primaryParentId === 0) {
+  } else if (primaryParentId) {
     return (
       <Fragment>
         <span>Parent: </span>
         <Link>
-          {member.firstName}
+          {members.filter(m => m.id === primaryParentId)[0].firstName}
         </Link>
       </Fragment>
     )
@@ -275,7 +275,9 @@ Member.propTypes = {
   deathMonth: PropTypes.number,
   deathYear: PropTypes.number,
   deceasedDate: PropTypes.instanceOf(Date),
+  birthplace: PropTypes.string,
   residence: PropTypes.string,
+  biography: PropTypes.string,
   parents: PropTypes.array,
   offspring: PropTypes.array,
   isAlive: PropTypes.bool
