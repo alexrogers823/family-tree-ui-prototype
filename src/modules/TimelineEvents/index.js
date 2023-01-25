@@ -57,7 +57,7 @@ const TimelineEvents = props => {
       <Timeline>
         {familyTimelineEvents.map(ev => {
           return (
-          <TimelineEvent date={convertToDate(ev.eventDate, "YYYY")} event={ev.event} id={ev.id} />
+          <TimelineEvent date={convertToDate(ev.eventDate, "YYYY")} {...ev} />
         )})}
       </Timeline>
       <Button onClick={() => setOpenModal(true)}>

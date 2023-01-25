@@ -30,6 +30,7 @@ const ChosenDate = props => {
               value={selectedDate}
               onChange={handleDateChange}
               renderInput={(params) => <TextField {...params} />}
+              disableFuture
               { ...field }
             />
           </LocalizationProvider>
