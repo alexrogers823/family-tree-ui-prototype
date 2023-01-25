@@ -125,11 +125,11 @@ const displayParents = (member, members, styledLink) => {
     return (
       <Fragment>
         <span>Parents: </span>
-        <Link>
+        <Link href={`./${member.primaryParentId}`}>
           {members.filter(m => m.id === primaryParentId)[0].firstName}
         </Link>
         <span>&amp;
-          <Link>
+          <Link href={`./${member.secondaryParentId}`}>
             {members.filter(m => m.id === secondaryParentId)[0].firstName}
           </Link>
         </span>
@@ -139,7 +139,7 @@ const displayParents = (member, members, styledLink) => {
     return (
       <Fragment>
         <span>Parent: </span>
-        <Link>
+        <Link href={`./${member.primaryParentId}`}>
           {members.filter(m => m.id === primaryParentId)[0].firstName}
         </Link>
       </Fragment>
