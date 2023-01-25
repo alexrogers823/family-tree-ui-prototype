@@ -57,7 +57,11 @@ const Form = props => {
       aria-labelledby="form-dialog-title"
       {...props}
     >
-      <form onSubmit={props.onSubmit}>
+      <form onSubmit={e => {
+        e.stopPropagation();
+        e.preventDefault();
+        props.onSubmit();
+      }}>
         <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
         <DialogContent>
           {props.children}

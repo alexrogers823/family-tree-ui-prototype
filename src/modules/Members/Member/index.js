@@ -228,8 +228,8 @@ const Member = () => {
           <div>
             {displayParents(member, {})}
             {
-              member.spouse && 
-              <p>Spouse: <Link>{member.spouse}</Link></p>
+              member.spouseName && 
+              <p>Spouse: <Link href={`./${member.spouseId}`}>{member.spouseName}</Link></p>
             }
             {
               member.offspring && 

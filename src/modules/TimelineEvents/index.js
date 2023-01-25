@@ -52,8 +52,6 @@ const TimelineEvents = props => {
       })
   }, []);
 
-  console.log(familyTimelineEvents)
-
   return (
     <Fragment>
       <Timeline>
