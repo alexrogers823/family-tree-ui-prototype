@@ -54,7 +54,7 @@ export default (state =  INIT_STATE, action) => {
     case GET_FAMILY_MEMBER_BY_ID:
       return {
         ...state,
-        member: state.members.find(({id}) => id === action.payload)
+        member: action.payload
       }
 
     case ADD_FAMILY_MEMBER:

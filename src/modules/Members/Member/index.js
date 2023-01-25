@@ -116,7 +116,7 @@ const arrangeBiography = member => {
   return memberBio.map(line => <p>{line}</p>);
 };
 
-const displayParents = (member, members, styledLink) => {
+const displayParents = (member, styledLink) => {
   const {primaryParentId, secondaryParentId} = member;
 
   console.log('first parent', primaryParentId);
@@ -126,11 +126,11 @@ const displayParents = (member, members, styledLink) => {
       <Fragment>
         <span>Parents: </span>
         <Link href={`./${member.primaryParentId}`}>
-          {members.filter(m => m.id === primaryParentId)[0].firstName}
+          {member.primaryParentName}
         </Link>
         <span>&amp;
           <Link href={`./${member.secondaryParentId}`}>
-            {members.filter(m => m.id === secondaryParentId)[0].firstName}
+            {member.secondaryParentName}
           </Link>
         </span>
       </Fragment>
@@ -140,7 +140,7 @@ const displayParents = (member, members, styledLink) => {
       <Fragment>
         <span>Parent: </span>
         <Link href={`./${member.primaryParentId}`}>
-          {members.filter(m => m.id === primaryParentId)[0].firstName}
+          {member.primaryParentName}
         </Link>
       </Fragment>
     )
@@ -156,25 +156,18 @@ const Member = () => {
   const [openModal, setOpenModal] = useState(false);
   let { topicId } = useParams();
 
-  const members = useSelector(state => state.membersReducer.members);
-
   // TODO: Remove once getMemberById is in redux 
   const member = useSelector(state => state.membersReducer.member);
 
   const dispatch = useDispatch();
 
+  console.log('member info: ', member);
+
   useEffect(() => {
-    fetch('/api/members/')
-    .then(response => response.json())
-    .then(members => {
-      dispatch({type: 'GET_ALL_FAMILY_MEMBERS', members: members});
-    })
-    
     fetch(`/api/members/${topicId}`)
     .then(response => response.json())
-    .then(() => {
-      const numericId = Number(topicId)
-      dispatch(getFamilyMemberById(numericId))
+    .then(mem => {
+      dispatch(getFamilyMemberById(mem))
     })
   }, []);
   
@@ -233,7 +226,7 @@ const Member = () => {
           </div>
           <hr />
           <div>
-            {displayParents(member, members, {})}
+            {displayParents(member, {})}
             {
               member.spouse && 
               <p>Spouse: <Link>{member.spouse}</Link></p>

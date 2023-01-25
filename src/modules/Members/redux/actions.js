@@ -40,10 +40,10 @@ export const getAllFamilyMembersFailure = error => {
   }
 };
 
-export const getFamilyMemberById = id => {
+export const getFamilyMemberById = member => {
   return {
     type: GET_FAMILY_MEMBER_BY_ID,
-    payload: id
+    payload: member
   }
 };
 
