@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer } from 'react';
 import { useDispatch } from 'react-redux';
-import { Date, Button } from '../common';
+import { Date, RadioGroup } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -36,7 +36,8 @@ const AddMemberModal = props => {
       birthMonth: 2,
       birthYear: 2020,
       birthdate: props.birthdate || null,
-      isAlive: true
+      isAlive: true,
+      isInlaw: false
     }
   });
 
@@ -51,6 +52,12 @@ const AddMemberModal = props => {
     // const onSubmit = data => console.log(data);
 
     const onSubmit = (data) => {
+      if (data.isInlaw === "Yes") {
+        data.isInlaw = true;
+      } else {
+        data.isInlaw = false;
+      }
+
       console.log(data);
       try {
         fetch("/api/members/", {
@@ -89,6 +96,7 @@ const AddMemberModal = props => {
         <TextArea control={control} label="Last Name" keyLabel="lastName" placeholder="Ex: Doe" />
         <TextArea control={control} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
         <TextArea control={control} label="Preferred Name" keyLabel="preferredName" placeholder="Ex: Johnny" />
+        <RadioGroup control={control} defaultValue={props.isInlaw} keyLabel="isInlaw" label="In Law?" options={["Yes", "No"]} />
         {/* <TextArea control={control} placeholder="Related Family Member" /> */}
         {/* <TextArea control={control} placeholder="Relation" /> */}
         <Date control={control} label="Date of Birth" keyLabel="birthdate" />

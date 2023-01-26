@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
-import { Date } from '../common';
+import { Date, RadioGroup } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -37,13 +37,20 @@ const EditMemberPageModal = props => {
       primaryParentId: props.primaryParentId || null,
       secondaryParentId: props.secondaryParentId || null,
       spouseId: props.spouseId || null,
-      isAlive: props.isAlive
+      isAlive: props.isAlive,
+      isInlaw: props.isInlaw
     }
   });
 
   // const onSubmit = data => console.log(data);
 
   const onSubmit = (data) => {
+    if (data.isInlaw === "Yes") {
+      data.isInlaw = true;
+    } else {
+      data.isInlaw = false;
+    }
+
     console.log(data);
     try {
       fetch(`/api/members/${props.id}`, {
@@ -59,7 +66,7 @@ const EditMemberPageModal = props => {
     }
   };
 
-  console.dir(props);
+  // console.dir(props);
 
   return (
     <Form 
@@ -84,6 +91,7 @@ const EditMemberPageModal = props => {
         <TextArea control={control} defaultValue={props.middleName || null} label="Middle Name" keyLabel="middleName" placeholder="Ex: Josiah" />
         <TextArea control={control} defaultValue={props.lastName || null} label="Last Name" keyLabel="lastName" placeholder="Ex: Doe" />
         <TextArea control={control} defaultValue={props.preferredName || null} label="Preferred Name" keyLabel="preferredName" placeholder="Ex: Johnny" />
+        <RadioGroup control={control} defaultValue={props.isInlaw} keyLabel="isInlaw" label="In Law?" options={["Yes", "No"]} />
         <TextArea control={control} defaultValue={props.spouseId || null} label="Spouse" keyLabel="spouseId" placeholder="Ex: Jane Doe" />
         <TextArea control={control} defaultValue={props.primaryParentId} label="Parent 1" keyLabel="primaryParentId" placeholder="This parent is related to others on the main family tree" />
         <TextArea control={control} defaultValue={props.secondaryParentId} label="Parent 2 (if applicable)" keyLabel="secondaryParentId" placeholder="This parent is an in-law in relation to others on the family tree" />
