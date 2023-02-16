@@ -55,9 +55,9 @@ const TimelineEvents = props => {
   return (
     <Fragment>
       <Timeline>
-        {familyTimelineEvents.map(ev => {
+        {familyTimelineEvents.map((ev, index) => {
           return (
-          <TimelineEvent date={convertToDate(ev.eventDate, "YYYY")} {...ev} />
+          <TimelineEvent date={convertToDate(ev.eventDate, "YYYY")} isMostRecent={(index === familyTimelineEvents.length-1) ? true : false } {...ev} />
         )})}
       </Timeline>
       <Button onClick={() => setOpenModal(true)}>

@@ -13,6 +13,8 @@ import EditTimelineEventModal from '../../../components/EditTimelineEventModal';
 const TimelineEvent = props => {
   const [openModal, setOpenModal] = useState(false);
 
+  // console.log('timeline index: ', props.isMostRecent)
+
   return (
     <>
       <TimelineItem>
@@ -21,7 +23,9 @@ const TimelineEvent = props => {
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot onClick={() => setOpenModal(true)} />
-          <TimelineConnector />
+          {!props.isMostRecent && 
+            <TimelineConnector />
+          }
         </TimelineSeparator>
         <TimelineContent>{props.event}</TimelineContent>
       </TimelineItem>
