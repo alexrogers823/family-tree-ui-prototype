@@ -7,7 +7,7 @@ import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
 // TODO: Find out why when centralizing this, it breaks 
 
-const Login = props => {
+const LoginModal = props => {
   const dispatch = useDispatch();
   // const [loginInfo, setLoginInfo] = useState({});
 
@@ -22,7 +22,7 @@ const Login = props => {
       isOpen={props.isOpen}
       closeModal={props.closeModal}
       // onClick={() => dispatch(loginUser(loginInfo))}
-      onSubmit={() => handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit)}
       maxWidth="sm"
     >
       <FormGroup>
@@ -48,4 +48,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default LoginModal;

@@ -15,8 +15,8 @@ import {
 } from '../../urls';
 
 import AddMemberModal from '../AddMemberModal';
-import Login from '../Login';
-import Signup from '../Signup';
+import LoginModal from '../LoginModal';
+import RegisterModal from '../RegisterModal';
 
 import {
   loginUser,
@@ -178,14 +178,14 @@ const Header = props => {
         closeModal={() => {
           dispatch(closeAddMemberModal())
         }} />
-      <Login 
+      <LoginModal 
         isOpen={loginModalOpen} 
         closeModal={() => {
           dispatch(closeLoginModal());
           // dispatch(loginUser());
         }} 
       />
-      <Signup 
+      <RegisterModal 
         isOpen={registerModalOpen} 
         closeModal={() => {
           dispatch(closeRegisterModal())

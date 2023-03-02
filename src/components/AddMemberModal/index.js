@@ -95,7 +95,7 @@ const AddMemberModal = props => {
         <TextArea control={control} label="Middle Name" keyLabel="middleName" placeholder="Ex: Josiah" />
         <TextArea control={control} label="Last Name" keyLabel="lastName" placeholder="Ex: Doe" />
         <TextArea control={control} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
-        <TextArea control={control} label="Preferred Name" keyLabel="preferredName" placeholder="Ex: Johnny" />
+        <TextArea control={control} label="Preferred Name (if not First Name)" keyLabel="preferredName" placeholder="Ex: Johnny" />
         <RadioGroup control={control} defaultValue={props.isInlaw} keyLabel="isInlaw" label="In Law?" options={["Yes", "No"]} />
         {/* <TextArea control={control} placeholder="Related Family Member" /> */}
         {/* <TextArea control={control} placeholder="Relation" /> */}
