@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { createUser } from '../../redux/actions';
 import { Date, RadioGroup } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup, Checkbox, FormControlLabel } from '@mui/material';
@@ -18,6 +20,7 @@ import { dispatch } from 'd3';
 
 const RegisterModal = props => {
   // const classes = useStyles();
+  const dispatch = useDispatch();
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -55,6 +58,7 @@ const RegisterModal = props => {
         })
       })
       const userJSON = await userResult.json();
+      dispatch(createUser(userJSON));
       console.log("calling user: ", userJSON);
 
       const memberResult = await fetch("/api/members/", {

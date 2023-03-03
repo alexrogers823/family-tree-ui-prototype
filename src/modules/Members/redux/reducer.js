@@ -14,15 +14,13 @@ import {
   DELETE_FAMILY_MEMBER_FAILURE
 } from "./actionTypes";
 
-import { familyMembers } from '../../../memberData';
-
 const INIT_STATE = {
   loading: false,
   members: [],
   error: ''
 };
 
-export default (state =  INIT_STATE, action) => {
+export default (state = INIT_STATE, action) => {
   switch (action.type) {
 
     case GET_ALL_FAMILY_MEMBERS:

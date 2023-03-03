@@ -137,41 +137,45 @@ const Header = props => {
       </div>
       <div>
         {isAuthenticated &&
-          <Link 
-            color="inherit" 
-            href={userUrl}
-            underline="hover"
-          >
-            {user.username || 'User'}
-          </Link>
-        }
-        {
-          isAuthenticated ?
+          <>
+            <Link 
+              color="inherit" 
+              href={userUrl}
+              underline="hover"
+              >
+              {user.preferredName || user.firstName || 'User'}
+            </Link>
             <Link 
               color="inherit" 
               href="#"
               underline="hover"
               onClick={() => dispatch(logoutUser())} 
-            >
+              >
               Logout
             </Link>
-          : <Link 
+          </>
+        }
+        {
+          !isAuthenticated &&
+          <>
+            <Link 
               color="inherit" 
               href="#"
               underline="hover"
               onClick={() => dispatch(openLoginModal())} 
             >
-            Login
-          </Link>
+              Login
+            </Link>
+            <Link  
+              color="inherit" 
+              href="#"
+              underline="hover"
+              onClick={() => dispatch(openRegisterModal())} 
+            >
+              Register
+            </Link>
+          </>
         }
-        <Link  
-          color="inherit" 
-          href="#"
-          underline="hover"
-          onClick={() => dispatch(openRegisterModal())} 
-        >
-          Register
-        </Link>
       </div>
       <AddMemberModal 
         isOpen={addMemberModalOpen} 

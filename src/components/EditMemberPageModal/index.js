@@ -81,6 +81,7 @@ const EditMemberPageModal = props => {
     >
       <FormGroup>
         {/* <TextArea label="(Photo here)" /> */}
+        <input type="file" hidden accept="image/*" />
         <Date control={control} label="Birth (DOB)" keyLabel="birthdate" date={props.birthdate ? props.birthdate : null} />
         { isDeceased && 
           <Date control={control} label="Death" keyLabel="deceasedDate" date={props.deathYear ? `${props.deathYear}-${props.deathMonth}-${props.deathDay}` : null} /> } 

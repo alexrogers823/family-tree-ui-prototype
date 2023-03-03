@@ -11,9 +11,34 @@ const LoginModal = props => {
   const dispatch = useDispatch();
   // const [loginInfo, setLoginInfo] = useState({});
 
-  const { control, handleSubmit } = useForm({});
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      email: null,
+      inputPassword: null
+    }
+  });
 
-  const onSubmit = data => console.log(data);
+  // const onSubmit = data => console.log(data);
+
+  const onSubmit = async (data) => {
+    console.log(data);
+
+    try {
+      const loginResult = await fetch("/api/users/login/", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json, text/plain",
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        body: JSON.stringify(data)
+      })
+      const loginJSON = await loginResult.json();
+      dispatch(loginUser(loginJSON));
+      console.log("calling logged in user: ", loginJSON)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <Form 
@@ -29,7 +54,7 @@ const LoginModal = props => {
         <TextArea
           control={control} 
           label="Username (Email)"
-          keyLabel="username"
+          keyLabel="email"
           placeholder="johndoe@gmail.com"
           // onChange={e => setLoginInfo({ ...loginInfo, username: e.target.value })}
           fullWidth 
@@ -38,7 +63,7 @@ const LoginModal = props => {
           control={control}
           type="password"
           label="Password"
-          keyLabel="password"
+          keyLabel="inputPassword"
           placeholder="Enter Password Here" 
           // onChange={e => setLoginInfo({ ...loginInfo, password: e.target.value })}
           fullWidth 
