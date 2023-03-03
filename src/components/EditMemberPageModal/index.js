@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
-import { Date, RadioGroup } from '../common';
+import { Date, RadioGroup, UploadButton } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -80,8 +80,6 @@ const EditMemberPageModal = props => {
       enableDeceasedCheckbox
     >
       <FormGroup>
-        {/* <TextArea label="(Photo here)" /> */}
-        <input type="file" hidden accept="image/*" />
         <Date control={control} label="Birth (DOB)" keyLabel="birthdate" date={props.birthdate ? props.birthdate : null} />
         { isDeceased && 
           <Date control={control} label="Death" keyLabel="deceasedDate" date={props.deathYear ? `${props.deathYear}-${props.deathMonth}-${props.deathDay}` : null} /> } 
@@ -97,6 +95,7 @@ const EditMemberPageModal = props => {
         <TextArea control={control} defaultValue={props.primaryParentId} label="Parent 1" keyLabel="primaryParentId" placeholder="This parent is related to others on the main family tree" />
         <TextArea control={control} defaultValue={props.secondaryParentId} label="Parent 2 (if applicable)" keyLabel="secondaryParentId" placeholder="This parent is an in-law in relation to others on the family tree" />
         <TextArea control={control} defaultValue={props.suffix || null} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
+        <UploadButton title="Update Photo" />
         {/* <TextArea label="Children (if applicable)" /> */}
       </FormGroup>
     </Form>

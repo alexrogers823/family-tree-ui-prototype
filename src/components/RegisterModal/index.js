@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { createUser } from '../../redux/actions';
-import { Date, RadioGroup } from '../common';
+import { Date, RadioGroup, UploadButton } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup, Checkbox, FormControlLabel } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -117,6 +117,7 @@ const RegisterModal = props => {
         <TextArea control={control} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
         <TextArea control={control} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" />
         <RadioGroup control={control}  keyLabel="isInlaw" label="Are you an in-law?" options={["Yes", "No"]} />
+        <UploadButton title="Add Your Photo" />
         {/* <TextArea control={control} label="Photo" /> */}
         <TextArea control={control} label="Email" keyLabel="email" type="email" placeholder="johndoe@gmail.com" />
         <TextArea control={control} label="Password" keyLabel="password" type="password" />

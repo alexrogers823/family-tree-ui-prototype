@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer } from 'react';
 import { useDispatch } from 'react-redux';
-import { Date, RadioGroup } from '../common';
+import { Date, RadioGroup, UploadButton } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -107,6 +107,7 @@ const AddMemberModal = props => {
         <TextArea control={control} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
         { !isDeceased && 
           <TextArea control={control} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" /> }
+        <UploadButton title="Add Photo" />
         {/* {bioParagraphs}
         {
           bioParagraphs.length < 5 &&
