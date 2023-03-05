@@ -81,6 +81,7 @@ const RegisterModal = props => {
           primaryParentId: 5, // just for testing
           secondaryParentId: data.secondaryParentId || null,
           spouseId: data.spouseId || null,
+          profilePhotoUrl: data.profilePhotoUrl || null,
           isAlive: data.isAlive,
           isInlaw: data.isInlaw,
           userId: userJSON.id
@@ -117,7 +118,7 @@ const RegisterModal = props => {
         <TextArea control={control} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
         <TextArea control={control} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" />
         <RadioGroup control={control}  keyLabel="isInlaw" label="Are you an in-law?" options={["Yes", "No"]} />
-        <UploadButton title="Add Your Photo" />
+        <UploadButton control={control} label="Add Your Photo" keyLabel="profilePhotoURL" />
         {/* <TextArea control={control} label="Photo" /> */}
         <TextArea control={control} label="Email" keyLabel="email" type="email" placeholder="johndoe@gmail.com" />
         <TextArea control={control} label="Password" keyLabel="password" type="password" />

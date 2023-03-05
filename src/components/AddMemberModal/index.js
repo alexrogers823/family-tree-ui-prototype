@@ -37,7 +37,8 @@ const AddMemberModal = props => {
       birthYear: 2020,
       birthdate: props.birthdate || null,
       isAlive: true,
-      isInlaw: false
+      isInlaw: false,
+      profilePhotoUrl: props.profilePhotoUrl || null
     }
   });
 
@@ -107,7 +108,7 @@ const AddMemberModal = props => {
         <TextArea control={control} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
         { !isDeceased && 
           <TextArea control={control} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" /> }
-        <UploadButton title="Add Photo" />
+        <UploadButton control={control} label="Add Photo" keyLabel="profilePhotoURL" />
         {/* {bioParagraphs}
         {
           bioParagraphs.length < 5 &&

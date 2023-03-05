@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 // import { makeStyles } from '@material-ui/core/styles';
-import { Date, RadioGroup, UploadButton } from '../common';
+import { Date, RadioGroup, UploadButton, Autocomplete } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import Member from '../../modules/Members/Member';
+import { searchMember } from '../../utils';
 
 // const useStyles = makeStyles(theme => ({
 //   inputs: {
@@ -15,6 +17,7 @@ import Member from '../../modules/Members/Member';
 const EditMemberPageModal = props => {
   // const classes = useStyles();
   const [isDeceased, setIsDeceased] = useState(!props.isAlive);
+  const familyMembers = useSelector(state => state.membersReducer.members);
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -38,9 +41,14 @@ const EditMemberPageModal = props => {
       secondaryParentId: props.secondaryParentId || null,
       spouseId: props.spouseId || null,
       isAlive: props.isAlive,
-      isInlaw: props.isInlaw
+      isInlaw: props.isInlaw,
+      profilePhotoUrl: props.profilePhotoUrl || null
     }
   });
+
+  const handleUploadImage = e => {
+
+  }
 
   // const onSubmit = data => console.log(data);
 
@@ -92,10 +100,11 @@ const EditMemberPageModal = props => {
         <TextArea control={control} defaultValue={props.preferredName || null} label="Preferred Name" keyLabel="preferredName" placeholder="Ex: Johnny" />
         <RadioGroup control={control} defaultValue={props.isInlaw} keyLabel="isInlaw" label="In Law?" options={["Yes", "No"]} />
         <TextArea control={control} defaultValue={props.spouseId || null} label="Spouse" keyLabel="spouseId" placeholder="Ex: Jane Doe" />
-        <TextArea control={control} defaultValue={props.primaryParentId} label="Parent 1" keyLabel="primaryParentId" placeholder="This parent is related to others on the main family tree" />
+        {/* <TextArea control={control} defaultValue={props.primaryParentId} label="Parent 1" keyLabel="primaryParentId" placeholder="This parent is related to others on the main family tree" /> */}
+        <Autocomplete label="Parent 1" defaultValue="test" keyLabel="primaryParent" options={familyMembers.map(member => searchMember(member))} placeholder="This parent is related to others on the main family tree" />
         <TextArea control={control} defaultValue={props.secondaryParentId} label="Parent 2 (if applicable)" keyLabel="secondaryParentId" placeholder="This parent is an in-law in relation to others on the family tree" />
         <TextArea control={control} defaultValue={props.suffix || null} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
-        <UploadButton title="Update Photo" />
+        <UploadButton control={control} label="Update Photo" keyLabel="profilePhotoURL" />
         {/* <TextArea label="Children (if applicable)" /> */}
       </FormGroup>
     </Form>

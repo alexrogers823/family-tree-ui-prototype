@@ -20,6 +20,10 @@ const convertToDate = (dateObj, format="MMMM DD, YYYY") => {
   return dayjs(dateObj).format(format);
 }
 
+const searchMember = member => {
+  return member.preferredName ? `${member.preferredName} ${member.lastName}` : `${member.firstName} ${member.lastName}`;
+}
+
 const mapIntToMonth = month => {
   const months = {
     "1": "January",
@@ -57,5 +61,6 @@ export {
   concatenateDate,
   convertToDate,
   mapIntToMonth,
-  compressImage
+  compressImage,
+  searchMember
 }
