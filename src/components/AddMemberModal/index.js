@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { useDispatch } from 'react-redux';
-import { Date, RadioGroup, UploadButton } from '../common';
+import { useDispatch, useSelector } from 'react-redux';
+import { Autocomplete, Date, RadioGroup, UploadButton } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { addFamilyMember } from '../../redux/actions';
 import MemberReducer from '../../modules/Members/redux/reducer';
+import { mapMemberToId, searchMember } from '../../utils';
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles(theme => ({
@@ -27,6 +28,7 @@ const AddMemberModal = props => {
 
   const [isDeceased, setIsDeceased] = useState(false);
   const [state, dispatch] = useReducer(MemberReducer, {});
+  const familyMembers = useSelector(state => state.membersReducer.members);
 
   // const dispatch = useDispatch();
 
@@ -38,6 +40,9 @@ const AddMemberModal = props => {
       birthdate: props.birthdate || null,
       isAlive: true,
       isInlaw: false,
+      primaryParentId: null,
+      secondaryParentId: null,
+      spouseId: null,
       profilePhotoUrl: props.profilePhotoUrl || null
     }
   });
@@ -58,6 +63,10 @@ const AddMemberModal = props => {
       } else {
         data.isInlaw = false;
       }
+
+      data.primaryParentId = mapMemberToId(familyMembers, data.primaryParent);
+      data.secondaryParentId = mapMemberToId(familyMembers, data.secondaryParent);
+      data.spouseId = mapMemberToId(familyMembers, data.spouse);
 
       console.log(data);
       try {
@@ -103,7 +112,30 @@ const AddMemberModal = props => {
         <Date control={control} label="Date of Birth" keyLabel="birthdate" />
         { isDeceased &&
           <Date control={control} label="Death" keyLabel="deceasedDate" /> }
-        <TextArea control={control} label="Spouse (if applicable)" keyLabel="spouse" placeholder="Ex: Jane Doe" />
+        <Autocomplete 
+          control={control}
+          label="Spouse (if applicable)"
+          keyLabel="spouse"
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="Ex: Jane Doe"
+        />
+        <Autocomplete 
+          control={control} 
+          label="Parent 1" 
+          keyLabel="primaryParent" 
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="This parent is related to others on the main family tree" 
+        />
+        <Autocomplete 
+          control={control} 
+          label="Parent 2 (if applicable)" 
+          keyLabel="secondaryParent" 
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="This parent is an in-law in relation to others on the family tree" 
+        />
         {/* <TextArea control={control} placeholder="Photo" /> */}
         <TextArea control={control} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
         { !isDeceased && 

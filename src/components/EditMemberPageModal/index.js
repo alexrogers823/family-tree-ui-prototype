@@ -6,7 +6,7 @@ import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import Member from '../../modules/Members/Member';
-import { searchMember } from '../../utils';
+import { mapMemberToId, searchMember } from '../../utils';
 
 // const useStyles = makeStyles(theme => ({
 //   inputs: {
@@ -37,8 +37,11 @@ const EditMemberPageModal = props => {
       deathMonth: props.deathMonth || null,
       deathYear: props.deathYear || null,
       deceasedDate: props.deceasedDate || null,
+      primaryParent: props.primaryParent || null,
       primaryParentId: props.primaryParentId || null,
+      secondaryParent: props.secondaryParent || null,
       secondaryParentId: props.secondaryParentId || null,
+      spouse: props.spouse || null,
       spouseId: props.spouseId || null,
       isAlive: props.isAlive,
       isInlaw: props.isInlaw,
@@ -50,14 +53,23 @@ const EditMemberPageModal = props => {
 
   }
 
-  // const onSubmit = data => console.log(data);
-
-  const onSubmit = (data) => {
+  // const onSubmit = data => {
+  //   data.primaryParentId = mapMemberToId(familyMembers, data.primaryParent);
+  //   data.secondaryParentId = mapMemberToId(familyMembers, data.secondaryParent);
+  //   data.spouseId = mapMemberToId(familyMembers, data.spouse);
+  //   console.log(data);
+  // }
+  
+  const onSubmit = data => {
     if (data.isInlaw === "Yes") {
       data.isInlaw = true;
     } else {
       data.isInlaw = false;
     }
+
+    data.primaryParentId = mapMemberToId(familyMembers, data.primaryParent);
+    data.secondaryParentId = mapMemberToId(familyMembers, data.secondaryParent);
+    data.spouseId = mapMemberToId(familyMembers, data.spouse);
 
     console.log(data);
     try {
@@ -73,8 +85,6 @@ const EditMemberPageModal = props => {
       console.log(err);
     }
   };
-
-  // console.dir(props);
 
   return (
     <Form 
@@ -99,12 +109,35 @@ const EditMemberPageModal = props => {
         <TextArea control={control} defaultValue={props.lastName || null} label="Last Name" keyLabel="lastName" placeholder="Ex: Doe" />
         <TextArea control={control} defaultValue={props.preferredName || null} label="Preferred Name" keyLabel="preferredName" placeholder="Ex: Johnny" />
         <RadioGroup control={control} defaultValue={props.isInlaw} keyLabel="isInlaw" label="In Law?" options={["Yes", "No"]} />
-        <TextArea control={control} defaultValue={props.spouseId || null} label="Spouse" keyLabel="spouseId" placeholder="Ex: Jane Doe" />
-        {/* <TextArea control={control} defaultValue={props.primaryParentId} label="Parent 1" keyLabel="primaryParentId" placeholder="This parent is related to others on the main family tree" /> */}
-        <Autocomplete label="Parent 1" defaultValue="test" keyLabel="primaryParent" options={familyMembers.map(member => searchMember(member))} placeholder="This parent is related to others on the main family tree" />
-        <TextArea control={control} defaultValue={props.secondaryParentId} label="Parent 2 (if applicable)" keyLabel="secondaryParentId" placeholder="This parent is an in-law in relation to others on the family tree" />
+        <Autocomplete 
+          control={control} 
+          label="Spouse (if applicable)" 
+          // defaultValue={searchMember(familyMembers.filter(member => member.id === props.primaryParentId))} //not working because it returns array of data instead of data itself
+          keyLabel="spouse" 
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="Ex: Jane Doe" 
+        />
+        <Autocomplete 
+          control={control} 
+          label="Parent 1" 
+          // defaultValue={searchMember(familyMembers.filter(member => member.id === props.primaryParentId))} //not working because it returns array of data instead of data itself
+          keyLabel="primaryParent" 
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="This parent is related to others on the main family tree" 
+        />
+        <Autocomplete 
+          control={control} 
+          label="Parent 2 (if applicable)" 
+          // defaultValue={searchMember(familyMembers.filter(member => member.id === props.primaryParentId))} //not working because it returns array of data instead of data itself
+          keyLabel="secondaryParent" 
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="This parent is an in-law in relation to others on the family tree" 
+        />
         <TextArea control={control} defaultValue={props.suffix || null} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
-        <UploadButton control={control} label="Update Photo" keyLabel="profilePhotoURL" />
+        <UploadButton control={control} label="Update Photo" keyLabel="profilePhotoUrl" />
         {/* <TextArea label="Children (if applicable)" /> */}
       </FormGroup>
     </Form>

@@ -3,33 +3,46 @@ import {
     TextField,
     Autocomplete as MuiAutocomplete
 } from '@mui/material';
+import { Controller } from 'react-hook-form';
 
 const Autocomplete = props => {
   return (
-    <MuiAutocomplete
-      freeSolo
-      id="autocomplete-field"
-      disableClearable
-      options={props.options}
-      // sx={{ width: props.width }}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          id={props.keyLabel}
-          label={props.label}
-          placeholder={props.placeholder}
-          defaultValue={props.defaultValue} //not working
-          variant="filled"
-          type={ props.type || "text" }
-          multiline={ props.multiline || false }
-          InputProps={{
-            ...params.InputProps,
-            type: 'search',
-          }}
-          { ...props }
-        />
-      )}
+    <Controller
+      name={props.keyLabel}
+      control={props.control}
+      render={({ field }) => {
+        return (
+          <MuiAutocomplete
+            { ...field }
+            freeSolo
+            id="autocomplete-field"
+            options={props.options}
+            value=''
+            disableClearable
+            autoSelect
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                margin="dense"
+                id={props.keyLabel}
+                label={props.label}
+                placeholder={props.placeholder}
+                defaultValue={props.defaultValue || "test"} //not working
+                variant="filled"
+                type={ props.type || "text" }
+                multiline={ props.multiline || false }
+                InputProps={{
+                  ...params.InputProps,
+                  type: 'search',
+                }}
+              />
+            )}
+            { ...props }
+          />
+        )
+      }} 
     />
+
   )
 
 //   return (

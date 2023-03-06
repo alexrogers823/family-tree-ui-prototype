@@ -1,6 +1,10 @@
 import dayjs from 'dayjs';
 import _ from 'lodash';
 import Resizer from 'react-image-file-resizer';
+import { useSelector } from 'react-redux';
+
+// const familyMembers = useSelector(state => state.membersReducer.members);
+//uncomment after fixing redux and state
 
 const concatenateDate = (day = null, month = null, year = null) => {
   let output = '';
@@ -22,6 +26,17 @@ const convertToDate = (dateObj, format="MMMM DD, YYYY") => {
 
 const searchMember = member => {
   return member.preferredName ? `${member.preferredName} ${member.lastName}` : `${member.firstName} ${member.lastName}`;
+}
+
+const mapMemberToId = (familyMembers, memberName) => {
+  const [firstName, lastName] = memberName.split(' ');
+  const selectedMember = familyMembers.filter(member => (member.preferredName === firstName || member.firstName === firstName) && member.lastName === lastName);
+
+  if (!selectedMember.length) {
+    return null;
+  }
+
+  return selectedMember[0].id;
 }
 
 const mapIntToMonth = month => {
@@ -62,5 +77,6 @@ export {
   convertToDate,
   mapIntToMonth,
   compressImage,
-  searchMember
+  searchMember,
+  mapMemberToId
 }
