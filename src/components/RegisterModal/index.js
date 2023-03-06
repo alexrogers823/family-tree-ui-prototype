@@ -1,11 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from '../../redux/actions';
-import { Date, RadioGroup, UploadButton } from '../common';
+import { Autocomplete, Date, RadioGroup, UploadButton } from '../common';
 import Form, { TextArea } from '../common/Form';
 import { FormGroup, Checkbox, FormControlLabel } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { dispatch } from 'd3';
+import { mapMemberToId, searchMember } from '../../utils';
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles(theme => ({
@@ -21,6 +22,7 @@ import { dispatch } from 'd3';
 const RegisterModal = props => {
   // const classes = useStyles();
   const dispatch = useDispatch();
+  const familyMembers = useSelector(state => state.membersReducer.members);
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -73,14 +75,15 @@ const RegisterModal = props => {
           lastName: data.lastName,
           preferredName: data.preferredName,
           suffix: data.suffix,
-          birthDay: 1, // just for testing
           birthdate: data.birthdate,
           birthplace: data.birthplace,
           residence: data.residence,
-          // primaryParentId: data.primaryParentId || null,
-          primaryParentId: 5, // just for testing
-          secondaryParentId: data.secondaryParentId || null,
-          spouseId: data.spouseId || null,
+          primaryParent: data.primaryParent,
+          primaryParentId: mapMemberToId(familyMembers, data.primaryParent),
+          secondaryParent: data.secondaryParent,
+          secondaryParentId: mapMemberToId(familyMembers, data.secondaryParent),
+          spouse: data.spouse,
+          spouseId: mapMemberToId(familyMembers, data.spouse),
           profilePhotoUrl: data.profilePhotoUrl || null,
           isAlive: data.isAlive,
           isInlaw: data.isInlaw,
@@ -111,9 +114,30 @@ const RegisterModal = props => {
         <TextArea control={control} label="Last Name" keyLabel="lastName" placeholder="Doe" />
         <TextArea control={control} label="Suffix" keyLabel="suffix" placeholder="Jr." />
         <TextArea control={control} label="Preferred Name (if not First Name)" keyLabel="preferredName" placeholder="Johnny" />
-        <TextArea control={control} label="Parent 1" keyLabel="primaryParent" placeholder="Parent who is directly related to others" />
-        <TextArea control={control} label="Parent 2 (if applicable)" keyLabel="secondaryParent" placeholder="Parent who is an in-law to others" />
-        <TextArea control={control} label="Spouse (if applicable)" keyLabel="spouse" placeholder="Jane Doe" />
+        <Autocomplete 
+          control={control}
+          label="Spouse (if applicable)"
+          keyLabel="spouse"
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="Jane Doe"
+        />
+        <Autocomplete 
+          control={control} 
+          label="Parent 1" 
+          keyLabel="primaryParent" 
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="Parent who is directly related to others" 
+        />
+        <Autocomplete 
+          control={control} 
+          label="Parent 2 (if applicable)" 
+          keyLabel="secondaryParent" 
+          options={familyMembers}
+          getOptionLabel={option => option ? searchMember(option) : ''}
+          placeholder="Parent who is an in-law to others" 
+        />
         <Date control={control} label="Date of Birth" keyLabel="birthdate" />
         <TextArea control={control} label="Place of Birth" keyLabel="birthplace" placeholder="Ex: Los Angeles, CA" />
         <TextArea control={control} label="Place of Residence" keyLabel="residence" placeholder="Ex: Chicago, IL" />

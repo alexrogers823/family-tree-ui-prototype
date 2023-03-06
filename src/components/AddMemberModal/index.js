@@ -34,9 +34,6 @@ const AddMemberModal = props => {
 
   const { control, handleSubmit } = useForm({
     defaultValues: { //remove these values after fixing date logic
-      birthDay: 14,
-      birthMonth: 2,
-      birthYear: 2020,
       birthdate: props.birthdate || null,
       isAlive: true,
       isInlaw: false,
