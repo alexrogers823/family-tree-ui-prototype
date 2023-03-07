@@ -117,32 +117,38 @@ const arrangeBiography = member => {
 };
 
 const displayParents = (member, styledLink) => {
-  const {primaryParentId, secondaryParentId} = member;
+  console.log('first parent', member.primaryParent);
 
-  console.log('first parent', primaryParentId);
-
-  if (primaryParentId && secondaryParentId) {
+  if (member.primaryParent && member.secondaryParent) {
     return (
-      <Fragment>
+      <>
         <span>Parents: </span>
-        <Link href={`./${member.primaryParentId}`}>
-          {member.primaryParentName}
-        </Link>
-        <span>&amp;
-          <Link href={`./${member.secondaryParentId}`}>
-            {member.secondaryParentName}
+        {member.primaryParentId &&
+          <Link href={`./${member.primaryParentId}`}>
+            {member.primaryParent}
           </Link>
-        </span>
-      </Fragment>
+        }
+        {!member.primaryParentId && <span>{member.primaryParent}</span>}
+        <span>&amp;</span>
+        {member.secondaryParentId &&
+          <Link href={member.secondaryParentId ? `./${member.secondaryParentId}` : "#"}>
+            {member.secondaryParent}
+          </Link>
+        }
+        {!member.secondaryParentId && <span>{member.secondaryParent}</span>}
+      </>
     )
-  } else if (primaryParentId) {
+  } else if (member.primaryParentId) {
     return (
-      <Fragment>
+      <>
         <span>Parent: </span>
-        <Link href={`./${member.primaryParentId}`}>
-          {member.primaryParentName}
-        </Link>
-      </Fragment>
+        {member.primaryParentId &&
+          <Link href={`./${member.primaryParentId}`}>
+            {member.primaryParent}
+          </Link>
+        }
+        {!member.primaryParentId && <span>{member.primaryParent}</span>}
+      </>
     )
   } else {
     return <span>Parents: Unknown</span>
@@ -229,7 +235,7 @@ const Member = () => {
             {displayParents(member, {})}
             {
               member.spouseName && 
-              <p>Spouse: <Link href={`./${member.spouseId}`}>{member.spouseName}</Link></p>
+              <p>Spouse: <Link href={`./${member.spouseId}`}>{member.spouse}</Link></p>
             }
             {
               member.offspring && 

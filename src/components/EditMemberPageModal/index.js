@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { makeStyles } from '@material-ui/core/styles';
 import { Date, RadioGroup, UploadButton, Autocomplete } from '../common';
 import Form, { TextArea } from '../common/Form';
@@ -7,6 +7,7 @@ import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import Member from '../../modules/Members/Member';
 import { mapMemberToId, searchMember } from '../../utils';
+import { updateFamilyMember } from '../../redux/actions';
 
 // const useStyles = makeStyles(theme => ({
 //   inputs: {
@@ -18,6 +19,7 @@ const EditMemberPageModal = props => {
   // const classes = useStyles();
   const [isDeceased, setIsDeceased] = useState(!props.isAlive);
   const familyMembers = useSelector(state => state.membersReducer.members);
+  const dispatch = useDispatch();
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -64,7 +66,7 @@ const EditMemberPageModal = props => {
     data.primaryParentId = mapMemberToId(familyMembers, data.primaryParent);
     data.secondaryParentId = mapMemberToId(familyMembers, data.secondaryParent);
     data.spouseId = mapMemberToId(familyMembers, data.spouse);
-
+    
     console.log(data);
     try {
       fetch(`/api/members/${props.id}`, {
@@ -75,6 +77,7 @@ const EditMemberPageModal = props => {
         },
         body: JSON.stringify(data)
       })
+      .then(dispatch(updateFamilyMember))
     } catch (err) {
       console.log(err);
     }

@@ -29,14 +29,18 @@ const searchMember = member => {
 }
 
 const mapMemberToId = (familyMembers, memberName) => {
-  const [firstName, lastName] = memberName.split(' ');
-  const selectedMember = familyMembers.filter(member => (member.preferredName === firstName || member.firstName === firstName) && member.lastName === lastName);
+  if (memberName) {
+    const [firstName, lastName] = memberName.split(' ');
+    const selectedMember = familyMembers.find(member => (member.preferredName === firstName || member.firstName === firstName) && member.lastName === lastName);
 
-  if (!selectedMember.length) {
-    return null;
+    console.log('selected member: ', selectedMember);
+
+    if (selectedMember) {
+      return selectedMember.id;
+    }
   }
 
-  return selectedMember[0].id;
+  return null;
 }
 
 const mapIntToMonth = month => {
