@@ -1,45 +1,20 @@
 import React, { Fragment, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useRouteMatch,
-  useParams
+  Route, Switch, useRouteMatch
 } from "react-router-dom";
-
 import Link from '../../components/common/Link';
-
 import Member from './Member';
-import { memberBioPlaceholder } from '../../dummyData';
-// import { familyMembers } from '../../memberData';
-
-import {
-  getAllFamilyMembers
-} from '../../redux/actions';
-
-
-const ChosenMember = props => {
-  let { topicId } = useParams();
-
-  console.log('props', props);
-  console.log('topicId', topicId);
-
-  return (
-    <Member />
-  )
-}
+import { getAllFamilyMembers } from './redux/actions';
 
 const arrangeMemberLink = (member, url) => {
   return (
-    <Fragment>
-      <Link 
-        href={`${url}/${member.id}`}
-        >
+    <>
+      <Link href={`${url}/${member.id}`}>
         {member.preferredName || member.firstName} {member.lastName}
       </Link>
       <br />
-    </Fragment>
+    </>
   )
 };
 
@@ -49,16 +24,10 @@ const Members = () => {
 
   const familyMembers = useSelector(state => state.membersReducer.members);
 
-  // console.log('family', familyMembers);
-
-  // useEffect(() => {
-  //   dispatch(getAllFamilyMembers());
-  // }, []);
-
   useEffect(() => {
     fetch("/api/members/")
     .then(response => response.json())
-    .then(members => dispatch({type: "GET_ALL_FAMILY_MEMBERS", members: members}))
+    .then(members => dispatch(getAllFamilyMembers(members)))
     .catch(error => {
       console.error(error);
     })
@@ -68,7 +37,7 @@ const Members = () => {
     <div>
       <Switch>
         <Route path={`${match.path}/:topicId`}>
-          <ChosenMember />
+          <Member />
         </Route>
         <Route path={match.path}>
           <Fragment>

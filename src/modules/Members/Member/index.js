@@ -1,17 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import _ from 'lodash';
 
 import PropTypes from 'prop-types';
-import Link from '../../../components/common/Link';
 import Container from '../../../components/common/Container';
+import Link from '../../../components/common/Link';
 // import { makeStyles } from '@material-ui/core/styles';
 
-import alexSample from '../../../assets/Alex_sample.jpg';
-import adellaSample from '../../../assets/Adella_sample.jpg';
-
-import { concatenateDate, convertToDate, compressImage } from '../../../utils';
+import { convertToDate } from '../../../utils';
 
 import Button from '../../../components/common/Button';
 import EditMemberPageModal from '../../../components/EditMemberPageModal';
@@ -21,10 +17,7 @@ import EditMemberPageModal from '../../../components/EditMemberPageModal';
 //   getFamilyMemberById 
 // } from '../redux/actions';
 
-import {
-  getAllFamilyMembers,
-  getFamilyMemberById
-} from '../../../redux/actions';
+import { getFamilyMemberById } from '../../../redux/actions';
 
 // const useStyles = makeStyles(theme => ({
 //   root: {
@@ -107,8 +100,6 @@ import {
 const arrangeBiography = member => {
   const memberBio = member.biography ? member.biography.split('\n') : null;
 
-  console.log('bio: ', memberBio);
-
   if (!memberBio) {
     return <h3>No information added yet for {member.preferredName || member.firstName}. Be the first to add it!</h3>
   }
@@ -117,8 +108,6 @@ const arrangeBiography = member => {
 };
 
 const displayParents = (member, styledLink) => {
-  console.log('first parent', member.primaryParent);
-
   if (member.primaryParent && member.secondaryParent) {
     return (
       <>
@@ -159,7 +148,7 @@ const displayParents = (member, styledLink) => {
 
 const Member = () => {
   // const classes = useStyles();
-  const [openModal, setOpenModal] = useState(false);
+  const [openEditMemberModal, setOpenEditMemberModal] = useState(false);
   let { topicId } = useParams();
 
   // TODO: Remove once getMemberById is in redux 
@@ -167,13 +156,11 @@ const Member = () => {
 
   const dispatch = useDispatch();
 
-  console.log('member info: ', member);
-
   useEffect(() => {
     fetch(`/api/members/${topicId}`)
     .then(response => response.json())
-    .then(mem => {
-      dispatch(getFamilyMemberById(mem))
+    .then(member => {
+      dispatch(getFamilyMemberById(member))
     })
   }, []);
   
@@ -190,6 +177,10 @@ const Member = () => {
   
     if (member.lastName) {
       name += ` ${member.lastName}`;
+    }
+
+    if (!member.preferredName && member.suffix) {
+      name += ` ${member.suffix}`;
     }
   
     if (member.preferredName) {
@@ -212,10 +203,10 @@ const Member = () => {
             <div>
               <p>(photo)</p>
               {member.preferredName
-                ? <Fragment>
+                ? <>
                     <h1>{member.preferredName} {member.lastName}</h1>
-                    <p>{`Neé ${member.firstName} ${member.middleName || ''} ${member.lastName}`}</p>
-                  </Fragment>
+                    <p>{`Neé ${member.firstName} ${member.middleName || ''} ${member.lastName} ${member.suffix || ''}`}</p>
+                  </>
                 : <h1>{arrangeName(member)}</h1>
               }
               <h3>
@@ -239,22 +230,20 @@ const Member = () => {
             }
             {
               member.offspring && 
-              <Fragment>
+              <>
                 <p>Children: </p>
                 <ul>
                   {member.offspring.map((child, i) => {
                     return <Link key={i}>{child}</Link>
                   })}
                 </ul>
-              </Fragment>
+              </>
             }
           </div>
-          <Button
-          onClick={() => setOpenModal(true)}
-          >
+          <Button onClick={() => setOpenEditMemberModal(true)}>
             Edit Member Info
           </Button>
-          <EditMemberPageModal isOpen={openModal} closeModal={() => setOpenModal(false)} {...member} />
+          <EditMemberPageModal isOpen={openEditMemberModal} closeModal={() => setOpenEditMemberModal(false)} {...member} />
       </>
       }
     </Container>
@@ -266,27 +255,21 @@ Member.propTypes = {
   middleName: PropTypes.string,
   lastName: PropTypes.string,
   preferredName: PropTypes.string,
+  suffix: PropTypes.string,
+  profilePhotoUrl: PropTypes.string,
   birthdate: PropTypes.instanceOf(Date),
   deceasedDate: PropTypes.instanceOf(Date),
   birthplace: PropTypes.string,
   residence: PropTypes.string,
   biography: PropTypes.string,
-  parents: PropTypes.array,
+  primaryParent: PropTypes.string,
+  primaryParentId: PropTypes.number,
+  secondaryParent: PropTypes.string,
+  secondaryParentId: PropTypes.number,
+  spouse: PropTypes.string,
+  spouseId: PropTypes.number,
   offspring: PropTypes.array,
   isAlive: PropTypes.bool
 }
-
-// const mapStateToProps = state => {
-//   return {
-//     // members: state.membersReducer.members
-//     ...state.membersReducer
-//   }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getAllFamilyMembers: () => dispatch(getAllFamilyMembers())
-//   }
-// }
 
 export default Member;
