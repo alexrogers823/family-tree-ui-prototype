@@ -69,7 +69,8 @@ class App extends Component {
                       death={concatenateDate(this.state.members[4].deathDay, this.state.members[4].deathMonth, this.state.members[4].deathYear)} 
                       parents={[this.state.members[4].primaryParentId, this.state.members[4].secondaryParentId]} 
                     /> */}
-                    <Redirect to={urls.comingSoonUrl} />
+                    {/* <Redirect to={urls.comingSoonUrl} /> */}
+                    <Lineage />
                   </Route>
                   <Route path={urls.notFoundUrl}>
                     <Page404 />

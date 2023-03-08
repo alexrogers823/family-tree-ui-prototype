@@ -1,22 +1,14 @@
 import React from 'react';
-import { Link } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-  footerItem: {
-    margin: theme.spacing(2),
-  },
-}));
+import Link from '../common/Link';
+import { styled } from "@mui/system";
 
 const Footer = props => {
-  const classes = useStyles();
-
   return (
     <div>
       <hr />
-      <span className={classes.footerItem}>CFPG Family Tree</span>
-      <span className={classes.footerItem}>&copy; 2020</span>
-      <Link className={classes.footerItem} target="new" href="https://github.com/alexrogers823/family-tree-ui-prototype">Source Code</Link>
+      <span sx={{ m: (theme) => theme.spacing(2) }}>CFPG Family Tree</span>
+      <span sx={{ m: (theme) => theme.spacing(2) }}>&copy; 2020</span>
+      <Link sx={{ m: (theme) => theme.spacing(2) }} target="new" href="https://github.com/alexrogers823/family-tree-ui-prototype">Source Code</Link>
     </div>
   );
 };

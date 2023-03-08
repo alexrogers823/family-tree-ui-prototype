@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { DELETE_QUESTION_REQUEST } from '../../FrequentlyAskedQuestions/redux/actionTypes';
 
 import { 
   LOGIN_USER_REQUEST,
@@ -43,19 +42,10 @@ export const logoutUser = () => {
   }
 };
 
-export const createUser = () => {
+export const createUser = (user = {}) => {
   return {
     type: CREATE_USER,
-    payload: {
-      id: 1,
-      firstName: "Barry",
-      middleName: "Alex",
-      lastName: "Rogers",
-      email: "alex.rogers823@gmail.com",
-      password: "test",
-      createdOn: moment("2021-03-01"),
-      lastLoggedIn: moment()
-    }
+    payload: user
   }
 }
 

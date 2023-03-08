@@ -4,6 +4,7 @@ import {
   GET_ALL_FAMILY_MEMBERS_SUCCESS,
   GET_ALL_FAMILY_MEMBERS_FAILURE,
   GET_FAMILY_MEMBER_BY_ID,
+  ADD_FAMILY_MEMBER,
   UPDATE_FAMILY_MEMBER,
   UPDATE_FAMILY_MEMBER_REQUEST,
   UPDATE_FAMILY_MEMBER_SUCCESS,
@@ -39,10 +40,17 @@ export const getAllFamilyMembersFailure = error => {
   }
 };
 
-export const getFamilyMemberById = id => {
+export const getFamilyMemberById = member => {
   return {
     type: GET_FAMILY_MEMBER_BY_ID,
-    payload: id
+    payload: member
+  }
+};
+
+export const addFamilyMember = member => {
+  return {
+    type: ADD_FAMILY_MEMBER,
+    payload: member
   }
 };
 

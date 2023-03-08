@@ -1,39 +1,43 @@
 import 'date-fns';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import MomentUtils from '@date-io/moment';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-
+import dayjs from 'dayjs';
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { Controller } from 'react-hook-form';
 
 const ChosenDate = props => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(props.date ? dayjs(props.date) : dayjs());
 
-  const handleDateChange = date => {
+  const handleDateChange = (date) => {
     setSelectedDate(date);
     console.log('new date', date);
+    console.log('month: ', date.month())
   };
 
   return (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
-      <KeyboardDatePicker 
-        disableToolbar
-        disableFuture
-        variant="inline"
-        format="MM/DD/YYYY"
-        margin="normal"
-        id="date-picker-inline"
-        label={props.label || ""}
-        value={selectedDate}
-        onChange={props.onChange ? props.onChange : handleDateChange}
-        KeyboardButtonProps={{
-          'aria-label': 'change date',
-        }}
-      />
-    </MuiPickersUtilsProvider>
-  );
+    <Controller 
+      name={props.keyLabel}
+      control={props.control}
+      render={({ field }) => {
+        return (
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DesktopDatePicker
+              label={props.label}
+              inputFormat="MM/DD/YYYY"
+              value={selectedDate}
+              onChange={handleDateChange}
+              renderInput={(params) => <TextField {...params} />}
+              disableFuture
+              { ...field }
+            />
+          </LocalizationProvider>
+        )
+      }}
+    />
+  )
 };
 
 ChosenDate.propTypes = {

@@ -1,19 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot
-} from '@material-ui/lab';
+// import { makeStyles } from '@material-ui/core/styles';
+import { Timeline } from '@mui/lab';
 
-import AddEventModal from '../../components/AddEventModal';
+import AddEventModal from '../../components/AddTimelineEventModal';
 import Button from '../../components/common/Button';
-import { mapIntToMonth } from '../../utils';
+import { mapIntToMonth, convertToDate } from '../../utils';
+import TimelineEvent from './TimelineEvent';
+import TimelineEventReducer from './redux/reducer';
 
 import { 
   getAllEvents, 
@@ -21,67 +16,58 @@ import {
   createTimelineEvent 
 } from '../../redux/actions';
 
-
-const useStyles = makeStyles(theme => ({
-  title: {
-    fontWeight: 'bold',
-  },
-  topLevel: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: theme.spacing(2)
-  },
-  year: {
-    fontWeight: 'bold',
-    fontSize: 20
-  }
-}));
+// const useStyles = makeStyles(theme => ({
+//   title: {
+//     fontWeight: 'bold',
+//   },
+//   topLevel: {
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//     margin: theme.spacing(2)
+//   },
+//   year: {
+//     fontWeight: 'bold',
+//     fontSize: 20
+//   }
+// }));
 
 const TimelineEvents = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
 
-  const timelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents);
-  const timelineEvent = useSelector(state => state.timelineEventsReducer.timelineEvent);
+  const familyTimelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents)
+                                .sort((a, b) => a.year + b.year); // change so that this happens on backend
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllEvents());
-    dispatch(getTimelineEventById(2));
+    fetch("/api/timeline/")
+      .then(res => res.json())
+      .then(timelineEvents => {
+        console.log(timelineEvents)
+        dispatch({type: "GET_ALL_EVENTS", timelineEvents: timelineEvents})
+      })
+      .catch(error => {
+        console.error(error);
+      })
   }, []);
-
-  console.log('single event', timelineEvent);
 
   return (
     <Fragment>
-      <div className={classes.topLevel}>
-        <h1>Timeline of Family Events</h1>
-        <Button onClick={() => setOpenModal(true)}>Add an event</Button>
-      </div>
-
-      <Timeline align="right">
-        {timelineEvents.map(ev => {
+      <Timeline>
+        {familyTimelineEvents.map((ev, index) => {
           return (
-            <Fragment>
-              <TimelineItem>
-                <TimelineSeparator>
-                  <TimelineDot />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent className={classes.year}>{ev.year}</TimelineContent>
-              </TimelineItem>
-              <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot variant="outlined" />
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>{`${ev.month ? mapIntToMonth(ev.month) : ''}${ev.day ? (' ' + ev.day) : ''}: ${ev.timelineEvent}`}</TimelineContent>
-            </TimelineItem>
-          </Fragment>
-          )
-        })}
+          <TimelineEvent date={convertToDate(ev.eventDate, "YYYY")} isMostRecent={(index === familyTimelineEvents.length-1) ? true : false } {...ev} />
+        )})}
       </Timeline>
-      <AddEventModal isOpen={openModal} closeModal={() => setOpenModal(false)} addEvent={props.postNewEvent}/>
+      <Button onClick={() => setOpenModal(true)}>
+        Add Event
+      </Button>
+      <AddEventModal 
+        isOpen={openModal} 
+        closeModal={() => setOpenModal(false)} 
+        addEvent={props.postNewEvent}
+      />
     </Fragment>
   )
 };

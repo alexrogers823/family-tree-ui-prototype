@@ -1,14 +1,14 @@
 import React from 'react';
-import { Button as MaterialButton } from '@material-ui/core';
+import { Button as MuiButton } from '@mui/material';
 
 const Button = props => (
-  <MaterialButton 
+  <MuiButton 
     variant="contained"
     onClick={props.onClick}
     {...props}
   >
     {props.children}
-  </MaterialButton>
+  </MuiButton>
 );
 
 export default Button;

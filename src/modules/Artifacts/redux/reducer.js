@@ -7,7 +7,6 @@ import {
 } from './actionTypes';
 
 import { artifactData } from '../../../dummyData';
-import { GET_ALL_QUESTIONS_FAILURE } from '../../FrequentlyAskedQuestions/redux/actionTypes';
 
 const INIT_STATE = {
   loading: false,
@@ -51,6 +50,6 @@ export default (state = INIT_STATE, action) => {
       }
 
     default:
-      return { ...state }
+      return state;
   }
 };

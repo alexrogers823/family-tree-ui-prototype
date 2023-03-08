@@ -1,5 +1,10 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
+import _ from 'lodash';
 import Resizer from 'react-image-file-resizer';
+import { useSelector } from 'react-redux';
+
+// const familyMembers = useSelector(state => state.membersReducer.members);
+//uncomment after fixing redux and state
 
 const concatenateDate = (day = null, month = null, year = null) => {
   let output = '';
@@ -15,8 +20,27 @@ const concatenateDate = (day = null, month = null, year = null) => {
   return output
 };
 
-const convertToDate = (dateObj, format = "M/D/YYYY") => {
-  return moment(dateObj).format(format);
+const convertToDate = (dateObj, format="MMMM DD, YYYY") => {
+  return dayjs(dateObj).format(format);
+}
+
+const searchMember = member => {
+  return member.preferredName ? `${member.preferredName} ${member.lastName}` : `${member.firstName} ${member.lastName}`;
+}
+
+const mapMemberToId = (familyMembers, memberName) => {
+  if (memberName) {
+    const [firstName, lastName] = memberName.split(' ');
+    const selectedMember = familyMembers.find(member => (member.preferredName === firstName || member.firstName === firstName) && member.lastName === lastName);
+
+    console.log('selected member: ', selectedMember);
+
+    if (selectedMember) {
+      return selectedMember.id;
+    }
+  }
+
+  return null;
 }
 
 const mapIntToMonth = month => {
@@ -38,22 +62,25 @@ const mapIntToMonth = month => {
   return months[`${month}`];
 }
 
-const compressImage = image => {
-  Resizer.imageFileResizer(
-    image,
-    480,
-    480,
-    "JPEG",
-    70,
-    0,
-    (uri) => console.log(uri),
-    "base64"
-  );
-}
+const compressImage = image => 
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      image,
+      480,
+      480,
+      "JPEG",
+      70,
+      0,
+      (uri) => resolve(uri),
+      "base64"
+    );
+});
 
 export {
   concatenateDate,
   convertToDate,
   mapIntToMonth,
-  compressImage
+  compressImage,
+  searchMember,
+  mapMemberToId
 }

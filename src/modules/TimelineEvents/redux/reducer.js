@@ -14,8 +14,6 @@ import {
   DELETE_TIMELINE_EVENT_FAILURE
 } from "./actionTypes";
 
-import { timelineData } from '../../../dummyData';
-
 const INIT_STATE = {
   loading: false,
   timelineEvents: [],
@@ -29,7 +27,7 @@ export default (state = INIT_STATE, action) => {
     case GET_ALL_EVENTS:
       return { 
         ...state, 
-        timelineEvents: [ ...timelineData ], 
+        timelineEvents: action.timelineEvents, 
       }
 
     case GET_ALL_EVENTS_REQUEST:
@@ -55,14 +53,14 @@ export default (state = INIT_STATE, action) => {
     case GET_TIMELINE_EVENT_BY_ID:
       return {
         ...state,
-        timelineEvent: timelineData.find(ev => ev.id === action.payload)
+        timelineEvent: state.timelineEvents.find(({id}) => id === action.payload)
       }
 
     case CREATE_TIMELINE_EVENT:
       return {
         ...state,
         timelineEvents: [
-          ...timelineData,
+          ...state.timelineEvents,
           action.payload
         ]
       }
@@ -108,6 +106,6 @@ export default (state = INIT_STATE, action) => {
       }
 
     default:
-      return { ...state };
+      return state;
   }
 };

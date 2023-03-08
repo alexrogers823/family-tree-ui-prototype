@@ -1,66 +1,99 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
-  Input,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
-  TextField
-} from '@material-ui/core';
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox
+} from '@mui/material';
+import {
+  Controller,
+  useForm,
+} from 'react-hook-form';
+import Button from './Button';
 
-export const TextArea = (props) => (
-  <TextField
-    autoFocus
-    margin="dense"
-    id="name"
-    label={props.label || ""}
-    placeholder={props.placeholder || ""}
-    variant="filled"
-    type={props.type || "text"}
-    {...props}
-  />
-);
+export const TextArea = props => {
+  return (
+    <Controller 
+      name={props.keyLabel}
+      control={props.control}
+      render={({ field }) => {
+        return (
+          <TextField 
+            { ...field }
+            margin="dense"
+            id={props.keyLabel}
+            label={props.label}
+            placeholder={props.placeholder} 
+            defaultValue={props.defaultValue}
+            variant="filled"
+            type={ props.type || "text" }
+            fullWidth={ props.fullWidth || false }
+            multiline={ props.multiline || false }
+            { ...props }
+          />
+        )}}
+    />
+  )
+};
 
 const Form = props => {
   const [open, setOpen] = useState(false);
-  const [formValue, setFormValue] = useState({});
 
   useEffect(() => {
     setOpen(props.isOpen)
   }, [props.isOpen]);
 
   return (
-    <Dialog 
+    <Dialog
+      fullWidth={true}
+      maxWidth={ props.maxWidth || "md" }
       open={open || false} 
       onClose={props.closeModal}
       aria-labelledby="form-dialog-title"
       {...props}
     >
-      <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
-      <DialogContent>
-        {props.children}
-      </DialogContent>
-      <DialogActions>
-        {props.button &&
-          <Button 
-            color="primary"
-            onClick={e => {
-              if (props.onClick) {
-                props.onClick(e.target.value);
-              }
-              props.closeModal()
-            }}
-          >
-            {props.button}
-          </Button>
-        }
-      </DialogActions>
+      <form onSubmit={e => {
+        e.stopPropagation();
+        e.preventDefault();
+        props.onSubmit();
+      }}>
+        <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
+        <DialogContent>
+          {props.children}
+        </DialogContent>
+        <DialogActions>
+          { props.enableDeceasedCheckbox &&
+            <FormGroup>
+              <FormControlLabel control={<Checkbox checked={props.isDeceased} onChange={props.onChange} />} label="Check if deceased" />
+            </FormGroup>
+          }
+          {props.button &&
+            <Button 
+              type="submit"
+              color="primary"
+              onClick={e => {
+                if (props.onClick) {
+                  console.log('saved value', e.target.value);
+                  props.onClick(e.target.value);
+                }
+                props.closeModal()
+              }}
+            >
+              {props.button}
+            </Button>
+          }
+        </DialogActions>
+      </form>
     </Dialog>
-  )
+  );
 };
+
+
 
 TextArea.propTypes = {
   label: PropTypes.string,

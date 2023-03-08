@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 import {
   galleryUrl,
@@ -11,27 +10,26 @@ import {
 import Link from '../../components/common/Link';
 import ContactAdminModal from '../../components/ContactAdminModal';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(3),
-  },
-  text: {
-    fontStyle: 'italic',
-    textAlign: 'justify',
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     padding: theme.spacing(3),
+//   },
+//   text: {
+//     fontStyle: 'italic',
+//     textAlign: 'justify',
+//   },
+// }));
 
 const Main = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
 
   return (
     <Fragment>
-      <Paper className={classes.root} elevation={3}>
-        <p className={classes.text}>Welcome to the family website!</p>
+        <p>Welcome to the family website!</p>
 
-        <p className={classes.text}>
+        <p>
           Explore our roots by seeing the new  
           <Link
             href={lineageUrl}
@@ -47,7 +45,7 @@ const Main = () => {
           , or finding out more about a specific person.
         </p>
 
-        <p className={classes.text}>
+        <p>
           You can also contribute to our family  
           <Link
             href={timelineUrl}
@@ -57,7 +55,7 @@ const Main = () => {
           .
         </p>
 
-        <p className={classes.text}>
+        <p>
           If you're having issues or need help, 
           <Link
             onClick={() => setOpenContactAdmin(true)}
@@ -67,8 +65,7 @@ const Main = () => {
           .
         </p>
 
-        <p className={classes.text}>Enjoy our history!</p>
-      </Paper>
+        <p>Enjoy our history!</p>
       <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
     </Fragment>
   );

@@ -1,6 +1,4 @@
-import { getDisplayDate } from "@material-ui/pickers/_helpers/text-field-helper";
 import axios from "axios";
-import { DELETE_QUESTION_REQUEST } from "../../FrequentlyAskedQuestions/redux/actionTypes";
 import { 
   GET_ALL_EVENTS,
   GET_ALL_EVENTS_REQUEST,
@@ -49,7 +47,7 @@ export const deleteTimelineEvent = () => {
 
 export const getAllEvents = () => {
   return {
-    type: GET_ALL_EVENTS
+    type: GET_ALL_EVENTS,
   }
 };
 
@@ -110,7 +108,7 @@ export const createTimelineEventFailure = error => {
 // only the admin can delete timeline events 
 export const deleteTimelineEventRequest = () => {
   return {
-    type: DELETE_QUESTION_REQUEST
+    type: DELETE_TIMELINE_EVENT_REQUEST
   }
 }
 
