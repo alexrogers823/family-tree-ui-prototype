@@ -1,5 +1,4 @@
 // export the other actions here 
-export * from '../modules/FrequentlyAskedQuestions/redux/actions';
 export * from '../modules/Members/redux/actions';
 export * from '../modules/TimelineEvents/redux/actions';
 export * from '../modules/Artifacts/redux/actions';

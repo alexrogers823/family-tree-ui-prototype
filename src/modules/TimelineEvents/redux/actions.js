@@ -1,5 +1,4 @@
 import axios from "axios";
-import { DELETE_QUESTION_REQUEST } from "../../FrequentlyAskedQuestions/redux/actionTypes";
 import { 
   GET_ALL_EVENTS,
   GET_ALL_EVENTS_REQUEST,
@@ -109,7 +108,7 @@ export const createTimelineEventFailure = error => {
 // only the admin can delete timeline events 
 export const deleteTimelineEventRequest = () => {
   return {
-    type: DELETE_QUESTION_REQUEST
+    type: DELETE_TIMELINE_EVENT_REQUEST
   }
 }
 

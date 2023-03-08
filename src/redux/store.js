@@ -7,8 +7,6 @@ import reducer from './reducers';
 
 import { faqData, timelineData, artifactData } from '../dummyData';
 import { familyMembers } from '../memberData';
-
-// import reducer from '../modules/FrequentlyAskedQuestions/redux/reducer'
 import timelineEvents from '../modules/TimelineEvents/redux/reducer';
 
 
