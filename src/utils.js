@@ -1,7 +1,5 @@
 import dayjs from 'dayjs';
-import _ from 'lodash';
 import Resizer from 'react-image-file-resizer';
-import { useSelector } from 'react-redux';
 
 // const familyMembers = useSelector(state => state.membersReducer.members);
 //uncomment after fixing redux and state
@@ -22,6 +20,10 @@ const concatenateDate = (day = null, month = null, year = null) => {
 
 const convertToDate = (dateObj, format="MMMM DD, YYYY") => {
   return dayjs(dateObj).format(format);
+}
+
+const convertToDecade = dateObj => {
+  return dayjs(dateObj).format("YYYY").slice(0, 3) + '0';
 }
 
 const searchMember = member => {
@@ -79,8 +81,9 @@ const compressImage = image =>
 export {
   concatenateDate,
   convertToDate,
+  convertToDecade,
   mapIntToMonth,
   compressImage,
   searchMember,
   mapMemberToId
-}
+};

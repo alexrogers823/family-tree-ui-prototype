@@ -1,33 +1,45 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import StarsIcon from '@mui/icons-material/Stars';
 import {
-  TimelineItem,
-  TimelineSeparator,
   TimelineConnector,
   TimelineContent,
-  TimelineDot
+  TimelineDot, TimelineItem,
+  TimelineOppositeContent,
+  TimelineSeparator
 } from '@mui/lab';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import Typography from '../../../components/common/Typography';
 import EditTimelineEventModal from '../../../components/EditTimelineEventModal';
 
 const TimelineEvent = props => {
   const [openModal, setOpenModal] = useState(false);
 
-  // console.log('timeline index: ', props.isMostRecent)
-
   return (
     <>
       <TimelineItem>
-        <TimelineOppositeContent>
-          {props.date}
-        </TimelineOppositeContent>
+        {props.decade &&
+          <TimelineOppositeContent>
+            <Typography variant="h6">
+              {props.decade}
+            </Typography>
+          </TimelineOppositeContent>
+        }
         <TimelineSeparator>
-          <TimelineDot onClick={() => setOpenModal(true)} />
+          <TimelineDot onClick={() => setOpenModal(true)}>
+            {props.decade && <StarsIcon />}
+          </TimelineDot>
           {!props.isMostRecent && 
             <TimelineConnector />
           }
         </TimelineSeparator>
-        <TimelineContent>{props.event}</TimelineContent>
+        <TimelineContent>
+          <Typography variant="subtitle1" component="span">
+            {props.date}
+          </Typography>
+          <Typography variant="subtitle2">
+            {props.event}
+          </Typography>
+        </TimelineContent>
       </TimelineItem>
       <EditTimelineEventModal isOpen={openModal} closeModal={() => setOpenModal(false)} {...props} />
     </>
@@ -35,8 +47,9 @@ const TimelineEvent = props => {
 };
 
 TimelineEvent.propTypes = {
-  year: PropTypes.number.isRequired,
-  timelineEvent: PropTypes.string.isRequired
+  isMostRecent: PropTypes.bool,
+  date: PropTypes.string,
+  event: PropTypes.string.isRequired
 }
 
 export default TimelineEvent;

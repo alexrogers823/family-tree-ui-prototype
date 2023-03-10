@@ -1,19 +1,16 @@
-import React, { Fragment, useEffect, useState, useReducer } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import { makeStyles } from '@material-ui/core/styles';
 import { Timeline } from '@mui/lab';
 
 import AddEventModal from '../../components/AddTimelineEventModal';
 import Button from '../../components/common/Button';
-import { mapIntToMonth, convertToDate } from '../../utils';
+import { convertToDate, convertToDecade } from '../../utils';
 import TimelineEvent from './TimelineEvent';
-import TimelineEventReducer from './redux/reducer';
 
-import { 
-  getAllEvents, 
-  getTimelineEventById,
-  createTimelineEvent 
+import {
+  getAllEvents
 } from '../../redux/actions';
 
 // const useStyles = makeStyles(theme => ({
@@ -34,9 +31,9 @@ import {
 const TimelineEvents = props => {
   // const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
+  const decades = {};
 
-  const familyTimelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents)
-                                .sort((a, b) => a.year + b.year); // change so that this happens on backend
+  const familyTimelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents);
 
   const dispatch = useDispatch();
 
@@ -45,7 +42,7 @@ const TimelineEvents = props => {
       .then(res => res.json())
       .then(timelineEvents => {
         console.log(timelineEvents)
-        dispatch({type: "GET_ALL_EVENTS", timelineEvents: timelineEvents})
+        dispatch(getAllEvents(timelineEvents))
       })
       .catch(error => {
         console.error(error);
@@ -56,8 +53,16 @@ const TimelineEvents = props => {
     <Fragment>
       <Timeline>
         {familyTimelineEvents.map((ev, index) => {
+          let decade;
+          const currentDecade = convertToDecade(ev.eventDate);
+
+          if (!decades.hasOwnProperty(currentDecade)) {
+            decade = currentDecade;
+            decades[currentDecade] = true;
+          }
+
           return (
-          <TimelineEvent date={convertToDate(ev.eventDate, "YYYY")} isMostRecent={(index === familyTimelineEvents.length-1) ? true : false } {...ev} />
+          <TimelineEvent date={convertToDate(ev.eventDate)} decade={decade} isMostRecent={(index === familyTimelineEvents.length-1) ? true : false } {...ev} />
         )})}
       </Timeline>
       <Button onClick={() => setOpenModal(true)}>
@@ -75,18 +80,5 @@ const TimelineEvents = props => {
 TimelineEvents.propTypes = {
   timelineEvents: PropTypes.arrayOf(PropTypes.object)
 }
-
-// const mapStateToProps = state => {
-//   return {
-//     // timelineEvents: state.timelineEventsReducer.timelineEvents
-//     ...state.timelineEventsReducer
-//   }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getAllEvents: () => dispatch(getAllEvents()),
-//   }
-// }
 
 export default TimelineEvents;
