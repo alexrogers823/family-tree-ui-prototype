@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    networks:
+      - cfpg-network
+    command: npm run start-docker
+
+networks:
+  cfpg-network:
+    driver: bridge
