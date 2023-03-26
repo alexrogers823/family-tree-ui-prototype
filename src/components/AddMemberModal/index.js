@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useReducer } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { FormGroup } from '@mui/material';
+import React, { useReducer, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import MemberReducer from '../../modules/Members/redux/reducer';
+import { addFamilyMember } from '../../redux/actions';
+import { mapMemberToId, searchMember } from '../../utils';
 import { Autocomplete, Date, RadioGroup, UploadButton } from '../common';
 import Form, { TextArea } from '../common/Form';
-import { FormGroup } from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { addFamilyMember } from '../../redux/actions';
-import MemberReducer from '../../modules/Members/redux/reducer';
-import { mapMemberToId, searchMember } from '../../utils';
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles(theme => ({
@@ -113,24 +113,21 @@ const AddMemberModal = props => {
           control={control}
           label="Spouse (if applicable)"
           keyLabel="spouse"
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="Ex: Jane Doe"
         />
         <Autocomplete 
           control={control} 
           label="Parent 1" 
           keyLabel="primaryParent" 
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="This parent is related to others on the main family tree" 
         />
         <Autocomplete 
           control={control} 
           label="Parent 2 (if applicable)" 
           keyLabel="secondaryParent" 
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="This parent is an in-law in relation to others on the family tree" 
         />
         {/* <TextArea control={control} placeholder="Photo" /> */}

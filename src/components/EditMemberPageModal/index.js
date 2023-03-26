@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { makeStyles } from '@material-ui/core/styles';
-import { Date, RadioGroup, UploadButton, Autocomplete } from '../common';
-import Form, { TextArea } from '../common/Form';
 import { FormGroup } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import Member from '../../modules/Members/Member';
-import { mapMemberToId, searchMember } from '../../utils';
 import { updateFamilyMember } from '../../redux/actions';
+import { mapMemberToId, searchMember } from '../../utils';
+import { Autocomplete, Date, RadioGroup, UploadButton } from '../common';
+import Form, { TextArea } from '../common/Form';
 
 // const useStyles = makeStyles(theme => ({
 //   inputs: {
@@ -19,6 +18,7 @@ const EditMemberPageModal = props => {
   // const classes = useStyles();
   const [isDeceased, setIsDeceased] = useState(!props.isAlive);
   const familyMembers = useSelector(state => state.membersReducer.members);
+  console.log('family members: ', familyMembers)
   const dispatch = useDispatch();
 
   const { control, handleSubmit } = useForm({
@@ -50,6 +50,12 @@ const EditMemberPageModal = props => {
   }
 
   // const onSubmit = data => {
+  //   if (data.isInlaw === "Yes") {
+  //     data.isInlaw = true;
+  //   } else {
+  //     data.isInlaw = false;
+  //   }
+
   //   data.primaryParentId = mapMemberToId(familyMembers, data.primaryParent);
   //   data.secondaryParentId = mapMemberToId(familyMembers, data.secondaryParent);
   //   data.spouseId = mapMemberToId(familyMembers, data.spouse);
@@ -111,8 +117,7 @@ const EditMemberPageModal = props => {
           label="Spouse (if applicable)" 
           // defaultValue={searchMember(familyMembers.filter(member => member.id === props.primaryParentId))} //not working because it returns array of data instead of data itself
           keyLabel="spouse" 
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="Ex: Jane Doe" 
         />
         <Autocomplete 
@@ -120,8 +125,7 @@ const EditMemberPageModal = props => {
           label="Parent 1" 
           // defaultValue={searchMember(familyMembers.filter(member => member.id === props.primaryParentId))} //not working because it returns array of data instead of data itself
           keyLabel="primaryParent" 
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="This parent is related to others on the main family tree" 
         />
         <Autocomplete 
@@ -129,8 +133,7 @@ const EditMemberPageModal = props => {
           label="Parent 2 (if applicable)" 
           // defaultValue={searchMember(familyMembers.filter(member => member.id === props.primaryParentId))} //not working because it returns array of data instead of data itself
           keyLabel="secondaryParent" 
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="This parent is an in-law in relation to others on the family tree" 
         />
         <TextArea control={control} defaultValue={props.suffix || null} label="Suffix" keyLabel="suffix" placeholder="Ex: Jr." />
