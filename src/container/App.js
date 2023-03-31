@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
-import { Provider, connect } from 'react-redux';
-import store from '../redux/store';
+import { Provider } from 'react-redux';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
+  BrowserRouter as Router, Redirect, Route, Switch
 } from "react-router-dom";
+import store from '../redux/store';
 
 import * as urls from '../urls';
-import { concatenateDate } from '../utils';
 
 // TODO: Remove once redux is working 
-import { faqData, timelineData, artifactData } from '../dummyData';
-import { familyMembers } from '../memberData';
 
 
-import './App.css';
-import Base from '../hoc/Base';
-import Main from '../modules/Main';
-import FrequentlyAskedQuestions from '../modules/FrequentlyAskedQuestions';
-import Gallery from '../modules/Gallery';
-import TimelineEvents from '../modules/TimelineEvents';
-import { Page404, Page500 } from '../components/ErrorPages';
 import ComingSoon from '../components/ComingSoon';
+import { Page404, Page500 } from '../components/ErrorPages';
+import Base from '../hoc/Base';
+import FrequentlyAskedQuestions from '../modules/FrequentlyAskedQuestions';
 import Lineage from '../modules/Lineage';
-import UserSettings from '../modules/UserSettings';
+import Main from '../modules/Main';
 import Members from '../modules/Members';
-import Artifacts from '../modules/Artifacts';
+import TimelineEvents from '../modules/TimelineEvents';
+import './App.css';
 
 class App extends Component {
   // state = {
@@ -42,8 +33,8 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <Base>
-            <Router>
+          <Router>
+            <Base>
               <div>
                 <Switch>
                   <Route path={urls.faqUrl}>
@@ -91,8 +82,8 @@ class App extends Component {
                   </Route>
                 </Switch>
               </div>
-            </Router>
-          </Base>
+            </Base>
+          </Router>
         </div>
       </Provider>
     );
