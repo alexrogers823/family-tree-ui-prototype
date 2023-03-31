@@ -8,11 +8,13 @@ import {
 } from '@mui/lab';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Typography from '../../../components/common/Typography';
 import EditTimelineEventModal from '../../../components/EditTimelineEventModal';
 
 const TimelineEvent = props => {
   const [openModal, setOpenModal] = useState(false);
+  const { isAuthenticated } = useSelector(state => state.usersReducer);
 
   return (
     <>
@@ -25,7 +27,7 @@ const TimelineEvent = props => {
           </TimelineOppositeContent>
         }
         <TimelineSeparator>
-          <TimelineDot onClick={() => setOpenModal(true)}>
+          <TimelineDot onClick={() => isAuthenticated ? setOpenModal(true) : null}>
             {props.decade && <StarsIcon />}
           </TimelineDot>
           {!props.isMostRecent && 
@@ -41,7 +43,7 @@ const TimelineEvent = props => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-      <EditTimelineEventModal isOpen={openModal} closeModal={() => setOpenModal(false)} {...props} />
+      <EditTimelineEventModal isOpen={openModal} closeModal={() => setOpenModal(false)} {...props} /> 
     </>
   );
 };

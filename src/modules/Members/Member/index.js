@@ -152,6 +152,7 @@ const Member = () => {
   let { topicId } = useParams();
 
   // TODO: Remove once getMemberById is in redux 
+  const { isAuthenticated } = useSelector(state => state.usersReducer);
   const member = useSelector(state => state.membersReducer.member);
 
   const dispatch = useDispatch();
@@ -240,9 +241,11 @@ const Member = () => {
               </>
             }
           </div>
-          <Button onClick={() => setOpenEditMemberModal(true)}>
-            Edit Member Info
-          </Button>
+          {isAuthenticated &&
+            <Button onClick={() => setOpenEditMemberModal(true)}>
+              Edit Member Info
+            </Button>
+          }
           <EditMemberPageModal isOpen={openEditMemberModal} closeModal={() => setOpenEditMemberModal(false)} {...member} />
       </>
       }

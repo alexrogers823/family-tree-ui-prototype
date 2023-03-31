@@ -1,12 +1,11 @@
+import { FormGroup } from '@mui/material';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from '../../redux/actions';
+import { mapMemberToId, searchMember } from '../../utils';
 import { Autocomplete, Date, RadioGroup, UploadButton } from '../common';
 import Form, { TextArea } from '../common/Form';
-import { FormGroup, Checkbox, FormControlLabel } from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { dispatch } from 'd3';
-import { mapMemberToId, searchMember } from '../../utils';
 // import { makeStyles } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles(theme => ({
@@ -118,24 +117,21 @@ const RegisterModal = props => {
           control={control}
           label="Spouse (if applicable)"
           keyLabel="spouse"
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="Jane Doe"
         />
         <Autocomplete 
           control={control} 
           label="Parent 1" 
           keyLabel="primaryParent" 
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="Parent who is directly related to others" 
         />
         <Autocomplete 
           control={control} 
           label="Parent 2 (if applicable)" 
           keyLabel="secondaryParent" 
-          options={familyMembers}
-          getOptionLabel={option => option ? searchMember(option) : ''}
+          options={familyMembers.map(member => searchMember(member))}
           placeholder="Parent who is an in-law to others" 
         />
         <Date control={control} label="Date of Birth" keyLabel="birthdate" />

@@ -1,18 +1,10 @@
 import {
-  CREATE_USER,
-  LOGIN_USER_REQUEST,
-  LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAILURE,
-  LOGOUT_USER,
-  UPDATE_USER,
-  UPDATE_USER_REQUEST,
-  UPDATE_USER_SUCCESS,
-  UPDATE_USER_FAILURE,
-  DELETE_USER_REQUEST,
-  DELETE_USER_SUCCESS,
-  DELETE_USER_FAILURE,
-  CHANGE_APPEARANCE
-} from "./actionTypes"
+  CHANGE_APPEARANCE, CREATE_USER, DELETE_USER_FAILURE, DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS, LOGIN_USER, LOGIN_USER_FAILURE, LOGIN_USER_REQUEST,
+  LOGIN_USER_SUCCESS, LOGOUT_USER,
+  UPDATE_USER, UPDATE_USER_FAILURE, UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS
+} from "./actionTypes";
 
 const INIT_STATE = {
   loading: false,
@@ -24,6 +16,13 @@ const INIT_STATE = {
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
+    case LOGIN_USER:
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload
+      }
+      
     case LOGIN_USER_REQUEST:
       return {
         ...state,

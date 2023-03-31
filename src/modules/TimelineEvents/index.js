@@ -32,7 +32,8 @@ const TimelineEvents = props => {
   // const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
   const decades = {};
-
+  
+  const { isAuthenticated } = useSelector(state => state.usersReducer);
   const familyTimelineEvents = useSelector(state => state.timelineEventsReducer.timelineEvents);
 
   const dispatch = useDispatch();
@@ -65,9 +66,11 @@ const TimelineEvents = props => {
           <TimelineEvent date={convertToDate(ev.eventDate)} decade={decade} isMostRecent={(index === familyTimelineEvents.length-1) ? true : false } {...ev} />
         )})}
       </Timeline>
-      <Button onClick={() => setOpenModal(true)}>
-        Add Event
-      </Button>
+      {isAuthenticated &&
+        <Button onClick={() => setOpenModal(true)}>
+          Add Event
+        </Button>
+      }
       <AddEventModal 
         isOpen={openModal} 
         closeModal={() => setOpenModal(false)} 

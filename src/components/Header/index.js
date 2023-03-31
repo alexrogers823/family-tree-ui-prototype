@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AppBar from '../common/AppBar';
 import Link from '../common/Link';
@@ -9,10 +8,8 @@ import {
   artifactsUrl,
   faqUrl,
   galleryUrl,
-  lineageUrl,
-  timelineUrl,
-  userUrl,
-  memberUrl
+  lineageUrl, memberUrl, timelineUrl,
+  userUrl
 } from '../../urls';
 
 import AddMemberModal from '../AddMemberModal';
@@ -20,14 +17,7 @@ import LoginModal from '../LoginModal';
 import RegisterModal from '../RegisterModal';
 
 import {
-  loginUser,
-  logoutUser,
-  openLoginModal,
-  closeLoginModal,
-  openRegisterModal,
-  closeRegisterModal,
-  openAddMemberModal,
-  closeAddMemberModal
+  closeAddMemberModal, closeLoginModal, closeRegisterModal, logoutUser, openAddMemberModal, openLoginModal, openRegisterModal
 } from '../../redux/actions';
 
 // const useStyles = makeStyles(theme => ({
@@ -127,14 +117,16 @@ const Header = props => {
         >
           Members
         </Link>
-        <Link  
-          color="inherit" 
-          href="#"
-          underline="hover"
-          onClick={() => dispatch(openAddMemberModal())} 
-        >
-          Add Member
-        </Link>
+        {isAuthenticated &&
+          <Link  
+            color="inherit" 
+            href="#"
+            underline="hover"
+            onClick={() => dispatch(openAddMemberModal())} 
+          >
+            Add Member
+          </Link>
+        }
       </div>
       <div>
         {isAuthenticated &&
