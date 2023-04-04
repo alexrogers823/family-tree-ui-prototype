@@ -1,9 +1,14 @@
-import React, { useRef, useEffect, useLayoutEffect, useState, useMemo, useCallback } from 'react';
-import MemberCard from '../../components/MemberCard';
-import Link from '../../components/common/Link';
+import { Box, styled } from '@mui/material';
 import * as d3 from 'd3';
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import { PAGE_BACKGROUND_COLOR, PAGE_MARGIN, PAGE_PADDING } from '../../constants';
 import { memberUrl } from '../../urls';
-import { line, selectAll } from 'd3';
+
+const StyledLineagePage = styled(Box)(({ theme }) => ({
+  margin: PAGE_MARGIN,
+  padding: PAGE_PADDING,
+  backgroundColor: PAGE_BACKGROUND_COLOR
+}))
 
 const Lineage = props => {
 
@@ -217,7 +222,7 @@ const Lineage = props => {
   // )
 
   return (
-    <div ref={treeRef}></div>
+    <StyledLineagePage ref={treeRef}></StyledLineagePage>
   )
 
 }

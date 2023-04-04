@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { makeStyles } from '@material-ui/core/styles';
 import { Timeline } from '@mui/lab';
@@ -9,6 +9,8 @@ import Button from '../../components/common/Button';
 import { convertToDate, convertToDecade } from '../../utils';
 import TimelineEvent from './TimelineEvent';
 
+import { Box, styled } from '@mui/material';
+import { PAGE_BACKGROUND_COLOR, PAGE_MARGIN, PAGE_PADDING } from '../../constants';
 import {
   getAllEvents
 } from '../../redux/actions';
@@ -27,6 +29,12 @@ import {
 //     fontSize: 20
 //   }
 // }));
+
+const StyledTimelineEventPage = styled(Box)(({ theme }) => ({
+  margin: PAGE_MARGIN,
+  padding: PAGE_PADDING,
+  backgroundColor: PAGE_BACKGROUND_COLOR
+}))
 
 const TimelineEvents = props => {
   // const classes = useStyles();
@@ -51,7 +59,7 @@ const TimelineEvents = props => {
   }, []);
 
   return (
-    <Fragment>
+    <StyledTimelineEventPage>
       <Timeline>
         {familyTimelineEvents.map((ev, index) => {
           let decade;
@@ -76,7 +84,7 @@ const TimelineEvents = props => {
         closeModal={() => setOpenModal(false)} 
         addEvent={props.postNewEvent}
       />
-    </Fragment>
+    </StyledTimelineEventPage>
   )
 };
 

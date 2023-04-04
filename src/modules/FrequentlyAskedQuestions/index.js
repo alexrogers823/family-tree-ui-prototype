@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 // import { makeStyles } from '@material-ui/core/styles';
 
+import { Box, Divider, List, ListItem, ListItemText, styled } from '@mui/material';
 import Link from '../../components/common/Link';
 import ContactAdminModal from '../../components/ContactAdminModal';
-import { Divider, List, ListItem, ListItemText } from '@mui/material';
+import { PAGE_BACKGROUND_COLOR, PAGE_MARGIN, PAGE_PADDING } from '../../constants';
 
 // const useStyles = makeStyles(theme => ({
 //   root: {
@@ -23,6 +24,12 @@ import { Divider, List, ListItem, ListItemText } from '@mui/material';
 //   },
 // }));
 
+const StyledFaqPage = styled(Box)(({ theme }) => ({
+  margin: PAGE_MARGIN,
+  padding: PAGE_PADDING,
+  backgroundColor: PAGE_BACKGROUND_COLOR
+}))
+
 const FrequentlyAskedQuestions = props => {
   // const classes = useStyles();
   const dispatch = useDispatch();
@@ -30,7 +37,7 @@ const FrequentlyAskedQuestions = props => {
   const [openContactAdmin, setOpenContactAdmin] = useState(false);
 
   return (
-    <>
+    <StyledFaqPage>
       <List>
         <h1>Frequently Asked Questions</h1>
         <ListItem>
@@ -66,7 +73,7 @@ const FrequentlyAskedQuestions = props => {
         </h3>
       </List>
       <ContactAdminModal isOpen={openContactAdmin} closeModal={() => setOpenContactAdmin(false)} />
-    </>
+    </StyledFaqPage>
   )
 };
 
