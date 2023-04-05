@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import Link from '../../components/common/Link';
+import { PAGE_BACKGROUND_COLOR, PAGE_MARGIN, PAGE_PADDING } from '../../constants';
 import Member from './Member';
 import { getAllFamilyMembers } from './redux/actions';
 
@@ -10,9 +11,16 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
+  margin: theme.spacing(1),
   textAlign: 'left',
   color: theme.palette.text.secondary,
 }));
+
+const StyledMembersPage = styled(Box)(({ theme }) => ({
+  margin: PAGE_MARGIN,
+  padding: PAGE_PADDING,
+  backgroundColor: PAGE_BACKGROUND_COLOR
+}))
 
 const arrangeMemberLink = (member, url) => {
   return (
@@ -43,7 +51,7 @@ const Members = () => {
   }, []);
 
   return (
-    <div>
+    <StyledMembersPage>
       <Switch>
         <Route path={`${match.path}/:topicId`}>
           <Member />
@@ -57,7 +65,7 @@ const Members = () => {
           </Box>
         </Route>
       </Switch>
-    </div>
+    </StyledMembersPage>
   )
 };
 

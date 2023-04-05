@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import Link from '../../../components/common/Link';
-// import { makeStyles } from '@material-ui/core/styles';
 
 import { convertToDate } from '../../../utils';
 
@@ -13,93 +12,72 @@ import EditMemberPageModal from '../../../components/EditMemberPageModal';
 
 import adellaSample from '../../../assets/Adella_sample.jpg';
 
-// import { 
-//   getAllFamilyMembers,
-//   getFamilyMemberById 
-// } from '../redux/actions';
-
 import { Box, styled } from '@mui/material';
-import { PAGE_BACKGROUND_COLOR, PAGE_MARGIN, PAGE_PADDING } from '../../../constants';
+import { PAGE_BACKGROUND_COLOR, PAGE_MARGIN } from '../../../constants';
 import { getFamilyMemberById } from '../../../redux/actions';
-
-// const useStyles = makeStyles(theme => ({
-//   body: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     justifyContent: 'space-around',
-//     textAlign: 'justify'
-//     // flexWrap: 'wrap',
-//   },
-//   children: {
-//     listStyleType: 'none',
-//   },
-//   deceased: {
-//     filter: 'grayscale(100%)'
-//   },
-//   link: {
-//     margin: `0 ${theme.spacing(0.5)}px`,
-//   },
-//   memberStats: {
-//     // border: '1px solid black',
-//     display: 'flex',
-//     justifyContent: 'space-between',
-//     // margin: '2%'
-//     // flexDirection: 'column'
-//   },
-//   memberStatText: {
-//     // alignSelf: 'baseline'
-//     // textAlign: 'right'
-//   },
-// }));
 
 const StyledMemberPage = styled(Box)(({ theme }) => ({
   margin: PAGE_MARGIN,
-  padding: PAGE_PADDING,
+  // padding: PAGE_PADDING,
   backgroundColor: PAGE_BACKGROUND_COLOR,
-  border: '2px solid red',
-  "& .image": {
-    maxWidth: '25%',
-    border: '1px solid #ddd',
-    padding: 5,
-    objectFit: 'contain',
-    alignSelf: 'center',
-  },
-  "& .body": {
+  ".body": {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     textAlign: 'justify'
   },
-  "& .memberName": {
+  ".image": {
+    maxWidth: '25%',
+    // border: '1px solid #ddd',
+    padding: 5,
+    objectFit: 'contain',
+    alignSelf: 'left',
+  },
+  ".deceased": {
+    filter: "grayscale(100%)"
+  },
+  ".memberStats": {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    margin: "2%"
+  },
+  ".memberName": {
+    fontSize: 60,
     fontWeight: 600,
     color: 'black',
     textShadow: '2px 2px white'
   },
-  "& .memberNameAlt": {
+  ".memberNameAlt": {
+    fontSize: 20,
     fontWeight: 300,
     color: 'black',
     fontStyle: 'italic',
-    fontSize: 12
   },
-  "& .lifeRange": {
-    fontStyle: 'italic'
+  ".lifeRange": {
+    fontSize: 20,
+    fontStyle: 'italic',
+    margin: `${theme.spacing(3)} 0`
   },
-  "& .birthplace": {
-    margin: theme.spacing(1),
+  ".location": {
+    fontSize: 20,
+    margin: `${theme.spacing(3)} 0`
+  },
+  ".birthplace": {
+    // margin: theme.spacing(1),
     textShadow: '1px 1px white'
   },
-  "& .residence": {
-    margin: theme.spacing(1),
+  ".residence": {
+    marginLeft: theme.spacing(1),
     textShadow: '1px 1px white',
     color: 'green',
   },
-  "& .bio": {
+  ".bio": {
     fontStyle: 'italic',
     textAlign: 'justify',
     flex: '1 1 auto',
     margin: 5
   },
-  "& .lineage": {
+  ".lineage": {
     textAlign: "left"
   }
 }));
@@ -176,7 +154,6 @@ const displayParents = (member, styledLink) => {
 
 
 const Member = () => {
-  // const classes = useStyles();
   const [openEditMemberModal, setOpenEditMemberModal] = useState(false);
   let { topicId } = useParams();
 
@@ -200,12 +177,12 @@ const Member = () => {
         <>
           <Box className="body">
             <img
-              className="image" 
+              className={ member.isAlive ? "image" : "image deceased"}
               src={adellaSample} 
               alt={`Photo of ${member.firstName}`}
               // onChange={async (e) => await compressImage(e.target.files[0])} 
             />
-            <Box>
+            <Box className="memberStats">
               {member.preferredName
                 ? <>
                     <Box className="memberName">{member.preferredName} {member.lastName}</Box>
@@ -217,8 +194,10 @@ const Member = () => {
                 b. {convertToDate(member.birthdate)}
                 {!member.isAlive && `, d. ${convertToDate(member.deceasedDate)}`}
               </Box>
-              <Box component="span" className="birthplace">Birthplace: {member.birthplace}</Box>
-              <Box component="span" className="residence">Residence: {member.residence}</Box>
+              <Box className="location">
+                <Box component="span" className="birthplace">Birthplace: {member.birthplace}</Box>
+                <Box component="span" className="residence">Residence: {member.residence}</Box>
+              </Box>
             </Box>
           </Box>
 
