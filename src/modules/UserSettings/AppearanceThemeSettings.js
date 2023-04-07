@@ -1,5 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { FormControlLabel, Switch } from '@mui/material';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeAppearance } from './redux/actions';
 
 const AppearanceThemeSettings = props => {
   // const [value, setValue] = useState('light');
@@ -7,12 +9,18 @@ const AppearanceThemeSettings = props => {
 
   const theme = useSelector(state => state.usersReducer.theme);
 
+  const handleToggle = () => {
+    if (theme === "light") {
+      dispatch(changeAppearance("dark"))
+    } else {
+      dispatch(changeAppearance("light"))
+    }
+  };
+
   console.log('value', theme);
 
   return (
-    <Fragment>
-      <p>AppearanceThemeSettings Test</p>
-    </Fragment>
+    <FormControlLabel control={<Switch defaultChecked={theme === "dark" ? true : false} onChange={handleToggle} />} label="Dark Mode" />
   )
 };
 

@@ -1,6 +1,8 @@
-import { Tab, Tabs } from '@mui/material';
+import { Box, styled, Tab, Tabs } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { PAGE_BACKGROUND_COLOR, PAGE_MARGIN, PAGE_PADDING } from '../../constants';
 import AppearanceThemeSettings from './AppearanceThemeSettings';
 import EventsCreatedSettings from './EventsCreatedSettings';
 import FamilyRelationsSettings from './FamilyRelationsSettings';
@@ -32,20 +34,28 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
+const StyledUserSettingsPage = styled(Box)(({ theme }) => ({
+  margin: PAGE_MARGIN,
+  padding: PAGE_PADDING,
+  backgroundColor: PAGE_BACKGROUND_COLOR
+}))
+
 const UserSettings = props => {
   const [value, setValue] = useState(0);
+
+  const user = useSelector(state => state.usersReducer.user);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }
   
   return (
-    <div>
+    <StyledUserSettingsPage>
       <div>
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+          <Tab label="Appearance Theme" />
+          <Tab label="Member Information" />
+          <Tab label="Intermediate Family" />
           {/* <Tab label="Item Four" /> */}
         </Tabs>
       </div>
@@ -53,7 +63,7 @@ const UserSettings = props => {
         <AppearanceThemeSettings />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <MemberInformationSettings />
+        <MemberInformationSettings { ...user }/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <FamilyRelationsSettings />
@@ -61,7 +71,7 @@ const UserSettings = props => {
       <TabPanel value={value} index={3}>
         <EventsCreatedSettings />
       </TabPanel>
-    </div>
+    </StyledUserSettingsPage>
   );
 }
 

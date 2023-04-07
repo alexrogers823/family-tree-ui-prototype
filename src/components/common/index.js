@@ -1,10 +1,11 @@
+import Autocomplete from './Autocomplete';
 import Button from './Button';
-import Modal from './Modal';
-import Form from './Form';
 import Date from './Date';
+import Form from './Form';
+import Link from './Link';
+import Modal from './Modal';
 import RadioGroup from './RadioGroup';
 import UploadButton from './UploadButton';
-import Autocomplete from './Autocomplete';
 
 export {
   Button,
@@ -13,5 +14,6 @@ export {
   Date,
   RadioGroup,
   UploadButton,
-  Autocomplete
-}
+  Autocomplete,
+  Link
+};

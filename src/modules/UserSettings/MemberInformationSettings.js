@@ -1,12 +1,15 @@
 import React, { Fragment } from 'react';
-import Button from '../../components/common/Button';
+import { Button, Link } from '../../components/common';
+import { memberUrl } from '../../urls';
 
 import { convertToDate } from '../../utils';
 
 const MemberInformationSettings = props => {
+  // Add member id for link
   return (
     <Fragment>
-      <p>Username/Member Name: {props.firstName} {props.lastName}</p>
+      <p>Username: {props.username}</p>
+      <p>Member Name: <Link href={`${memberUrl}/${props.memberId}`}> {props.firstName} {props.lastName}</Link></p>
       <p>Email: {props.email}</p>
       <p>Birthplace: {props.birthplace}</p>
       <p>Residence: {props.residence}</p>

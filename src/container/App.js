@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React from 'react';
+import { Provider, useSelector } from 'react-redux';
 import {
   BrowserRouter as Router, Redirect, Route, Switch
 } from "react-router-dom";
 import store from '../redux/store';
 
 import * as urls from '../urls';
-
-// TODO: Remove once redux is working 
-
 
 import ComingSoon from '../components/ComingSoon';
 import { Page404, Page500 } from '../components/ErrorPages';
@@ -21,16 +18,9 @@ import TimelineEvents from '../modules/TimelineEvents';
 import UserSettings from '../modules/UserSettings';
 import './App.css';
 
-class App extends Component {
-  // state = {
-  //   photos: new Array(20).fill('').map((element, i) => `photo ${i+1}`),
-  //   artifacts: [ ...artifactData ],
-  //   questions: [ ...faqData ],
-  //   members: [ ...familyMembers ],
-  //   timelineEvents: [ ...timelineData ]
-  // }
+const App = () => {
+  const { isAuthenticated } = useSelector(state => state.usersReducer);
 
-  render() {
     return (
       <Provider store={store}>
         <div className="App">
@@ -48,8 +38,7 @@ class App extends Component {
                     <TimelineEvents />
                   </Route>
                   <Route path={urls.userUrl}>
-                    <UserSettings />
-                    {/* <Redirect to={urls.comingSoonUrl} /> */}
+                    { isAuthenticated ? <UserSettings /> : <Redirect to="/" /> }
                   </Route>
                   <Route path={urls.comingSoonUrl}>
                     <ComingSoon />
@@ -82,6 +71,5 @@ class App extends Component {
       </Provider>
     );
   }
-}
 
 export default App;
